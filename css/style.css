@@ -1,1 +1,44 @@
-yoo
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
+}
+
+.logo img {
+  height: 80px; 
+}
+
+.logout {
+  padding-right: 50px;
+}
+
+.logout a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #9c1c1c;
+}
+
+th {
+  color: white;
+    background-color: #701919;
+}

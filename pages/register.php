@@ -2,7 +2,11 @@
 <html>
 
     <head>
+
+        <title>Registration</title>
+
         <title>Registratie leerlingen</title>
+
     </head>
 
     <body>
@@ -17,7 +21,12 @@
             <input type="password" name="password" placeholder="Wachtwoord" required>
             <br>
             <button type="submit" class="btn" name="reg_user">Register</button>
+
+            <p>Already a member? Log in 
+                <a href="loginpage.php">here</a></p>
+
             <p>Ben je al lid? Log in <a href="loginpage.php">hier</a>.</p>
+
         </form>
     </body>
 

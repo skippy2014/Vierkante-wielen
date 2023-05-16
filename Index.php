@@ -16,7 +16,7 @@
   <li><a href="error.php">Niet gebruikt</a></li>
 </ul>
 </div>
-  <div class="registration"> <h2> Waarom rijschool Vierkante wielen?</h2>
+  <div class="registration"> <h2> Waarom de rijschool Vierkante wielen?</h2>
 <ul> 
   <li>De beste instructeurs</li>
   <li>Les in een automaat of schakelauto</li>

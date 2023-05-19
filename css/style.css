@@ -1,46 +1,72 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+} 
+/* .navbar{
+} */
 
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #f2f2f2;
+.headerImage{
+  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/Images/ManDriving.png");
+  background-size:cover;
+height:1282px;
+  padding:15vw;
+  
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 50px;
+.info-container1{
+
+  position: relative !important;
+  float:right;
+  text-align: right;
+  margin-top:3vh;
+  color:white;
+  
+  
 }
 
-.logo img {
-  height: 80px; 
+.info-rijschool{
+
+  background-color: rgb(235, 232, 232);
+  height:506px;
+  text-align:center;
+  
 }
 
-.logout {
-  padding-right: 50px;
+
+
+.Over-ons{ 
+   background-color: rgb(235, 232, 232);
+  height:1207px;
 }
 
-.logout a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+.Info-Rijschoolhouder{
+  background-color: rgb(235, 232, 232);
+  height:760.25px;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
+.Call-to-action{
+  background-color: rgb(148, 6, 6);
+  height:647px;
 }
 
-th, td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #9c1c1c;
+h2{
+ font-size: 40px;
 }
 
-th {
-  color: white;
-    background-color: #701919;
+p{
+  font-size: 32px;
+}
+
+.info-container1 button{
+  margin:50px ;
+  background-color:rgb(148, 6, 6);
+  color:white;
+  font-size:24px;
+  border:none;
+  border-radius: 11px;
+  box-shadow: 4px 4px 11px #00000029;
+padding:0.7vw 2.2vw;
+
 }

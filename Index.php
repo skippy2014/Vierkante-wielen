@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Home Vierkante wielen</title>
-   <link rel="STYLESHEET" type="text/css"  href="../css/style.css">
+   <link rel="STYLESHEET" type="text/css"  href="css/style.css">
 </head>
 <body>
   <!-- <div class="header"><h1>Header here</h1></div> -->
@@ -33,7 +33,7 @@
 </div>
 
   <div class="registration">
-   <div class="regItem1"><img src="/Images/Bestuurder.png" alt="Bestuurder"></div>  
+   <div class="regItem1"><img src="img/Bestuurder.png" alt="Bestuurder"></div>  
    <div class="regItem2"><h2> Waarom is autorijschool Vierkante wielen <br> de beste keuze?</h2></div>
   <div class="regItem3">
     <ul class="pros"> 
@@ -44,7 +44,7 @@
 </ul></div></div>
     
 <div class="Over-ons">
-<div class="onsD1"><img src="/Images/ManAchterStuur.png" alt="Man achter stuur"></div>
+<div class="onsD1"><img src="img/ManAchterStuur.png" alt="Man achter stuur"></div>
   <div class="onsD2"><h2>Over ons</h2>
 <p>Het is onze passie om mensen te helpen bij het leren rijden. We zijn trots op onze duidelijke uitleg,
    professionele begeleiding <br> en de steun die we kunnen geven aan mensen met een fysieke beperking,
@@ -97,7 +97,7 @@ van anderen.</p></div></div>
 
 
 <div class="Info-Rijschoolhouder">
-  <div class="infoR1"><img src="/Images/Instructeur.png" alt="Bestuurder"></div>
+  <div class="infoR1"><img src="img/Instructeur.png" alt="Bestuurder"></div>
   <div class="infoR2"><h2>Informatie Rijschoolhouder</h2></div>
 <div class="infoR3"><p> Onze rijschoolhouder is een ervaren en professionele instructeur die zijn leerlingen 
   op een vriendelijke en ondersteunende manier begeleidt. Hij is gepassioneerd over het helpen van leerlingen
@@ -106,7 +106,7 @@ van anderen.</p></div></div>
 </div>
 
 <div class="Call-to-action">
-  <div class="callA1"><img src="/Images/auto.png" alt="Auto"></div>
+  <div class="callA1"><img src="img/auto.png" alt="Auto"></div>
  <div class="callA2"><h2>Schrijf je nu in!</h2></div> 
  <div class="callA3"><p>Kies onze rijschool voor professionele instructeurs, betaalbare lessen en een veilige
    en leuke leeromgeving. We helpen je om veilig en vol vertrouwen de weg op te gaan!</p>

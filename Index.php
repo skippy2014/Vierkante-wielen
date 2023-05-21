@@ -17,7 +17,8 @@
   Wij bieden flexibele lessen en ervaren instructeurs <br> om je te helpen vertrouwen te krijgen achter het stuur 
   en klaar te zijn voor de weg. <br>  Meld je vandaag nog aan!
   </p>
-  <button>Schrijf je in!</button>
+  <a href="pages/register.php">
+  <button>Schrijf je in!</button></a>
 </div></div></div>
 
 <div class="info-rijschool"> <h2 style="padding-top:25px;"> Informatie rijschool</h2>
@@ -56,35 +57,41 @@ van anderen.</p></div></div>
 
 <div class="tarieven">
   <div class="pakket0"><h2> Tarieven</h2></div>
-<div class="pakket1"> Instap pakket 1 <br><br>      € 2004,00      </div>
-<div class="pakket2"> Instap pakket 2 <br><br>      € 2644,00      </div>
-<div class="pakket3"> Instap pakket 3 <br> <br>    € 3064,00       </div>
+<div class="pakket1"> Instap pakket 1 <br>      € 2004,00      </div>
+<div class="pakket2"> Instap pakket 2 <br>     € 2644,00      </div>
+<div class="pakket3"> Instap pakket 3 <br>    € 3064,00       </div>
 <div class="pakketD1"> 
   <ul>
    <li>30 lesuren (praktijk)</li>
-  <li>Theorie-examen in examenplaats <br> naar keuze</li>
+  <li>Theorie-examen</li>
   <li>Tussentijdse toets</li>
     <li> CBR-praktijkexamen</li>
     <li>Terugbetaling van ongebruikte lessen</li>
 </ul>
+<a href="pages/register.php">
+  <button>Ik wil dit pakket!</button></a>
  </div>
 <div class="pakketD2">  
   <ul>
     <li>40 lesuren (praktijk)</li>
-   <li>Theorie-examen in examenplaats <br>  naar keuze</li>
+   <li>Theorie-examen </li>
    <li>Tussentijdse toets</li>
      <li> CBR-praktijkexamen</li>
   <li>Terugbetaling van ongebruikte lessen</li>
  </ul>
+ <a href="pages/register.php">
+  <button>Ik wil dit pakket!</button></a>
 </div>
 <div class="pakketD3">   
   <ul>
     <li>50 lesuren (praktijk)</li>
-   <li>Theorie-examen in examenplaats <br>  naar keuze</li>
+   <li>Theorie-examen </li>
    <li>Tussentijdse toets</li>
      <li> CBR-praktijkexamen</li>
      <li>Terugbetaling van ongebruikte lessen</li>
  </ul> 
+ <a href="pages/register.php">
+  <button>Ik wil dit pakket!</button></a>
 </div>
 </div>
 
@@ -103,7 +110,8 @@ van anderen.</p></div></div>
  <div class="callA2"><h2>Schrijf je nu in!</h2></div> 
  <div class="callA3"><p>Kies onze rijschool voor professionele instructeurs, betaalbare lessen en een veilige
    en leuke leeromgeving. We helpen je om veilig en vol vertrouwen de weg op te gaan!</p>
-   <button>Schrijf je in!</button>
+   <a href="pages/register.php">
+   <button>Schrijf je in!</button></a>
   </div>
    
    </div>

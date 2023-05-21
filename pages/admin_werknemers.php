@@ -9,8 +9,6 @@
 </head>
 <body>
 
-<?php include '../components/header.php'; ?>
-
   <?php include '../components/werknemers_list.php'; ?>
 
 </body>

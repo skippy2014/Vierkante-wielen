@@ -113,7 +113,23 @@ height:auto;
 }
 
 
+/* style van tabellen leden lijst en werknemers zie hier onder */
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #9c1c1c;
+}
+
+th {
+  color: white;
+    background-color: #701919;
+}
 
 
 

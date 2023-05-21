@@ -5,7 +5,7 @@
   font-family: sans-serif;
 } 
 
-
+/* header */
 .headerImage{
   background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/Images/ManDriving.png");
   background-size:cover;
@@ -14,6 +14,7 @@ height:1282px;
   
 }
 
+/* imageheadertekst */
 .info-container1{
 
   position: relative !important;
@@ -38,30 +39,13 @@ padding:0.7vw 2.2vw;
 }
 
 
-
+/* informatie rijschool */
 .info-rijschool{
 
   background-color: rgb(235, 232, 232);
-  height:506px;
+  height:450px;
   text-align:center;
   
-}
-
-
-
-.Over-ons{ 
-   background-color: rgb(235, 232, 232);
-  height:1207px;
-}
-
-.Info-Rijschoolhouder{
-  background-color: rgb(235, 232, 232);
-  height:760.25px;
-}
-
-.Call-to-action{
-  background-color: rgb(148, 6, 6);
-  height:647px;
 }
 
 h2{
@@ -72,6 +56,7 @@ p{
   font-size: 32px;
 }
 
+/* Waarom rijschool vierkante wielen? */
 .registration{
  display:grid;
 grid-template-columns: repeat(2,2fr);
@@ -112,9 +97,120 @@ height:auto;
   padding-left:2vw;
 }
 
+/* over ons */
+.Over-ons{ 
+  background-color: rgb(235, 232, 232);
+ height:1100px;
+ display:grid;
+grid-template-rows: repeat(3,0.5fr);
+  text-align:center;
+  align-items: center;
+}
 
+.Over-ons img{
 
+width:50%;
+}
 
+.onsD1{
+  grid-column: 2/3;
+  grid-row: 2/3;
+  
+  }
 
+.onsD2{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
 
+.onsD3{
+  grid-column: 2/3;
+  grid-row: 3/3;
+ 
+ }
 
+ .Over-ons h2{
+  padding-bottom: 5vh;
+ }
+
+ /* informatie rijschoolhouder */
+ .Info-Rijschoolhouder{
+  display:grid;
+ grid-template-columns: repeat(2,2fr);
+   text-align:center;
+ background-color: rgb(235, 232, 232);
+ }
+ 
+ .infoR1 img{
+ align-items:center;
+ width:60%;
+ height:auto;
+ 
+ }
+ 
+ .infoR1{
+ 
+   grid-column: 2/3;
+   grid-row:2/3;
+   padding-bottom:10vh;
+ }
+ 
+ .infoR2{
+   grid-column: 1/2;
+   grid-row: 1/2;
+  padding-top:7vh;
+ }
+ 
+ .infoR3{
+  grid-column: 1/2;
+  grid-row: 2/3;
+  padding:3vw;
+  padding-left:1vw;
+ }
+
+/* schrijf je nu in */
+.Call-to-action{
+  display:grid;
+ grid-template-columns: repeat(2,2fr);
+   text-align:center;
+   background-color: rgb(148, 6, 6);
+  height:647px;
+  color:white;
+ }
+ 
+ .callA1 img{
+ align-items:center;
+ width:60%;
+ height:auto;
+ 
+ }
+ 
+ .callA1{
+ 
+   grid-column: 2/3;
+   grid-row:2/3;
+   padding-bottom:10vh;
+ }
+ 
+ .callA2{
+   grid-column: 1/2;
+   grid-row: 1/2;
+  padding-top:7vh;
+ }
+ 
+ .callA3{
+  grid-column: 1/2;
+  grid-row: 2/3;
+  padding:3vw;
+  padding-left:1vw;
+ }
+
+.Call-to-action button{
+  margin:50px ;
+  color:black;
+  font-size:24px;
+  border:none;
+  border-radius: 11px;
+  box-shadow: 4px 4px 11px #00000029;
+padding:0.7vw 2.2vw;
+}

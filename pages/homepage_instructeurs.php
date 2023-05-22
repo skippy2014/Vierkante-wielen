@@ -70,7 +70,6 @@ session_start();
         }
     </style>
 <body>
-<?php include '../components/header.php'; ?>
 
 <h2>Welkom Instructeurs</h2>
 
@@ -99,16 +98,6 @@ echo strftime(" Vandaag is het %A");
 
 <a href="ziekmelden.php"><button>Ziekmelden</button></a><br>
 <a href="nieuwe_les_inplannen.php"><button>Nieuwe les inplannen</button></a>
-
-
-
-<body>
-
-
-<?php include '../components/header.php'; ?>
-
-<h3>Welkom Instructeurs</h3>
-
 
 </body>
 </html>

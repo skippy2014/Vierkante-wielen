@@ -9,17 +9,15 @@
 </head>
 <body>
 
-<?php include '../components/header.php'; ?>
+<h3>info klantnaam met counter van les tegoed </h3> <br><br>
 
-<h3>info klantnaam met counter van les tegoed </h3>
+<h3>Welkom klantnaam </h3><br><br>
 
-<h3>Welkom klantnaam </h3>
+<h3>meldingen lijst komt hier </h3> <br><br>
 
-<h3>meldingen lijst komt hier </h3>
+<h3>lijst van ingeplande datums + annuleer en wijzig functie</h3> <br> <br>
 
-<h3>lijst van ingeplande datums + annuleer en wijzig functie</h3>
-
-<h3>examen info  </h3>
+<h3>examen info  </h3> <br><br>
 
 
 </body>

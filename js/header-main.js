@@ -14,10 +14,10 @@ window.addEventListener('scroll', function() {
   
     if (window.scrollY > 0) {
       header.classList.add(scrolledClass);
-      logo.src = '../img/logo_dark.png'; // New image source
+      logo.src = 'img/logo_dark.png'; // New image source
     } else {
       header.classList.remove(scrolledClass);
-      logo.src = '../img/logo_light.png'; // Default image source
+      logo.src = 'img/logo_light.png'; // Default image source
     }
   });
   

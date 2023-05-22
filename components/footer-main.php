@@ -2,7 +2,7 @@
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="../img/logo_light.png" alt="Bedrijfslogo">
+            <img src="img/logo_light.png" alt="Bedrijfslogo">
             <p>Korte tekst over het bedrijf</p>
         </div>
         <div class="footer-middle-text">

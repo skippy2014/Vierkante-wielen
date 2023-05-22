@@ -9,14 +9,12 @@
 </head>
 <body>
 
-<?php include '../components/header.php'; ?>
-
 <h3>hier komt profiel gegevens </h3>
 
-<h3>Welkom Admin</h3>
+<h3>Welkom Admin</h3> <br><br>
 
-<a href="../pages/admin_ledenlijst.php"> hier krijg je overzicht van ledenlijst</a> <br>
-<a href="../pages/admin_werknemers.php"> hier krijg je overzicht van werknemerslijst</a>
+<a href="../pages/admin_ledenlijst.php"> hier krijg je overzicht van ledenlijst</a> <br><br>
+<a href="../pages/admin_werknemers.php"> hier krijg je overzicht van werknemerslijst</a> <br><br>
 
 <h3> hier overzicht van alle planningen in de calender </h3>
 

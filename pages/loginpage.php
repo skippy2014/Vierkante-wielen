@@ -47,6 +47,10 @@ if (isset($_POST['knop'])
 <p><a href="index.php?loguit">Uitloggen</a></p>
 <p><a href="admin.php">Admin</a></p>
 <p>Nog geen lid? Log in 
-    <a href="register.php">here</a></p>
+    <a href="register.php">here</a></p> <br><br>
+
+    <a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
+    <a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>
+    <a href="../pages/homepage_leden.php"> Login als lid</a> <br> <br>
 </body>
 </html>

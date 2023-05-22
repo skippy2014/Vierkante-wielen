@@ -5,7 +5,6 @@
   font-family: sans-serif;
 } 
 
-<<<<<<< HEAD
 /* HEADER */
 
 /* Reset default styles */
@@ -68,29 +67,6 @@ body.scrolled header .links a {
 
 /* EINDE HEADER */
 
-=======
-
-/* header */
-.headerImage{
-  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../img/ManDriving.png');
-  background-size:cover;
-  height:1282px;
-  padding:15vw;
-}
-
-/* imageheadertekst */
-.info-container1{
-
-  position: relative !important;
-  float:right;
-  text-align: right;
-  margin-top:3vh;
-  color:white;
-  
-  
-}
-
->>>>>>> header
 .info-container1 button{
   margin:50px ;
   background-color:rgb(148, 6, 6);

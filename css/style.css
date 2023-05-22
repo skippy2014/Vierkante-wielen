@@ -5,26 +5,67 @@
   font-family: sans-serif;
 } 
 
+/* HEADER */
 
-/* header */
-.headerImage{
-  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../img/ManDriving.png');
-  background-size:cover;
-  height:1282px;
-  padding:15vw;
+/* Reset default styles */
+body {
+  margin: 0;
+  padding: 0;
 }
 
-/* imageheadertekst */
-.info-container1{
-
-  position: relative !important;
-  float:right;
-  text-align: right;
-  margin-top:3vh;
-  color:white;
-  
-  
+/* Header styles */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 200px;
+  position: sticky;
+  top: 0;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
 }
+
+/* Background color change */
+body.scrolled header {
+  background-color: black;
+}
+
+/* Logo styles */
+.logo img {
+  width: 100px; /* Verander de grootte van de logo op de header */
+}
+
+/* Navigation styles */
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-family: Segoe UI, Regular;
+  font-size: 20px;
+}
+
+.links li {
+  margin-left: 20px; /* Bewerk de ruimte tussen de links */
+}
+
+.links li:first-child {
+  margin-left: 0;
+}
+
+.links a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+/* Link color change */
+body.scrolled header .links a {
+  color: white;
+}
+
+/* EINDE HEADER */
 
 .info-container1 button{
   margin:50px ;
@@ -335,5 +376,47 @@ th {
     background-color: #701919;
 }
 
+/* FOOTER */
+
+footer {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 100px;
+  height: 100px;
+}
+
+.footer-links {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links li {
+  margin-left: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-copyright {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* EINDE FOOTER */
 
 

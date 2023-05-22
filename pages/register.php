@@ -17,7 +17,8 @@
             <input type="password" name="password" placeholder="Wachtwoord" required>
             <br>
             <button type="submit" class="btn" name="reg_user">Register</button>
-            <p>Already a member? Log in here</p>
+            <p>Already a member? Log in 
+                <a href="loginpage.php">here</a></p>
         </form>
     </body>
 

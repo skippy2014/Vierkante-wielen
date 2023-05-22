@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,6 +101,13 @@ echo strftime(" Vandaag is het %A");
 <a href="nieuwe_les_inplannen.php"><button>Nieuwe les inplannen</button></a>
 
 
+
+<body>
+
+
+<?php include '../components/header.php'; ?>
+
+<h3>Welkom Instructeurs</h3>
 
 
 </body>

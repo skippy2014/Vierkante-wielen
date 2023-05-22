@@ -1,11 +1,3 @@
-<!-- Gebruik "include 'footer-main.php';" -->
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Footer</title>
-</head>
-<body>
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
@@ -26,5 +18,3 @@
             &copy; <?php echo date('Y'); ?> Bedrijfsnaam. Alle rechten voorbehouden.
         </div>
     </footer>
-</body>
-</html>

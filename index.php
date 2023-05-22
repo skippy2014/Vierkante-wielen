@@ -113,7 +113,7 @@ van anderen.</p></div></div>
    <a href="pages/register.php">
    <button>Schrijf je in!</button></a>
   </div>
-   
    </div>
+   <?php include 'components/footer-main.php'; ?>
 </body>
 </html>

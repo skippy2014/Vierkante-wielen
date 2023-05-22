@@ -8,7 +8,7 @@
    <link rel="STYLESHEET" type="text/css"  href="css/style.css">
 </head>
 <body>
-  <!-- <div class="header"><h1>Header here</h1></div> -->
+  <?php include 'components/header-main.php'; ?>
   <div class="headerImage">
 
  <div class="info-container1"> <h2>Rijschool de Vierkante wielen</h2>

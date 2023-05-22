@@ -4,10 +4,11 @@
 <html>
 <head>
     <script src="../js/header-main.js"></script>
+    <link rel="STYLESHEET" type="text/css"  href="../css/style.css">
     <title>Header</title>
 </head>
 <body>
-    <header class="transparent-header">
+    <header class="navbar">
         <div class="logo">
             <img src="../img/logo.png" alt="Logo">
         </div>

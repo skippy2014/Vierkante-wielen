@@ -8,13 +8,9 @@
 /* HEADER */
 
 /* Reset default styles */
-body {
-  margin: 0;
-  padding: 0;
-}
 
 /* Header styles */
-header {
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;

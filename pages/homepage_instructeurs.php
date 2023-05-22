@@ -10,7 +10,7 @@ session_start();
     <link rel="stylesheet" href="../css/style.css">
     <title>Vierkanten Wielen</title>
 </head>
-<style>
+ <style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -74,7 +74,8 @@ session_start();
 <h2>Welkom Instructeurs</h2>
 
 <?php 
-echo "Vandaag is het " . date("l");
+setlocale(LC_TIME, "nl_NL");
+echo strftime(" Vandaag is het %A");
 ?>
 <br>
     <div class="container">

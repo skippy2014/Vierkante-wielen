@@ -14,9 +14,9 @@
         </div>
         <nav>
             <ul class="links">
-                <li><a href="#">Link #1</a></li>
-                <li><a href="#">Link #2</a></li>
-                <li><a href="#">Link #3</a></li>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../pages/loginpage.php">Login</a></li>
+                <li><a href="../pages/register.php">Register</a></li>
             </ul>
         </nav>
     </header>

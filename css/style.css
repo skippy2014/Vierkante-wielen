@@ -104,6 +104,10 @@ height:auto;
  display:grid;
 grid-template-rows: repeat(3,0.5fr);
   text-align:center;
+
+.logo {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

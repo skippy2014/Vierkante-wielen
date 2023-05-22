@@ -1,41 +1,57 @@
+/* Reset default styles */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
 header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f2f2f2;
+    padding: 20px 200px;
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
 }
 
+/* Background color change */
+body.scrolled header {
+    background-color: black;
+}
+
+/* Logo styles */
 .logo img {
-    height: 50px;
-    width: 50px;
+    width: 100px; /* Verander de grootte van de logo op de header */
 }
 
+/* Navigation styles */
 .links {
-    flex-grow: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: Segoe UI, Regular;
+    font-size: 20px;
+}
+
+.links li {
+    margin-left: 20px; /* Bewerk de ruimte tussen de links */
+}
+
+.links li:first-child {
+    margin-left: 0;
 }
 
 .links a {
-    margin: 0 10px;
     text-decoration: none;
     color: black;
+    transition: color 0.3s ease;
 }
 
-.buttons {
-    display: flex;
-}
-
-.buttons a {
-    margin-left: 10px;
-}
-
-.button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+/* Link color change */
+body.scrolled header .links a {
+    color: white;
 }

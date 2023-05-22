@@ -7,8 +7,6 @@
 
 /* HEADER */
 
-/* Reset default styles */
-
 /* Header styles */
 .navbar {
   display: flex;
@@ -31,7 +29,7 @@ body.scrolled header {
 
 /* Logo styles */
 .logo img {
-  width: 100px; /* Verander de grootte van de logo op de header */
+  width: 100px; /* Change the size of the logo in the header */
 }
 
 /* Navigation styles */
@@ -40,12 +38,11 @@ body.scrolled header {
   margin: 0;
   padding: 0;
   display: flex;
-  font-family: Segoe UI, Regular;
   font-size: 20px;
 }
 
 .links li {
-  margin-left: 20px; /* Bewerk de ruimte tussen de links */
+  margin-left: 20px; /* Adjust the spacing between the links */
 }
 
 .links li:first-child {
@@ -54,7 +51,7 @@ body.scrolled header {
 
 .links a {
   text-decoration: none;
-  color: black;
+  color: white;
   transition: color 0.3s ease;
 }
 
@@ -62,6 +59,7 @@ body.scrolled header {
 body.scrolled header .links a {
   color: black;
 }
+
 
 /* EINDE HEADER */
 

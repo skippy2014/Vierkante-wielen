@@ -7,7 +7,7 @@
 
 /* header */
 .headerImage{
-  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/Images/ManDriving.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('/img/ManDriving.png');
   background-size:cover;
 height:1282px;
   padding:15vw;

@@ -260,6 +260,7 @@ cursor:pointer;
   grid-row: 3/5;
 }
 
+
 .pakketD3{
 
  grid-column: 3/3;
@@ -272,6 +273,7 @@ cursor:pointer;
   margin-left:7vw;
   
   margin-top: 3vh;
+
 
 }
 
@@ -312,6 +314,24 @@ margin-left:100px;
 margin-right:100px;
 cursor:pointer;
 
+}
+
+/* style van tabellen leden lijst en werknemers zie hier onder */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #9c1c1c;
+}
+
+th {
+  color: white;
+    background-color: #701919;
 }
 
 

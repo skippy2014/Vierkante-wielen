@@ -7,7 +7,7 @@
 
     <body>
         <h2>Register</h2>
-        <form method="post" action="register.php">
+        <form method="post" action="post_register_lid.php">
             <input type="text" name="first name" placeholder="Voornaam" required>
             <br>
             <input type="text" name="last name" placeholder="Achternaam" required>

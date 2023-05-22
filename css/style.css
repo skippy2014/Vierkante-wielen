@@ -24,7 +24,7 @@
 
 /* Background color change */
 body.scrolled header {
-  background-color: black;
+  background-color: white;
 }
 
 /* Logo styles */
@@ -58,7 +58,7 @@ body.scrolled header {
 
 /* Link color change */
 body.scrolled header .links a {
-  color: white;
+  color: black;
 }
 
 /* EINDE HEADER */

@@ -1,285 +1,301 @@
+ /* 
+ GLOBAL 
+ */
+
  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-} 
-
-/* HEADER */
-
-/* Header styles */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 200px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-}
-
-/* Background color change */
-body.scrolled header {
-  background-color: white;
-}
-
-/* Logo styles */
-.logo img {
-  width: 100px; /* Change the size of the logo in the header */
-}
-
-/* Navigation styles */
-.links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  font-size: 20px;
-}
-
-.links li {
-  margin-left: 20px; /* Adjust the spacing between the links */
-}
-
-.links li:first-child {
-  margin-left: 0;
-}
-
-.links a {
-  text-decoration: none;
-  color: white;
-  transition: color 0.3s ease;
-}
-
-/* Link color change */
-body.scrolled header .links a {
-  color: black;
-}
-
-
-/* EINDE HEADER */
-
-/* homepage */
-/* header */
-.headerImage{
-  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../img/ManDriving.png');
-  background-size:cover;
-height:1282px;
-  padding:15vw;
-  
-}
-
-/* imageheadertekst */
-.info-container1{
-
-  position: relative !important;
-  float:right;
-  text-align: right;
-  margin-top:3vh;
-  color:white;
-  
-  
-}
-.info-container1 button{
-  margin:50px ;
-  background-color:rgb(148, 6, 6);
-  color:white;
-  font-size:24px;
-  border:none;
-  border-radius: 11px;
-  box-shadow: 4px 4px 11px #00000029;
-padding:0.7vw 2.2vw;
-cursor:pointer;
-}
-
-
-/* informatie rijschool */
-.info-rijschool{
-
-  background-color: rgb(235, 232, 232);
-  height:450px;
-  text-align:center;
-  
-}
-
-h2{
- font-size: 40px;
-}
-
-p{
-  font-size: 32px;
-}
-
-/* Waarom rijschool vierkante wielen? */
-.registration{
- display:grid;
-grid-template-columns: repeat(2,2fr);
-  text-align:center;
-}
-
-.regItem1 img{
-align-items:center;
-width:60%;
-height:auto;
-
-}
-
-.regItem1{
-  grid-column: 1/2;
-  grid-row: 1/3;
-  padding:3vw;
-  padding-left:1vw;
-}
-
-.regItem2{
-  grid-column: 2/3;
-  grid-row: 1/2;
- padding-top:7vh;
-}
-
-.regItem3{
-  grid-column: 2/3;
-  grid-row:2/3;
-  padding-bottom:10vh;
-}
-
-.pros li::marker, .pros li{
-  content:'✔️';
-  font-size:26px;
-  text-align:left;
-  margin-left:8vw;
-  padding-left:2vw;
-}
-
-/* over ons */
-.Over-ons { 
-  background-color: rgb(235, 232, 232);
- height:1000px;
- display:grid;
-grid-template-rows: repeat(3,0.5fr);
-  text-align:center;
-} 
-
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.Over-ons img{
-
-width:50%;
-}
-
-.onsD1{
-  grid-column: 2/3;
-  grid-row: 2/3;
-  
-  }
-
-.onsD2{
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
-
-.onsD3{
-  grid-column: 2/3;
-  grid-row: 3/3;
- 
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: sans-serif;
  }
 
- .Over-ons h2{
-  padding-bottom: 5vh;
+ :root {
+   --footer-color: #999999;
+   --link: #1592E6;
+   --inverted-font-color: #FEFEFE;
+   --secondary-font-color: #A0A0A0;
+   --additional-neutral-color: #E7E7E7;
+   --font-color: #000000;
+   --neutral-color: #FFFFFF;
+   --secondary-color: #9D001E;
  }
 
- /* informatie rijschoolhouder */
- .Info-Rijschoolhouder {
-   display: grid;
-   grid-template-columns: repeat(2, 2fr);
-   text-align: center;
-   background-color: rgb(235, 232, 232);
+ input {}
+
+ button {}
+
+ h2 {
+   font-size: 40px;
  }
 
- .infoR1 img {
+ p {
+   font-size: 32px;
+ }
+
+ /* 
+ TABELLEN EN LIJSTEN 
+ */
+
+ table {
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ th,
+ td {
+   text-align: left;
+   padding: 8px;
+   border-bottom: 1px solid #9c1c1c;
+ }
+
+ th {
+   color: white;
+   background-color: #701919;
+ }
+
+ /* 
+ HEADER 
+ */
+
+ .navbar {
+   display: flex;
    align-items: center;
-   width: 60%;
-   height: auto;
-
+   justify-content: space-between;
+   padding: 20px 200px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   background-color: transparent;
+   transition: background-color 0.3s ease;
+   z-index: 1000;
  }
 
- .infoR1 {
-
-   grid-column: 2/3;
-   grid-row: 2/3;
-   padding-bottom: 10vh;
+ .logo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
  }
 
- .infoR2 {
-   grid-column: 1/2;
-   grid-row: 1/2;
-   padding-top: 7vh;
+ /* Change the size of the logo in the header */
+ .logo img {
+   width: 100px;
  }
 
- .infoR3 {
-   grid-column: 1/2;
-   grid-row: 2/3;
-   padding: 3vw;
-   padding-left: 1vw;
+ /* HEADER SCROLLED */
+ body.scrolled header {
+   background-color: white;
  }
 
- /* schrijf je nu in */
- .Call-to-action {
-   display: grid;
-   grid-template-columns: repeat(2, 2fr);
+ body.scrolled header .links a {
+   color: black;
+ }
+
+ /* HEADER NAVIGATION */
+ .links {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   font-size: 20px;
+ }
+
+ /* Adjust the spacing between the links */
+ .links li {
+   margin-left: 20px;
+ }
+
+ .links li:first-child {
+   margin-left: 0;
+ }
+
+ .links a {
+   text-decoration: none;
+   color: white;
+   transition: color 0.3s ease;
+ }
+
+ /* 
+ FOOTER
+  */
+
+ footer {
+   background-color: #000;
+   padding: 40px;
    text-align: center;
-   background-color: rgb(148, 6, 6);
-   height: 647px;
+ }
+
+ .footer-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+ }
+
+ .footer-logo img {
+   width: 150px;
+ }
+
+ .footer-logo p {
+   margin-top: 20px;
+   text-align: center;
+   color: #fff;
+ }
+
+ .footer-middle-text {
+   flex-grow: 1;
+   margin: 20px;
+   text-align: center;
+   color: #fff;
+ }
+
+ .footer-map {
+   margin: 20px;
+   text-align: center;
+ }
+
+ .footer-links ul {
+   list-style-type: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .footer-links li {
+   margin-left: 10px;
    color: white;
  }
 
- .callA1 img {
-   align-items: center;
-   width: 60%;
-   height: auto;
-
+ .footer-links a {
+   text-decoration: none;
+   color: #fff;
  }
 
- .callA1 {
-
-   grid-column: 2/3;
-   grid-row: 2/3;
-   padding-bottom: 10vh;
+ .footer-copyright {
+   margin-top: 20px;
+   font-size: 14px;
+   color: #777;
+   color: #fff;
  }
 
- .callA2 {
-   grid-column: 1/2;
-   grid-row: 1/2;
-   padding-top: 7vh;
+ /* 
+ HOMEPAGE 
+ */
+
+ /* BANNER */
+
+ .headerImage {
+   background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../img/ManDriving.png');
+   background-size: cover;
+   height: 1282px;
+   padding: 15vw;
  }
 
- .callA3 {
-   grid-column: 1/2;
-   grid-row: 2/3;
-   padding: 3vw;
-   padding-left: 1vw;
+ .info-container1 {
+   position: relative !important;
+   float: right;
+   text-align: right;
+   margin-top: 3vh;
+   color: white;
  }
 
- .Call-to-action button {
+ .info-container1 button {
    margin: 50px;
-   color: black;
+   background-color: rgb(148, 6, 6);
+   color: white;
    font-size: 24px;
    border: none;
    border-radius: 11px;
    box-shadow: 4px 4px 11px #00000029;
-   padding: 1.2vw 3vw;
+   padding: 0.7vw 2.2vw;
    cursor: pointer;
  }
 
- /* tarieven */
+ /* BLOCK 1, INFORMATIE RIJSCHOOL */
+
+ .info-rijschool {
+   background-color: rgb(235, 232, 232);
+   height: 450px;
+   text-align: center;
+ }
+
+ /* BLOCK 2, WAAROM RIJSCHOOL */
+
+ .registration {
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   text-align: center;
+ }
+
+ .regItem1 img {
+   align-items: center;
+   width: 60%;
+   height: auto;
+ }
+
+ .regItem1 {
+   grid-column: 1/2;
+   grid-row: 1/3;
+   padding: 3vw;
+   padding-left: 1vw;
+ }
+
+ .regItem2 {
+   grid-column: 2/3;
+   grid-row: 1/2;
+   padding-top: 7vh;
+ }
+
+ .regItem3 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   padding-bottom: 10vh;
+ }
+
+ /* LIST OF SUBJECTS */
+ .pros li::marker,
+ .pros li {
+   content: '✔️';
+   font-size: 26px;
+   text-align: left;
+   margin-left: 8vw;
+   padding-left: 2vw;
+ }
+
+ /* BLOCK 3, OVER ONS */
+ .Over-ons {
+   background-color: rgb(235, 232, 232);
+   height: 1000px;
+   display: grid;
+   grid-template-rows: repeat(3, 0.5fr);
+   text-align: center;
+ }
+
+ .Over-ons img {
+   width: 50%;
+ }
+
+ .Over-ons h2 {
+   padding-bottom: 5vh;
+ }
+
+ .onsD1 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+ }
+
+ .onsD2 {
+   grid-column: 2/3;
+   grid-row: 1/2;
+ }
+
+ .onsD3 {
+   grid-column: 2/3;
+   grid-row: 3/3;
+ }
+
+ /* BLOCK 4, TARIEVEN */
+
  .tarieven {
    margin-top: 4vh;
    display: grid;
@@ -320,9 +336,7 @@ width:50%;
    grid-row: 3/5;
  }
 
-
  .pakketD3 {
-
    grid-column: 3/3;
    grid-row: 3/5;
  }
@@ -332,10 +346,7 @@ width:50%;
    font-size: 26px;
    text-align: left;
    margin-left: 7vw;
-
    margin-top: 3vh;
-
-
  }
 
  .pakket1,
@@ -366,7 +377,6 @@ width:50%;
  }
 
  .tarieven button {
-
    background-color: rgb(148, 6, 6);
    color: white;
    font-size: 24px;
@@ -378,88 +388,89 @@ width:50%;
    margin-left: 100px;
    margin-right: 100px;
    cursor: pointer;
-
  }
 
- /* style van tabellen leden lijst en werknemers zie hier onder */
+ /* BLOCK 5, INFORMATIE RIJSCHOOLHOUDER */
 
- table {
-   border-collapse: collapse;
-   width: 100%;
+ .Info-Rijschoolhouder {
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   text-align: center;
+   background-color: rgb(235, 232, 232);
  }
 
- th,
- td {
-   text-align: left;
-   padding: 8px;
-   border-bottom: 1px solid #9c1c1c;
+ .infoR1 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   padding-bottom: 10vh;
  }
 
- th {
+ .infoR1 img {
+   align-items: center;
+   width: 60%;
+   height: auto;
+ }
+
+ .infoR2 {
+   grid-column: 1/2;
+   grid-row: 1/2;
+   padding-top: 7vh;
+ }
+
+ .infoR3 {
+   grid-column: 1/2;
+   grid-row: 2/3;
+   padding: 3vw;
+   padding-left: 1vw;
+ }
+
+ /* BLOCK 6, SCHRIJF JE NU IN */
+
+ .Call-to-action {
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   text-align: center;
+   background-color: rgb(148, 6, 6);
+   height: 647px;
    color: white;
-   background-color: #701919;
  }
 
- /* FOOTER */
+ .callA1 img {
+   align-items: center;
+   width: 60%;
+   height: auto;
+ }
 
- footer {
-    background-color: #000;
-    padding: 40px;
-    text-align: center;
-}
+ .callA1 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   padding-bottom: 10vh;
+ }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
+ .callA2 {
+   grid-column: 1/2;
+   grid-row: 1/2;
+   padding-top: 7vh;
+ }
 
-.footer-logo img {
-    width: 150px;
-}
+ .callA3 {
+   grid-column: 1/2;
+   grid-row: 2/3;
+   padding: 3vw;
+   padding-left: 1vw;
+ }
 
-.footer-logo p {
-    margin-top: 20px;
-    text-align: center;
-    color: #fff;
-}
+ .Call-to-action button {
+   margin: 50px;
+   color: black;
+   font-size: 24px;
+   border: none;
+   border-radius: 11px;
+   box-shadow: 4px 4px 11px #00000029;
+   padding: 1.2vw 3vw;
+   cursor: pointer;
+ }
 
-.footer-middle-text {
-    flex-grow: 1;
-    margin: 20px;
-    text-align: center;
-    color: #fff;
-}
-
-.footer-map {
-    margin: 20px;
-    text-align: center;
-}
-
-.footer-links ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-links li {
-    margin-left: 10px;
-    color: white;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.footer-copyright {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #777;
-    color: #fff;
-}
-
-
- /* EINDE FOOTER */
+ /* 
+ REGISTER PAGE 
+ */

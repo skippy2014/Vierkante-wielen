@@ -3,12 +3,13 @@
 
     <head>
         <title>Registration</title>
+        <link rel="stylesheet" href="../css/style.css">
     </head>
 
     <body>
         <h2>Register</h2>
-        <form method="post" action="post_register_lid.php">
-            <input type="text" name="first name" placeholder="Voornaam" required>
+        <form method="post" action="post_register_lid.php" class="form">
+            <input type="text" name="first name" placeholder="Voornaam" required class="input_field">
             <br>
             <input type="text" name="last name" placeholder="Achternaam" required>
             <br>
@@ -17,8 +18,9 @@
             <input type="password" name="password" placeholder="Wachtwoord" required>
             <br>
             <button type="submit" class="btn" name="reg_user">Register</button>
-            <p>Already a member? Log in 
-                <a href="loginpage.php">here</a></p>
+            <p>Already a member? Log in
+                <a href="loginpage.php">here</a>
+            </p>
         </form>
     </body>
 

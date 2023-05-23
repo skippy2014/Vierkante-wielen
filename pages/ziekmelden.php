@@ -11,7 +11,6 @@
         <title>Vierkanten Wielen</title>
     </head>
     <body>
-    <?php include '../components/header.php'; ?>
 
 
     <h2>Ziekmeldings formulier</h2>

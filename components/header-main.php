@@ -6,8 +6,17 @@
     <nav>
         <ul class="links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="pages/loginpage.php">Login</a></li>
-            <li><a href="pages/register.php">Register</a></li>
+            <li><a href="#">Instructeurs</a></li>
+            <li><a href="#">Lessen</a></li>
+            <?php
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+                // User is logged in
+                echo '<li><a href="pages/logout.php">Logout</a></li>';
+            } else {
+                // User is not logged in
+                echo '<li><a href="pages/loginpage.php">Log in</a></li>';
+            }
+            ?>
         </ul>
     </nav>
 </header>

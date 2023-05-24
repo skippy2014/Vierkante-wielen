@@ -90,13 +90,13 @@ echo strftime(" Vandaag is het %A");
 
         <div class="profile-about">
             <h2>Over</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere bibendum elit, et semper elit aliquam eu. Fusce tincidunt fermentum velit, a consequat lacus bibendum in. Donec eleifend, velit id efficitur commodo, enim ligula egestas sem, at iaculis nisi nunc et ex.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere bibendum elit, et sempeir elit aliquam eu. Fusce tincidunt fermentum velit, a consequat lacus bibendum in. Donec eleifend, velit id efficitur commodo, enim ligula egestas sem, at iaculis nisi nunc et ex.</p>
         </div>
 
 
     </div>
 
-<a href="ziekmelden.php"><button>Ziekmelden</button></a><br>
+<a href="ziekmelden.php"><button>Afmelden</button></a><br>
 <a href="nieuwe_les_inplannen.php"><button>Nieuwe les inplannen</button></a>
 
 </body>

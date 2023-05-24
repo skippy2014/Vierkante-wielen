@@ -22,8 +22,8 @@
                     <option value="Pakket3">Instap pakket 3</option>
                 </select>
                 <button type="submit" class="btn" name="reg_user">Register</button>
-                <p>Already a member? Log in
-                    <a href="loginpage.php">here</a>
+                <p>Sta je al ingeschreven? Log
+                    <a href="loginpage.php">hier</a> in
                 </p>
             </form>
             <div>

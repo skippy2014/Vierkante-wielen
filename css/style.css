@@ -6,8 +6,10 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: sans-serif;
+   font-family: Arial, Helvetica, sans-serif;
  }
+
+ body > .register_grid {}
 
  :root {
    --footer-color: #999999;
@@ -20,9 +22,25 @@
    --secondary-color: #9D001E;
  }
 
- input {}
+ input {
+   margin: 3px 0px;
+   padding: 4px;
+   width: max-content;
+   align-self: center;
+   border-radius: 6px;
+   border: gray 1px solid;
+ }
 
- button {}
+ button {
+   background: var(--secondary-color);
+   color: var(--inverted-font-color);
+   border-radius: 6px;
+   border: none;
+   padding: 6px 16px;
+   margin: 5px;
+   width: max-content;
+   align-self: center;
+ }
 
  h2 {
    font-size: 40px;
@@ -84,11 +102,11 @@
 
  /* HEADER SCROLLED */
  body.scrolled header {
-   background-color: white;
+   background-color: var(--);
  }
 
  body.scrolled header .links a {
-   color: black;
+   color: var(--font-color);
  }
 
  /* HEADER NAVIGATION */
@@ -111,7 +129,7 @@
 
  .links a {
    text-decoration: none;
-   color: white;
+   color: var(--inverted-font-color);
    transition: color 0.3s ease;
  }
 
@@ -139,14 +157,14 @@
  .footer-logo p {
    margin-top: 20px;
    text-align: center;
-   color: #fff;
+   color: var(--inverted-font-color);
  }
 
  .footer-middle-text {
    flex-grow: 1;
    margin: 20px;
    text-align: center;
-   color: #fff;
+   color: var(--inverted-font-color);
  }
 
  .footer-map {
@@ -163,19 +181,19 @@
 
  .footer-links li {
    margin-left: 10px;
-   color: white;
+   color: var(--inverted-font-color);
  }
 
  .footer-links a {
    text-decoration: none;
-   color: #fff;
+   color: var(--inverted-font-color);
  }
 
  .footer-copyright {
    margin-top: 20px;
    font-size: 14px;
-   color: #777;
-   color: #fff;
+   color: var(--footer-color);
+   color: var(--inverted-font-color);
  }
 
  /* 
@@ -474,3 +492,31 @@
  /* 
  REGISTER PAGE 
  */
+
+ .register_grid {
+   min-height: 100dvh;
+   width: 100dvw;
+   display: flex;
+ }
+
+ .register_grid > div,
+ .register_grid > form {
+   width: -webkit-fill-available;
+   justify-content: center;
+ }
+
+ .form_register {
+   flex-direction: column;
+   text-align: center;
+   display: flex;
+ }
+
+ .form_register > h2 {
+   font-size: 36px;
+   margin: 16px;
+ }
+
+ .form_register > p {
+   font-size: 16px;
+   margin: 12px;
+ }

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +18,9 @@
 
 <a href="../pages/admin_ledenlijst.php"> hier krijg je overzicht van ledenlijst</a> <br><br>
 <a href="../pages/admin_werknemers.php"> hier krijg je overzicht van werknemerslijst</a> <br><br>
-
-<h3> hier overzicht van alle planningen in de calender </h3>
-
+<a href="../pages/overzicht_admin.php"> hier krijg je overzicht van actieve leerlingen en Slagingspercentage</a> <br><br>
+<h3> hier overzicht van alle planningen in de kalender </h3>
+ 
 
 
 </body>

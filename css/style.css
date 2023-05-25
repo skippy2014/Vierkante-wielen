@@ -555,9 +555,24 @@
 
  .left_side_tarieven_card {
    background: var(--secondary-color);
+   color: var(--inverted-font-color);
+   font-size: 12px;
    height: 20vh;
    width: 24vw;
    border-radius: 11px 0 0 11px;
+   flex-flow: column;
+   display: flex;
+   justify-content: center;
+ }
+
+ .left_side_tarieven_card > h3 {
+   font-size: 3.5vh;
+   margin-bottom: 5px;
+ }
+
+ .left_side_tarieven_card > p {
+   font-size: 32px;
+   vertical-align: text-bottom;
  }
 
  .right_side_tarieven_card {

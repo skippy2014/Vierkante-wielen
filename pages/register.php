@@ -30,7 +30,8 @@
                 <!-- LIJST MET TARIEVEN -->
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-
+                        <h3>lespakket 1</h3>
+                        <p>€2004,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
 
@@ -38,7 +39,8 @@
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-
+                        <h3>lespakket 2</h3>
+                        <p>€2424,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
 
@@ -46,7 +48,8 @@
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-
+                        <h3>lespakket 3</h3>
+                        <p>€2872,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
 

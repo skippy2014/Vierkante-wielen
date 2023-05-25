@@ -536,3 +536,29 @@
    font-size: 16px;
    margin: 12px;
  }
+
+ .tarieven_grid {
+   align-self: center;
+   text-align: -webkit-center;
+ }
+
+ .tarieven_card {
+   display: flex;
+   width: 40vw;
+   height: 20vh;
+   margin: 1rem;
+ }
+
+ .left_side_tarieven_card {
+   background: var(--secondary-color);
+   height: 20vh;
+   width: 24vw;
+   border-radius: 11px 0 0 11px;
+ }
+
+ .right_side_tarieven_card {
+   background: var(--additional-neutral-color);
+   height: -webkit-fill-available;
+   width: -webkit-fill-available;
+   border-radius: 0 11px 11px 0;
+ }

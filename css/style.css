@@ -21,18 +21,20 @@
  }
 
  input {
-   margin: 3px 0px;
-   padding: 6px 10px;
-   width: 16rem;
+   margin: 4px 0px;
+   padding: 10px 10px;
+   width: 24rem;
+   font-size: 14px;
    align-self: center;
    border-radius: 6px;
    border: gray 2px solid;
  }
 
  select {
-   margin: 3px 0px;
-   padding: 8px 6px;
-   width: 16rem;
+   margin: 3px 0px 24px 0;
+   padding: 12px 8px;
+   font-size: 14px;
+   width: 24rem;
    align-self: center;
    background: var(--additional-neutral-color);
    border-radius: 6px;
@@ -52,7 +54,9 @@
    color: var(--inverted-font-color);
    border-radius: 6px;
    border: none;
-   padding: 6px 16px;
+   padding: 8px 22px;
+   font-size: 16px;
+   font-weight: bold;
    margin: 5px;
    width: max-content;
    align-self: center;
@@ -534,7 +538,7 @@
 
  .form_register > p {
    font-size: 16px;
-   margin: 12px;
+   margin-top: 36px;
  }
 
  .tarieven_grid {

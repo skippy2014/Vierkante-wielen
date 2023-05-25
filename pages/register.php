@@ -26,9 +26,17 @@
                     <a href="loginpage.php">hier</a> in
                 </p>
             </form>
-            <div>
+            <div class="tarieven_grid">
                 <p>text</p>
                 <!-- LIJST MET TARIEVEN -->
+                <div class="tarieven_card">
+                    <div class="left_side_tarieven_card">
+
+                    </div>
+                    <div class="right_side_tarieven_card">
+
+                    </div>
+                </div>
             </div>
         </div>
 

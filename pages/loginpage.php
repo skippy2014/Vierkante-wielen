@@ -28,26 +28,44 @@ if (isset($_POST['knop'])
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Login Vierkante wielen</title>
+   <link rel="STYLESHEET" type="text/css"  href="/css/style.css">
+</head>
+
+
 <html>
 <body>
-<h1><?php echo $message; ?></h1>
+<h1 class="TOPh1_login_page"><?php echo $message; ?></h1>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <div class="form-group">
-        <label for="login">Email: </label>
-        <input type="text" name="login" value="">
+    <div class="login_input">
+        <label for="login"></label>
+        <input type="text" name="login" value="" placeholder="Email">
     </div>
-    <div class="form-group">
-        <label for="pwd">Password: </label>
-        <input type="password" name="pwd" value="">
+    <div class="login_input">
+        <label for="pwd"></label>
+        <input type="password" name="pwd" value="" placeholder="Password">
     </div>
     <br>
-    <input type="submit" name="knop">
+    <div class="submit_login">
+    <input type="submit" name="knop" value="Login">
+    </div>
 </form>
+
+<div class="Register_Account">
+    <p>Nog geen account?
+    <a href="register.php">hier</a></p> <p>een aan</p>
+    <br><br>
+</div>
+
 <p><a href="website.php">Website</a></p>
 <p><a href="index.php?loguit">Uitloggen</a></p>
 <p><a href="admin.php">Admin</a></p>
-<p>Nog geen lid? Log in 
-    <a href="register.php">here</a></p> <br><br>
 
     <a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
     <a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>

@@ -474,3 +474,56 @@
  /* 
  REGISTER PAGE 
  */
+
+
+
+
+
+
+
+
+ /* LOGIN PAGE */
+ .TOPh1_login_page {
+  margin: 3% auto;
+  display: block;
+  text-align:center;
+ }
+
+ .login_input {
+  width: 100%;
+  margin: 4px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 59px;
+ }
+
+ input[type="text"],
+ input[type="password"] {
+     border-radius: 5px;
+     padding: 5px 50px;
+     text-align: left;
+ }
+
+ .submit_login {
+     text-align: center;
+     margin-top: 10px;
+ }
+
+ .submit_login input[type="submit"] {
+     background-color: red;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 20px;
+     font-size: 16px;
+ }
+
+ .Register_Account {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  text-align: center;
+ }
+
+

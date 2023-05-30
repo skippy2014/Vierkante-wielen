@@ -64,7 +64,7 @@ if (isset($_POST['knop'])
 </div>
 
 <p><a href="/index.php">Website</a></p>
-<p><a href="index.php?loguit">Uitloggen</a></p>
+<p><a href="loginpage.php?loguit">Uitloggen</a></p>
 <p><a href="admin.php">Admin</a></p>
 
     <a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>

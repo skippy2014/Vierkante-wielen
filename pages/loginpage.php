@@ -45,9 +45,21 @@ if (
     <html>
 
         <body>
-            <h1 class="TOPh1_login_page">
-                <?php echo $message; ?>
-            </h1>
+            <div class="general_layout">
+                <h1 class="TOPh1_login_page">
+                    <?php echo $message; ?>
+                </h1>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form_login">
+                    <h2>Register</h2>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+
+                    <button type="submit" class="btn" name="login_button">Log in</button>
+                    <p>Sta je al ingeschreven? Log
+                        <a href="loginpage.php">hier</a> in
+                    </p>
+                </form>
+            </div>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="login_input">
                     <label for="login"></label>

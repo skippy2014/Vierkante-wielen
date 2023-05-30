@@ -11,10 +11,10 @@
         <div class="general_layout">
             <form method="post" action="post_register_lid.php" class="form_register">
                 <h2>Register</h2>
-                <input type="text" name="first name" placeholder="Voornaam" required class="input_field">
-                <input type="text" name="last name" placeholder="Achternaam" required>
+                <input type="text" name="first name" placeholder="First_Name" required>
+                <input type="text" name="last name" placeholder="Last_Name" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Wachtwoord" required>
+                <input type="password" name="password" placeholder="Password" required>
                 <select name="pakket" class="pakket">
                     <option value="Default" disabled selected>Kies een instappakket</option>
                     <option value="Pakket1">Instap pakket 1</option>

@@ -487,6 +487,7 @@
   margin: 3% auto;
   display: block;
   text-align:center;
+  font-family: 'Segoe UI';
  }
 
  .login_input {
@@ -495,19 +496,21 @@
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
-  border-radius: 59px;
+  border-radius: 70px;
+  font-family: 'Segoe UI';
  }
 
  input[type="text"],
  input[type="password"] {
      border-radius: 5px;
-     padding: 5px 50px;
      text-align: left;
+     font-family: 'Segoe UI';
  }
 
  .submit_login {
      text-align: center;
      margin-top: 10px;
+     font-family: 'Segoe UI';
  }
 
  .submit_login input[type="submit"] {
@@ -517,13 +520,15 @@
      border-radius: 5px;
      padding: 10px 20px;
      font-size: 16px;
+     font-family: 'Segoe UI';
  }
 
  .Register_Account {
   margin: auto;
-  width: 60%;
   padding: 10px;
   text-align: center;
+  font-family: 'Segoe UI';
+  font-size: 4px !important;
  }
 
 

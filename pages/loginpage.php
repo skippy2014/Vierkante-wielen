@@ -24,7 +24,7 @@ if (isset($_POST['knop'])
 } elseif (isset($_POST['knop'])) {
     $message = "Foutieve login gegevens";
 } else {
-    $message = "Login";
+    $message = "Log in";
 }
 ?>
 
@@ -53,7 +53,7 @@ if (isset($_POST['knop'])
     </div>
     <br>
     <div class="submit_login">
-    <input type="submit" name="knop" value="Login">
+    <input type="submit" name="knop" value="Log in">
     </div>
 </form>
 
@@ -63,7 +63,7 @@ if (isset($_POST['knop'])
     <br><br>
 </div>
 
-<p><a href="website.php">Website</a></p>
+<p><a href="/index.php">Website</a></p>
 <p><a href="index.php?loguit">Uitloggen</a></p>
 <p><a href="admin.php">Admin</a></p>
 

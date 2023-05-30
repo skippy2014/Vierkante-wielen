@@ -8,7 +8,7 @@
 
     <body>
 
-        <div class="register_grid">
+        <div class="general_layout">
             <form method="post" action="post_register_lid.php" class="form_register">
                 <h2>Register</h2>
                 <input type="text" name="first name" placeholder="Voornaam" required class="input_field">

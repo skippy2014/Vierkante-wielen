@@ -517,14 +517,14 @@
  REGISTER PAGE 
  */
 
- .register_grid {
+ .general_layout {
    min-height: 100dvh;
    width: 100dvw;
    display: flex;
  }
 
- .register_grid > div,
- .register_grid > form {
+ .general_layout > div,
+ .general_layout > form {
    width: -webkit-fill-available;
    justify-content: center;
  }
@@ -598,8 +598,10 @@
    letter-spacing: 1vh;
  }
 
- /* LOGIN PAGE */
- .TOPh1_login_page {
+ /* 
+ LOGIN PAGE 
+ */
+ /* .TOPh1_login_page {
   margin: 3% auto;
   display: block;
   text-align:center;
@@ -648,4 +650,6 @@
 
  .Register_Account p {
   font-size: 20px; /* Adjust the font size as desired */
-}
+ }
+
+ */

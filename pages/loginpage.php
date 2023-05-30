@@ -55,7 +55,7 @@ if (
                     <input type="password" name="password" placeholder="Password" required>
                     <button type="submit" class="btn" name="login_button">Log in</button>
 
-                    <p>Nog geen account?
+                    <p>Nog geen account? Maak er
                         <a href="register.php">hier</a> een aan
                     </p>
                     <br><br>

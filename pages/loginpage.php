@@ -59,16 +59,13 @@ if (isset($_POST['knop'])
 
 <div class="Register_Account">
     <p>Nog geen account?
-    <a href="register.php">hier</a></p> <p>een aan</p>
+    <a href="register.php">hier</a> een aan</p>
     <br><br>
 </div>
 
 <p><a href="/index.php">Website</a></p>
 <p><a href="loginpage.php?loguit">Uitloggen</a></p>
-<p><a href="admin.php">Admin</a></p>
-
-    <a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
-    <a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>
-    <a href="../pages/homepage_leden.php"> Login als lid</a> <br> <br>
+<p><a href="/pages/homepage_instructeurs.php">Instructeur</p>
+<p><a href="/pages/homepage_admin.php">Eigennaar</a></p>
 </body>
 </html>

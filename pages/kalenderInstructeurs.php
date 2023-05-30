@@ -1,8 +1,3 @@
-<!-- VRAGEN: line 24: nieuwe les aanpassen? en inplannen? waarheen linken?
-huidige datum liever vierkant of rond?
-line 130 stylen weken?? regelen? 
-ik heb de knop vandaag gemaakt via het reloaden van de pagina is dit mogelijk ivm andere dingen op de pagina?
-waarom button pointer te ver les knop?-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +20,7 @@ waarom button pointer te ver les knop?-->
           <p class="Huidige-Datum"></p>
           <span id= rechts class="pijltje">></span>
           <div class="lesButton">
-          <a href="pages/nieuwe_les_inplannen.php"> <button>Les inplannen</button><a>
+          <a href="placeholder"> <button>Les aanmaken</button><a>
           </div>
         </div>
       </header>
@@ -234,6 +229,3 @@ list-style: none;
 
 </style>
         </html>
- 
-   
-    

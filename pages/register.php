@@ -34,7 +34,9 @@
                         <p>€2004,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
-
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
                     </div>
                 </div>
                 <div class="tarieven_card">
@@ -43,7 +45,9 @@
                         <p>€2424,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
-
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
                     </div>
                 </div>
                 <div class="tarieven_card">
@@ -52,7 +56,9 @@
                         <p>€2872,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
-
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
                     </div>
                 </div>
             </div>

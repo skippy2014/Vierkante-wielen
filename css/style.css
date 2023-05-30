@@ -18,26 +18,29 @@
    --font-color: #000000;
    --neutral-color: #FFFFFF;
    --secondary-color: #9D001E;
+   --border-rad: 0.6vh;
  }
 
  input {
    margin: 4px 0px;
    padding: 10px 10px;
-   width: 24rem;
-   font-size: 14px;
+   width: 45vh;
+   height: 5vh;
+   font-size: 2vh;
    align-self: center;
-   border-radius: 6px;
-   border: gray 2px solid;
+   border-radius: var(--border-rad);
+   border: gray 0.3vh solid;
  }
 
  select {
    margin: 3px 0px 24px 0;
-   padding: 12px 8px;
-   font-size: 14px;
-   width: 24rem;
+   padding: 0 8px;
+   font-size: 2vh;
+   width: 45vh;
+   height: 5vh;
    align-self: center;
    background: var(--additional-neutral-color);
-   border-radius: 6px;
+   border-radius: var(--border-rad);
    border: none;
  }
 
@@ -52,10 +55,10 @@
  button {
    background: var(--secondary-color);
    color: var(--inverted-font-color);
-   border-radius: 6px;
+   border-radius: var(--border-rad);
    border: none;
-   padding: 8px 22px;
-   font-size: 16px;
+   padding: 1vh 3vh;
+   font-size: 1.8vh;
    font-weight: bold;
    margin: 5px;
    width: max-content;
@@ -533,12 +536,12 @@
  }
 
  .form_register > h2 {
-   font-size: 36px;
+   font-size: 5vh;
    margin: 16px;
  }
 
  .form_register > p {
-   font-size: 16px;
+   font-size: 2.5vh;
    margin-top: 36px;
  }
 
@@ -568,7 +571,7 @@
 
  .left_side_tarieven_card > h3 {
    font-size: 3.5vh;
-   margin-bottom: 5px;
+   margin-bottom: 1.2vh;
  }
 
  .left_side_tarieven_card > p {
@@ -581,4 +584,16 @@
    height: -webkit-fill-available;
    width: -webkit-fill-available;
    border-radius: 0 11px 11px 0;
+ }
+
+ .right_side_tarieven_card li {
+   text-align: start;
+   margin: 2.4vh 0 0 3vh;
+   font-size: 3vh;
+ }
+
+ .right_side_tarieven_card li::marker {
+   content: '✔️';
+   font-size: 2.5vh;
+   letter-spacing: 1vh;
  }

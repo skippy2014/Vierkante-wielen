@@ -13,9 +13,9 @@ if (isset($_GET["loguit"])) {
 }
 
 if (
-    isset($_POST['knop'])
-    && isset($gebruikers[$_POST["login"]])
-    && $gebruikers[$_POST["login"]]["pwd"] == $_POST['pwd']
+    isset($_POST['login_button'])
+    && isset($gebruikers[$_POST["email"]])
+    && $gebruikers[$_POST["email"]]["password"] == $_POST['password']
 ) {
     $_SESSION["gebruiker"] = array(
         "naam" => $_POST["login"],
@@ -23,7 +23,7 @@ if (
         "rol" => $gebruikers[$_POST["login"]]['rol']
     );
     $message = "Welkom met de rol " . $_SESSION["gebruiker"]["rol"];
-} elseif (isset($_POST['knop'])) {
+} elseif (isset($_POST['login_button'])) {
     $message = "Foutieve login gegevens";
 } else {
     $message = "Log in";

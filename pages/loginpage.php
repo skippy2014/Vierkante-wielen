@@ -1,32 +1,52 @@
 <?php
 session_start();
 
-$gebruikers = array(
-    "Pjotrdevos@gmail.com" => array("pwd" => "admin", "rol" => "Admin"),
-    "Peter@gmail.com" => array("pwd" => "Peter1234", "rol" => "Admin"),
-    "John@gmail.com" => array("pwd" => "John1234", "rol" => "Gebruiker"),
-);
+
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'vierkantewielen';
+
+$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+}
 
 if (isset($_GET["loguit"])) {
     $_SESSION = array();
     session_destroy();
 }
 
-if (isset($_POST['knop'])
-    && isset($gebruikers[$_POST["login"]])
-    && $gebruikers[$_POST["login"]]["pwd"] == $_POST['pwd']) {
-    $_SESSION["gebruiker"] = array(
-        "naam" => $_POST["login"],
-        "pwd" => $gebruikers[$_POST["login"]]['pwd'],
-        "rol" => $gebruikers[$_POST["login"]]['rol']
-    );
-    $message = "Welkom met de rol ".$_SESSION["gebruiker"]["rol"];
-} elseif (isset($_POST['knop'])) {
-    $message = "Foutieve login gegevens";
+if (isset($_POST['knop'])) {
+    $login = $_POST["login"];
+    $password = $_POST["pwd"];
+
+    $stmt = $connection->prepare("SELECT * FROM gebruiker WHERE email = ?");
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row['wachtwoord'])) {
+            $_SESSION["gebruiker"] = array(
+                "naam" => $row["email"],
+                "pwd" => $row['wachtwoord'],
+            );
+            $message = "Welkom!";
+        } else {
+            $message = "Foutieve login gegevens";
+        }
+    } else {
+        $message = "Foutieve login gegevens";
+    }
 } else {
     $message = "Login";
 }
 ?>
+
 
 <html>
 <body>
@@ -43,8 +63,8 @@ if (isset($_POST['knop'])
     <br>
     <input type="submit" name="knop">
 </form>
-<p><a href="website.php">Website</a></p>
-<p><a href="index.php?loguit">Uitloggen</a></p>
+<p><a href="index.php">Website</a></p>
+<p><a href="loginpage.php?loguit">Uitloggen</a></p>
 <p><a href="admin.php">Admin</a></p>
 <p>Nog geen lid? Log in 
     <a href="register.php">here</a></p> <br><br>

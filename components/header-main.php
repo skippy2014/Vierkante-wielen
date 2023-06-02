@@ -9,7 +9,9 @@
             <li><a href="#">Instructeurs</a></li>
             <li><a href="#">Lessen</a></li>
             <?php
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            session_start(); // Start the session
+
+            if (isset($_SESSION['gebruiker'])) {
                 // User is logged in
                 echo '<li><a href="pages/logout.php">Logout</a></li>';
             } else {

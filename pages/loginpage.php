@@ -17,9 +17,9 @@ if (isset($_GET["loguit"])) {
     session_destroy();
 }
 
-if (isset($_POST['knop'])) {
-    $login = $_POST["login"];
-    $password = $_POST["pwd"];
+if (isset($_POST['login_button'])) {
+    $login = $_POST["email"];
+    $password = $_POST["password"];
 
     $stmt = $connection->prepare("SELECT * FROM gebruiker WHERE email = ?");
     $stmt->bind_param("s", $login);
@@ -29,7 +29,7 @@ if (isset($_POST['knop'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        if ($password === $row['wachtwoord']) {  // Check for plain text password match
+        if ($password === $row['wachtwoord']) { // Check for plain text password match
             $_SESSION["gebruiker"] = array(
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
@@ -46,29 +46,35 @@ if (isset($_POST['knop'])) {
 }
 ?>
 
-
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
 <html>
-<body>
-<h1><?php echo $message; ?></h1>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <div class="form-group">
-        <label for="login">Email: </label>
-        <input type="text" name="login" value="">
-    </div>
-    <div class="form-group">
-        <label for="pwd">Password: </label>
-        <input type="password" name="pwd" value="">
-    </div>
-    <br>
-    <input type="submit" name="knop">
-</form>
-<p><a href="index.php">Website</a></p>
-<p><a href="loginpage.php?loguit">Uitloggen</a></p>
-<p><a href="admin.php">Admin</a></p>
-<p>Nog geen lid? Log in <a href="register.php">here</a></p> <br><br>
 
-<a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
-<a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>
-<a href="../pages/homepage_leden.php"> Login als lid</a> <br> <br>
-</body>
+    <body>
+        <div class="general_layout">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form_login">
+                <h2 class="TOPh1_login_page">
+                    <?php echo $message; ?>
+                </h2>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <br>
+                <button type="submit" class="btn" name="login_button">Log in</button>
+
+                <p>Nog geen account? Maak er
+                    <a href="register.php">hier</a> een aan
+                </p>
+                <br><br>
+
+                <p><a href="../index.php">Website</a></p>
+                <p><a href="loginpage.php?loguit">Uitloggen</a></p>
+                <p><a href="homepage_instructeurs.php">Instructeur</p>
+                <p><a href="homepage_admin.php">Eigennaar</a></p>
+            </form>
+
+        </div>
+    </body>
+
 </html>

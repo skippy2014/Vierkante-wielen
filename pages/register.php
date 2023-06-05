@@ -8,11 +8,11 @@
 
     <body>
 
-        <div class="register_grid">
+        <div class="general_layout">
             <form method="post" action="post_register_lid.php" class="form_register">
                 <h2>Register</h2>
-                <input type="text" name="first name" placeholder="Voornaam" required class="input_field">
-                <input type="text" name="last name" placeholder="Achternaam" required>
+                <input type="text" name="first name" placeholder="Voornaam" required>
+                <input type="text" name="last name" placeholder="Acthernaam" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Wachtwoord" required>
                 <select name="pakket" class="pakket">

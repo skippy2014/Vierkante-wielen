@@ -13,9 +13,9 @@ if (isset($_GET["loguit"])) {
 }
 
 if (
-    isset($_POST['knop'])
-    && isset($gebruikers[$_POST["login"]])
-    && $gebruikers[$_POST["login"]]["pwd"] == $_POST['pwd']
+    isset($_POST['login_button'])
+    && isset($gebruikers[$_POST["email"]])
+    && $gebruikers[$_POST["email"]]["password"] == $_POST['password']
 ) {
     $_SESSION["gebruiker"] = array(
         "naam" => $_POST["login"],
@@ -23,7 +23,7 @@ if (
         "rol" => $gebruikers[$_POST["login"]]['rol']
     );
     $message = "Welkom met de rol " . $_SESSION["gebruiker"]["rol"];
-} elseif (isset($_POST['knop'])) {
+} elseif (isset($_POST['login_button'])) {
     $message = "Foutieve login gegevens";
 } else {
     $message = "Log in";
@@ -45,35 +45,28 @@ if (
     <html>
 
         <body>
-            <h1 class="TOPh1_login_page">
-                <?php echo $message; ?>
-            </h1>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <div class="login_input">
-                    <label for="login"></label>
-                    <input type="text" name="login" value="" placeholder="Email">
-                </div>
-                <div class="login_input">
-                    <label for="pwd"></label>
-                    <input type="password" name="pwd" value="" placeholder="Password">
-                </div>
-                <br>
-                <div class="submit_login">
-                    <input type="submit" name="knop" value="Log in">
-                </div>
-            </form>
+            <div class="general_layout">
 
-            <div class="Register_Account">
-                <p>Nog geen account?
-                    <a href="register.php">hier</a> een aan
-                </p>
-                <br><br>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form_login">
+                    <h2 class="TOPh1_login_page">
+                        <?php echo $message; ?>
+                    </h2>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class="btn" name="login_button">Log in</button>
+
+                    <p>Nog geen account? Maak er
+                        <a href="register.php">hier</a> een aan
+                    </p>
+                    <br><br>
+
+                    <p><a href="/index.php">Website</a></p>
+                    <p><a href="loginpage.php?loguit">Uitloggen</a></p>
+                    <p><a href="/pages/homepage_instructeurs.php">Instructeur</p>
+                    <p><a href="/pages/homepage_admin.php">Eigennaar</a></p>
+                </form>
             </div>
 
-            <p><a href="/index.php">Website</a></p>
-            <p><a href="loginpage.php?loguit">Uitloggen</a></p>
-            <p><a href="/pages/homepage_instructeurs.php">Instructeur</p>
-            <p><a href="/pages/homepage_admin.php">Eigennaar</a></p>
         </body>
 
     </html>

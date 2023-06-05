@@ -18,7 +18,8 @@
    --font-color: #000000;
    --neutral-color: #FFFFFF;
    --secondary-color: #9D001E;
-   --border-rad: 0.6vh;
+   --border-rad: 0.8vh;
+   --border-rad-large: 11px;
  }
 
  input {
@@ -60,9 +61,10 @@
    padding: 1vh 3vh;
    font-size: 1.8vh;
    font-weight: bold;
-   margin: 5px;
+   margin: 0.8vh;
    width: max-content;
    align-self: center;
+   cursor: pointer;
  }
 
  h2 {
@@ -246,7 +248,7 @@
    color: white;
    font-size: 24px;
    border: none;
-   border-radius: 11px;
+   border-radius: var(--border-rad-large);
    box-shadow: 4px 4px 11px #00000029;
    padding: 0.7vw 2.2vw;
    cursor: pointer;
@@ -398,7 +400,7 @@
    margin-left: 100px;
    margin-right: 100px;
    border: none;
-   border-radius: 11px;
+   border-radius: var(--border-rad-large);
    padding-top: 4vh;
    text-align: center;
  }
@@ -412,8 +414,8 @@
    margin-right: 100px;
    padding-top: 5vh;
    border: none;
-   border-bottom-left-radius: 11px;
-   border-bottom-right-radius: 11px;
+   border-bottom-left-radius: var(--border-rad-large);
+   border-bottom-right-radius: var(--border-rad-large);
    margin-bottom: 8vh;
  }
 
@@ -422,7 +424,7 @@
    color: white;
    font-size: 24px;
    border: none;
-   border-radius: 11px;
+   border-radius: var(--border-rad-large);
    box-shadow: 4px 4px 11px #00000029;
    padding: 0.6vw 1.5vw;
    margin-top: 40px;
@@ -507,7 +509,7 @@
    background: var(--neutral-color);
    font-size: 24px;
    border: none;
-   border-radius: 11px;
+   border-radius: var(--border-rad-large);
    box-shadow: 4px 4px 11px #00000029;
    padding: 1.2vw 3vw;
    cursor: pointer;
@@ -517,14 +519,14 @@
  REGISTER PAGE 
  */
 
- .register_grid {
+ .general_layout {
    min-height: 100dvh;
    width: 100dvw;
    display: flex;
  }
 
- .register_grid > div,
- .register_grid > form {
+ .general_layout > div,
+ .general_layout > form {
    width: -webkit-fill-available;
    justify-content: center;
  }
@@ -563,7 +565,7 @@
    font-size: 12px;
    height: 20vh;
    width: 24vw;
-   border-radius: 11px 0 0 11px;
+   border-radius: var(--border-rad-large) 0 0 var(--border-rad-large);
    flex-flow: column;
    display: flex;
    justify-content: center;
@@ -583,7 +585,7 @@
    background: var(--additional-neutral-color);
    height: -webkit-fill-available;
    width: -webkit-fill-available;
-   border-radius: 0 11px 11px 0;
+   border-radius: 0 var(--border-rad-large) var(--border-rad-large) 0;
  }
 
  .right_side_tarieven_card li {
@@ -598,8 +600,31 @@
    letter-spacing: 1vh;
  }
 
- /* LOGIN PAGE */
- .TOPh1_login_page {
+ /* 
+ LOGIN PAGE 
+ */
+
+ .form_login {
+   flex-direction: column;
+   text-align: center;
+   display: flex;
+ }
+
+ .form_login > h2 {
+   font-size: 5vh;
+   margin: 6vh;
+ }
+
+ .form_login > button {
+   margin: 2vh;
+ }
+
+ .form_login > p {
+   font-size: 2.5vh;
+   margin-top: 36px;
+ }
+
+ /* .TOPh1_login_page {
   margin: 3% auto;
   display: block;
   text-align:center;
@@ -648,4 +673,6 @@
 
  .Register_Account p {
   font-size: 20px; /* Adjust the font size as desired */
-}
+ }
+
+ */

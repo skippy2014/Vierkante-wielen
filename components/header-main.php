@@ -7,14 +7,15 @@
         <ul class="links">
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Overzicht</a></li>
-            <?php if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != true) {
+            <?php if (!isset($_SESSION['gebruiker']) && $_SESSION['gebruiker'] != true) {
                 echo '<li><a href="#">Upgraden</a></li>';
             } else {
                 echo '';
             } ?>
             <li><a href="#">Upgraden</a></li>
             <?php
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+
+            if (isset($_SESSION['gebruiker'])) {
                 // User is logged in
                 echo '<li><a href="pages/logout.php">Logout</a></li>';
             } else {

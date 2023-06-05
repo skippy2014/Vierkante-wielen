@@ -60,10 +60,10 @@ if (
                     </p>
                     <br><br>
 
-                    <p><a href="/index.php">Website</a></p>
+                    <p><a href="../index.php">Website</a></p>
                     <p><a href="loginpage.php?loguit">Uitloggen</a></p>
-                    <p><a href="/pages/homepage_instructeurs.php">Instructeur</p>
-                    <p><a href="/pages/homepage_admin.php">Eigennaar</a></p>
+                    <p><a href="homepage_instructeurs.php">Instructeur</p>
+                    <p><a href="homepage_admin.php">Eigennaar</a></p>
                 </form>
             </div>
 

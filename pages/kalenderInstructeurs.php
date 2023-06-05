@@ -41,6 +41,22 @@
     </div>
   </body>
 </html>
+<? php 
+$sql = "SELECT datum_tijd FROM les";
+$resultaat = mysquery($sql);
+
+if (mysql_num_rows($resultaat) > 0) {
+
+  while($row = mysql_fetch_assoc($resultaat)) {
+    $datum = $row["datum_tijd"];
+    if ($les != "") {
+      $rodeTekst = "class='rood'";
+    } else {
+      $rodeTekst = "";
+    }
+    echo "<p $rodeTekst>$datum</p>";
+ 
+?>
 <script>
 const Dag1 = document.querySelector(".dagen"),
 huidigeDag1 = document.querySelector(".Huidige-Datum"),

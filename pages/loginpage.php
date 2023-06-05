@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 $dbHost = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
@@ -30,10 +29,10 @@ if (isset($_POST['knop'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        if (password_verify($password, $row['wachtwoord'])) {
+        if ($password === $row['wachtwoord']) {  // Check for plain text password match
             $_SESSION["gebruiker"] = array(
-                "naam" => $row["email"],
-                "pwd" => $row['wachtwoord'],
+                "email" => $row["email"],
+                "wachtwoord" => $row["wachtwoord"],
             );
             $message = "Welkom!";
         } else {
@@ -66,11 +65,10 @@ if (isset($_POST['knop'])) {
 <p><a href="index.php">Website</a></p>
 <p><a href="loginpage.php?loguit">Uitloggen</a></p>
 <p><a href="admin.php">Admin</a></p>
-<p>Nog geen lid? Log in 
-    <a href="register.php">here</a></p> <br><br>
+<p>Nog geen lid? Log in <a href="register.php">here</a></p> <br><br>
 
-    <a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
-    <a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>
-    <a href="../pages/homepage_leden.php"> Login als lid</a> <br> <br>
+<a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
+<a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>
+<a href="../pages/homepage_leden.php"> Login als lid</a> <br> <br>
 </body>
 </html>

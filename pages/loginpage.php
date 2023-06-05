@@ -5,7 +5,7 @@ session_start();
 $dbHost = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
-$dbName = 'vierkantewielen';
+$dbName = 'vierkantewielendemo';
 
 $connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 

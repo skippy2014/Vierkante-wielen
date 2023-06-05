@@ -63,8 +63,14 @@
 
   <body>
 
-    <h2>Vertical Tabs</h2>
-    <p>Click on the buttons inside the tabbed menu:</p>
+
+
+
+    <br><br><br><br>
+
+
+
+
 
     <div class="layout">
       <div class="tab">

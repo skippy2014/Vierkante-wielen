@@ -1,72 +1,74 @@
 <?php
 session_start();
 
-$gebruikers = array(
-    "Pjotrdevos@gmail.com" => array("pwd" => "admin", "rol" => "Admin"),
-    "Peter@gmail.com" => array("pwd" => "Peter1234", "rol" => "Admin"),
-    "John@gmail.com" => array("pwd" => "John1234", "rol" => "Gebruiker"),
-);
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'vierkantewielendemo';
+
+$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+}
 
 if (isset($_GET["loguit"])) {
     $_SESSION = array();
     session_destroy();
 }
 
-if (
-    isset($_POST['login_button'])
-    && isset($gebruikers[$_POST["email"]])
-    && $gebruikers[$_POST["email"]]["password"] == $_POST['password']
-) {
-    $_SESSION["gebruiker"] = array(
-        "naam" => $_POST["login"],
-        "pwd" => $gebruikers[$_POST["login"]]['pwd'],
-        "rol" => $gebruikers[$_POST["login"]]['rol']
-    );
-    $message = "Welkom met de rol " . $_SESSION["gebruiker"]["rol"];
-} elseif (isset($_POST['login_button'])) {
-    $message = "Foutieve login gegevens";
+if (isset($_POST['knop'])) {
+    $login = $_POST["login"];
+    $password = $_POST["pwd"];
+
+    $stmt = $connection->prepare("SELECT * FROM gebruiker WHERE email = ?");
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        if ($password === $row['wachtwoord']) {  // Check for plain text password match
+            $_SESSION["gebruiker"] = array(
+                "email" => $row["email"],
+                "wachtwoord" => $row["wachtwoord"],
+            );
+            $message = "Welkom!";
+        } else {
+            $message = "Foutieve login gegevens";
+        }
+    } else {
+        $message = "Foutieve login gegevens";
+    }
 } else {
-    $message = "Log in";
+    $message = "Login";
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Vierkante wielen</title>
-        <link rel="STYLESHEET" type="text/css" href="../css/style.css">
-    </head>
+<html>
+<body>
+<h1><?php echo $message; ?></h1>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <div class="form-group">
+        <label for="login">Email: </label>
+        <input type="text" name="login" value="">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password: </label>
+        <input type="password" name="pwd" value="">
+    </div>
+    <br>
+    <input type="submit" name="knop">
+</form>
+<p><a href="index.php">Website</a></p>
+<p><a href="loginpage.php?loguit">Uitloggen</a></p>
+<p><a href="admin.php">Admin</a></p>
+<p>Nog geen lid? Log in <a href="register.php">here</a></p> <br><br>
 
-
-    <html>
-
-        <body>
-            <div class="general_layout">
-
-                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form_login">
-                    <h2 class="TOPh1_login_page">
-                        <?php echo $message; ?>
-                    </h2>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <button type="submit" class="btn" name="login_button">Log in</button>
-
-                    <p>Nog geen account? Maak er
-                        <a href="register.php">hier</a> een aan
-                    </p>
-                    <br><br>
-
-                    <p><a href="../index.php">Website</a></p>
-                    <p><a href="loginpage.php?loguit">Uitloggen</a></p>
-                    <p><a href="homepage_instructeurs.php">Instructeur</p>
-                    <p><a href="homepage_admin.php">Eigennaar</a></p>
-                </form>
-            </div>
-
-        </body>
-
-    </html>
+<a href="../pages/homepage_admin.php"> Login als admin</a> <br> <br>
+<a href="../pages/homepage_instructeurs.php"> Login als instructeurs</a> <br> <br>
+<a href="../pages/homepage_leden.php"> Login als lid</a> <br> <br>
+</body>
+</html>

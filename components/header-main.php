@@ -17,7 +17,7 @@
 
             if (isset($_SESSION['gebruiker'])) {
                 // User is logged in
-                echo '<li><a href="pages/logout.php">Logout</a></li>';
+                echo '<li><a href="pages/loginpage.php?loguit">Logout</a></li>';
             } else {
                 // User is not logged in
                 echo '<li><a href="pages/loginpage.php">Log in</a></li>';

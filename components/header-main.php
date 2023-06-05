@@ -6,8 +6,13 @@
     <nav>
         <ul class="links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="#">Instructeurs</a></li>
-            <li><a href="#">Lessen</a></li>
+            <li><a href="#">Overzicht</a></li>
+            <?php if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] != true) {
+                echo '<li><a href="#">Upgraden</a></li>';
+            } else {
+                echo '';
+            } ?>
+            <li><a href="#">Upgraden</a></li>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                 // User is logged in

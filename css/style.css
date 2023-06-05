@@ -230,7 +230,7 @@
  .headerImage {
    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../img/ManDriving.png');
    background-size: cover;
-   height: 1282px;
+   height: 100vh;
    padding: 15vw;
  }
 

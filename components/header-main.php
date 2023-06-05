@@ -1,13 +1,13 @@
 <!-- Gebruik "include 'header-main.php';" -->
 <header class="navbar">
     <div class="logo">
-        <img src="img/logo_light.png" alt="Logo">
+        <a href="index.php"><img src="img/logo_light.png" alt="Logo"></a>
     </div>
     <nav>
         <ul class="links">
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Overzicht</a></li>
-            <?php if (!isset($_SESSION['gebruiker']) && $_SESSION['gebruiker'] != true) {
+            <?php if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker'] != true) {
                 echo '<li><a href="#">Upgraden</a></li>';
             } else {
                 echo '';

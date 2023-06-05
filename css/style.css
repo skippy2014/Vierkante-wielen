@@ -6,7 +6,7 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: sans-serif;
+   font-family: Arial, Helvetica, sans-serif;
  }
 
  :root {
@@ -18,11 +18,52 @@
    --font-color: #000000;
    --neutral-color: #FFFFFF;
    --secondary-color: #9D001E;
+   --border-rad: 0.6vh;
  }
 
- input {}
+ input {
+   margin: 4px 0px;
+   padding: 10px 10px;
+   width: 45vh;
+   height: 5vh;
+   font-size: 2vh;
+   align-self: center;
+   border-radius: var(--border-rad);
+   border: gray 0.3vh solid;
+ }
 
- button {}
+ select {
+   margin: 3px 0px 24px 0;
+   padding: 0 8px;
+   font-size: 2vh;
+   width: 45vh;
+   height: 5vh;
+   align-self: center;
+   background: var(--additional-neutral-color);
+   border-radius: var(--border-rad);
+   border: none;
+ }
+
+ /* REMOVE OUTLINE FROM SELECT BOXES */
+ select:focus,
+ option:focus {
+   outline: none;
+ }
+
+ option {}
+
+ button {
+   background: var(--secondary-color);
+   color: var(--inverted-font-color);
+   border-radius: var(--border-rad);
+   border: none;
+   padding: 1vh 3vh;
+   font-size: 1.8vh;
+   font-weight: bold;
+   margin: 5px;
+   width: max-content;
+   align-self: center;
+ }
 
  h2 {
    font-size: 40px;
@@ -83,12 +124,12 @@
  }
 
  /* HEADER SCROLLED */
- body.scrolled header {
-   background-color: white;
+ .scrolled header {
+   background-color: var(--neutral-color);
  }
 
  body.scrolled header .links a {
-   color: black;
+   color: var(--font-color);
  }
 
  /* HEADER NAVIGATION */
@@ -111,7 +152,7 @@
 
  .links a {
    text-decoration: none;
-   color: white;
+   color: var(--inverted-font-color);
    transition: color 0.3s ease;
  }
 
@@ -120,7 +161,7 @@
   */
 
  footer {
-   background-color: #000;
+   background-color: var(--footer-color);
    padding: 40px;
    text-align: center;
  }
@@ -139,14 +180,14 @@
  .footer-logo p {
    margin-top: 20px;
    text-align: center;
-   color: #fff;
+   color: var(--inverted-font-color);
  }
 
  .footer-middle-text {
    flex-grow: 1;
    margin: 20px;
    text-align: center;
-   color: #fff;
+   color: var(--inverted-font-color);
  }
 
  .footer-map {
@@ -163,19 +204,19 @@
 
  .footer-links li {
    margin-left: 10px;
-   color: white;
+   color: var(--inverted-font-color);
  }
 
  .footer-links a {
    text-decoration: none;
-   color: #fff;
+   color: var(--inverted-font-color);
  }
 
  .footer-copyright {
    margin-top: 20px;
    font-size: 14px;
-   color: #777;
-   color: #fff;
+   color: var(--footer-color);
+   color: var(--inverted-font-color);
  }
 
  /* 
@@ -463,6 +504,7 @@
  .Call-to-action button {
    margin: 50px;
    color: black;
+   background: var(--neutral-color);
    font-size: 24px;
    border: none;
    border-radius: 11px;
@@ -474,3 +516,136 @@
  /* 
  REGISTER PAGE 
  */
+
+ .register_grid {
+   min-height: 100dvh;
+   width: 100dvw;
+   display: flex;
+ }
+
+ .register_grid > div,
+ .register_grid > form {
+   width: -webkit-fill-available;
+   justify-content: center;
+ }
+
+ .form_register {
+   flex-direction: column;
+   text-align: center;
+   display: flex;
+ }
+
+ .form_register > h2 {
+   font-size: 5vh;
+   margin: 16px;
+ }
+
+ .form_register > p {
+   font-size: 2.5vh;
+   margin-top: 36px;
+ }
+
+ .tarieven_grid {
+   align-self: center;
+   text-align: -webkit-center;
+ }
+
+ .tarieven_card {
+   display: flex;
+   width: 40vw;
+   height: 20vh;
+   margin: 1rem;
+ }
+
+ .left_side_tarieven_card {
+   background: var(--secondary-color);
+   color: var(--inverted-font-color);
+   font-size: 12px;
+   height: 20vh;
+   width: 24vw;
+   border-radius: 11px 0 0 11px;
+   flex-flow: column;
+   display: flex;
+   justify-content: center;
+ }
+
+ .left_side_tarieven_card > h3 {
+   font-size: 3.5vh;
+   margin-bottom: 1.2vh;
+ }
+
+ .left_side_tarieven_card > p {
+   font-size: 3vw;
+   vertical-align: text-bottom;
+ }
+
+ .right_side_tarieven_card {
+   background: var(--additional-neutral-color);
+   height: -webkit-fill-available;
+   width: -webkit-fill-available;
+   border-radius: 0 11px 11px 0;
+ }
+
+ .right_side_tarieven_card li {
+   text-align: start;
+   margin: 2.4vh 0 0 3vh;
+   font-size: 3vh;
+ }
+
+ .right_side_tarieven_card li::marker {
+   content: '✔️';
+   font-size: 2.5vh;
+   letter-spacing: 1vh;
+ }
+
+ /* LOGIN PAGE */
+ .TOPh1_login_page {
+  margin: 3% auto;
+  display: block;
+  text-align:center;
+  font-family: 'Segoe UI';
+ }
+
+ .login_input {
+  width: 100%;
+  margin: 4px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 70px;
+  font-family: 'Segoe UI';
+ }
+
+ input[type="text"],
+ input[type="password"] {
+     border-radius: 5px;
+     text-align: left;
+     font-family: 'Segoe UI';
+ }
+
+ .submit_login {
+     text-align: center;
+     margin-top: 10px;
+     font-family: 'Segoe UI';
+ }
+
+ .submit_login input[type="submit"] {
+     background-color: red;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 20px;
+     font-size: 16px;
+     font-family: 'Segoe UI';
+ }
+
+ .Register_Account {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Segoe UI';
+ }
+
+ .Register_Account p {
+  font-size: 20px; /* Adjust the font size as desired */
+}

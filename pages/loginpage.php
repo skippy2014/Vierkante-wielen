@@ -75,13 +75,13 @@ if (isset($_POST['login_button'])) {
             <p><a href="loginpage.php?loguit">Uitloggen</a></p>
 
             <?php
-            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['role'] === 'instructeur' || $_SESSION['gebruiker']['role'] === 'eigennaar')) {
+            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['role'] === 'instructeur' || $_SESSION['gebruiker']['role'] === 'eigenaar')) {
                 echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
             }
             ?>
             <?php
-            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['role'] === 'eigennaar') {
-                echo '<p><a href="homepage_admin.php">Eigennaar</a></p>';
+            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['role'] === 'eigenaar') {
+                echo '<p><a href="homepage_admin.php">Eigenaar</a></p>';
             }
             ?>
 

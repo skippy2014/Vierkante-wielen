@@ -34,12 +34,14 @@ if (isset($_POST['login_button'])) {
                 "id_gebruiker" => $row["id_gebruiker"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
-                "role" => $row["role"]
+                "rol" => $row["rol"]
             );
 
             echo "<script>console.log('id_gebruiker: " . $row["id_gebruiker"] . "');</script>";
 
             $message = "Welkom!";
+
+            //echo '<script>window.location.href = "/index.php";</script>';
         } else {
             $message = "Foutieve login gegevens";
         }
@@ -75,12 +77,12 @@ if (isset($_POST['login_button'])) {
             <p><a href="loginpage.php?loguit">Uitloggen</a></p>
 
             <?php
-            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['role'] === 'instructeur' || $_SESSION['gebruiker']['role'] === 'eigenaar')) {
+            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
                 echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
             }
             ?>
             <?php
-            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['role'] === 'eigenaar') {
+            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['rol'] === 'eigenaar') {
                 echo '<p><a href="homepage_admin.php">Eigenaar</a></p>';
             }
             ?>

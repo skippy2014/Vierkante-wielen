@@ -61,6 +61,8 @@
     </style>
   </head>
 
+  <?php include_once("../components/header-admin.php") ?>
+
   <body>
 
 

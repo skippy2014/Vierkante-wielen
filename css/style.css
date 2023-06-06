@@ -45,6 +45,10 @@
    border: none;
  }
 
+ body {
+   margin: 0 150px;
+ }
+
  /* REMOVE OUTLINE FROM SELECT BOXES */
  select:focus,
  option:focus {

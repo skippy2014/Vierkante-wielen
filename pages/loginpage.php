@@ -29,11 +29,16 @@ if (isset($_POST['login_button'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        if ($password === $row['wachtwoord']) { // Check for plain text password match
+        if ($password === $row['wachtwoord']) {
             $_SESSION["gebruiker"] = array(
+                "id_gebruiker" => $row["id_gebruiker"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
+                "role" => $row["role"]
             );
+
+            echo "<script>console.log('id_gebruiker: " . $row["id_gebruiker"] . "');</script>";
+
             $message = "Welkom!";
         } else {
             $message = "Foutieve login gegevens";
@@ -52,29 +57,38 @@ if (isset($_POST['login_button'])) {
 </head>
 <html>
 
-    <body>
-        <div class="general_layout">
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form_login">
-                <h2 class="TOPh1_login_page">
-                    <?php echo $message; ?>
-                </h2>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <br>
-                <button type="submit" class="btn" name="login_button">Log in</button>
+<body>
+    <div class="general_layout">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form_login">
+            <h2 class="TOPh1_login_page">
+                <?php echo $message; ?>
+            </h2>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <br>
+            <button type="submit" class="btn" name="login_button">Log in</button>
 
-                <p>Nog geen account? Maak er
-                    <a href="register.php">hier</a> een aan
-                </p>
-                <br><br>
+            <p>Nog geen account? Maak er <a href="register.php">hier</a> een aan</p>
+            <br><br>
 
-                <p><a href="../index.php">Website</a></p>
-                <p><a href="loginpage.php?loguit">Uitloggen</a></p>
-                <p><a href="homepage_instructeurs.php">Instructeur</p>
-                <p><a href="homepage_admin.php">Eigennaar</a></p>
-            </form>
+            <p><a href="../index.php">Website</a></p>
+            <p><a href="loginpage.php?loguit">Uitloggen</a></p>
 
-        </div>
-    </body>
+            <?php
+            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['role'] === 'instructeur' || $_SESSION['gebruiker']['role'] === 'eigennaar')) {
+                echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['role'] === 'eigennaar') {
+                echo '<p><a href="homepage_admin.php">Eigennaar</a></p>';
+            }
+            ?>
+
+
+        </form>
+
+    </div>
+</body>
 
 </html>

@@ -55,7 +55,9 @@
    outline: none;
  }
 
- option {}
+ option {
+   display: unset;
+ }
 
  button {
    background: var(--secondary-color);

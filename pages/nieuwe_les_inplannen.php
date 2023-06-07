@@ -33,14 +33,30 @@
 
         <label for="Welke_Dag">Welke dag? *:</label>
         <input type="date" id="Welke_Dag" name="Welke_Dag" required><br><br>
+
+        <label for = "tijd">Tijd *:</label>
+        <input type = "time" id ='tijd' name = 'tijd' required> <br><br> 
         
         
         <input type="submit" value="Verstuur">
-    
-
-
-
     </form>
+    <?php
+$naam = $_POST['naam'];
+$email = $_POST['email'];
+$telefoon = $_POST['telefoon'];
+$dag = $_POST['dag'];
+$tijd = $_POST['tijd'];
+
+$sql = "INSERT INTO afspraken (naam, email, telefoon, dag, tijd) VALUES ('$naam', '$email', '$telefoon', '$dag', '$tijd')";
+
+if (mysqli_query($conn, $sql)) {
+  echo "Afspraak is gemaakt!";
+} else {
+  echo "Er is een fout opgetreden: " . mysqli_error($conn);
+}
+
+
+?>
 
     </body>
     </html>

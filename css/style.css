@@ -45,7 +45,7 @@
    border: none;
  }
 
- body {
+ body:not(.headerImage) {
    margin: 0 150px;
  }
 
@@ -527,7 +527,6 @@
 
  .general_layout {
    min-height: 100dvh;
-   width: 100dvw;
    display: flex;
  }
 

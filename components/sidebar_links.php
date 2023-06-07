@@ -6,6 +6,7 @@
 <div id="Accountsettings" class="tabcontent">
     <h2>Accountinstellingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE ACCOUNTSINSTELLINGEN -->
+
 </div>
 
 <div id="Upgrade" class="tabcontent">

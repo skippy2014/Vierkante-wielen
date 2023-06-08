@@ -87,6 +87,7 @@
       <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Overzicht')" id="defaultOpen">Overzichtspagina</button>
         <button class="tablinks" onclick="openTab(event, 'Accountsettings')">Account Instellingen</button>
+        <button class="tablinks" onclick="openTab(event, 'Meldingen')">Meldingen</button>
         <button class="tablinks" onclick="openTab(event, 'Upgrade')">Upgrade</button>
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
       </div>

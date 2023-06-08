@@ -20,7 +20,7 @@
           <p class="Huidige-Datum"></p>
           <span id= rechts class="pijltje">></span>
           <div class="lesButton">
-          <a href="placeholder"> <button>Les aanmaken</button><a>
+       <button><a  href="/pages/nieuwe_les_inplannen.php">Les aanmaken</a></button>
           </div>
         </div>
       </header>
@@ -41,25 +41,26 @@
     </div>
   </body>
 </html>
-<? php 
+
+ <?php
  $sql = "SELECT datum_tijd FROM les";
-$resultaat = mysquery($sql);
+// $resultaat = mysquery($sql);
 
 
-if (mysql_num_rows($resultaat) > 0) {
+// if (mysql_num_rows($resultaat) > 0) {
 
-  while($row = mysql_fetch_assoc($resultaat)) {
-    $datum = $row["datum_tijd"];
-    if ($les != "") {
-      $rodeTekst = "class='rood'";
-    } else {
-      $rodeTekst = "";
-    }
-    echo "<p $rodeTekst>$datum</p>";
-  }
-}
- 
-?>
+//   while($row = mysql_fetch_assoc($resultaat)) {
+//     $datum = $row["datum_tijd"];
+//     if ($les != "") {
+//       $rodeTekst = "class='rood'";
+//     } else {
+//       $rodeTekst = "";
+//     }
+//     echo "<p $rodeTekst>$datum</p>";
+//   }
+// }
+ ?>
+
 <script>
 const Dag1 = document.querySelector(".dagen"),
 huidigeDag1 = document.querySelector(".Huidige-Datum"),
@@ -157,8 +158,15 @@ justify-content: center;
  }
 
 .Huidige-Datum{
-  padding-left:4vw;
-  padding-right:3vw;
+  padding-left:2vw;
+  padding-right:2vw;
+}
+
+header .Huidige-Datum{
+ font-size: 27px;
+ display: inline-block;
+
+
 }
 
 
@@ -190,7 +198,7 @@ header .pijltjes{
    margin-right:3.5vw;
 }
 
-.lesButton button{
+.lesButton button {
   background-color: rgb(148, 6, 6);
   color: white;
    font-size: 20px;
@@ -200,18 +208,14 @@ header .pijltjes{
    padding:  0.4vw 1.5vh;
    cursor: pointer;
    margin-left:3.5vw;
+  
  }
-
-
-
-
-
-
-header .Huidige-Datum{
- font-size: 27px;
-
-
+ 
+ .lesButton button a{
+     text-decoration: none;
+     color: #ffffff;
 }
+
 .kalender{
   padding: 20px;
 }

@@ -15,14 +15,14 @@
     <h2>Meldingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS OM JE MELDINGEN TE ZIEN -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "../include/meldingen.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/meldingen.php");
     ?>
 </div>
 
-<div id="lestoevoegen" class="tabcontent">
+<div id="LesToevoegen" class="tabcontent">
     <h2>Les Toevoegen</h2>
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "../pages/les_toevoegen.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "pages/les_toevoegen.php");
     ?>
 </div>
 

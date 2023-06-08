@@ -83,8 +83,8 @@
         <button class="tablinks" onclick="openTab(event, 'Overzicht')" id="Overzicht_btn">Overzichtspagina</button>
         <button class="tablinks" onclick="openTab(event, 'Accountsettings')" id="Accountsettings_btn">Account
           Instellingen</button>
-        <button class="tablinks" onclick="openTab(event, 'lestoevoegen')" <?php if (!$toonLesToevoegen)
-          echo 'style="display:none"'; ?>>Les toevoegen</button>
+        <button class="tablinks" onclick="openTab(event, 'LesToevoegen')" <?php if (!$toonLesToevoegen)
+          echo 'style="display:none"'; ?> id="LesToevoegen_btn">Les toevoegen</button>
         <button class="tablinks" onclick="openTab(event, 'Meldingen')" id="Meldingen_btn">Meldingen</button>
         <button class="tablinks" onclick="openTab(event, 'Upgrade')" id="Upgrade_btn">Upgrade</button>
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
@@ -117,6 +117,9 @@
       }
 
       // Initialize an event listener for each button
+      document.getElementById("LesToevoegen_btn").addEventListener("click", function () {
+        window.location.hash = "LesToevoegen";
+      });
       document.getElementById("Overzicht_btn").addEventListener("click", function () {
         window.location.hash = "Overzicht";
       });

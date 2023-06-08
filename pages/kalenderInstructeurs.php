@@ -42,8 +42,9 @@
   </body>
 </html>
 <? php 
-$sql = "SELECT datum_tijd FROM les";
+ $sql = "SELECT datum_tijd FROM les";
 $resultaat = mysquery($sql);
+
 
 if (mysql_num_rows($resultaat) > 0) {
 
@@ -55,6 +56,8 @@ if (mysql_num_rows($resultaat) > 0) {
       $rodeTekst = "";
     }
     echo "<p $rodeTekst>$datum</p>";
+  }
+}
  
 ?>
 <script>
@@ -96,6 +99,25 @@ pijltjeLR.forEach(icon => {
         reloadKalender(); 
     });
 });
+
+function showPopup(les, datum) {
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.innerHTML = '<div class="popup-content">' +
+                '<h3>Melding</h3>' +
+                '<p><strong>Bericht:</strong> ' + les + '</p>' +
+                '<p><strong>Datum:</strong> ' + datum + '</p>' +
+                '<button class="popup-close" onclick="closePopup()">Sluiten</button>' +
+                '</div>';
+            document.body.appendChild(popup);
+        }
+
+        function closePopup() {
+            var popup = document.querySelector('.popup');
+            if (popup) {
+                popup.remove();
+            }
+        }
 
         </script>
 
@@ -240,7 +262,9 @@ list-style: none;
   background: #f2f2f2;
 }                                 
                                 
-                                        
+.rood {
+  background-color: red;
+}                                
 
 
 </style>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include_once('../components/header-admin.php') ?>
 <html>
 
     <head>

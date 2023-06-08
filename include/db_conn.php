@@ -1,14 +1,46 @@
 <?php
+session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vierkantewielendemo";
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'vierkantewielendemo';
 
-// Create a connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+}
+
+if (isset($_GET["loguit"])) {
+    $_SESSION = array();
+    session_destroy();
+}
+
+if (isset($_POST['login_button'])) {
+    $login = $_POST["email"];
+    $password = $_POST["password"];
+
+    $stmt = $connection->prepare("SELECT * FROM gebruiker WHERE email = ?");
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        if ($password === $row['wachtwoord']) { // Check for plain text password match
+            $_SESSION["gebruiker"] = array(
+                "email" => $row["email"],
+                "wachtwoord" => $row["wachtwoord"],
+            );
+            $message = "Welkom!";
+        } else {
+            $message = "Foutieve login gegevens";
+        }
+    } else {
+        $message = "Foutieve login gegevens";
+    }
+} else {
+    $message = "Login";
 }

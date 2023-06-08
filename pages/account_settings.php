@@ -65,7 +65,6 @@
   include_once("../components/header-admin.php");
   include_once("../include/db_conn.php");
 
-  session_start();
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in
   } else {

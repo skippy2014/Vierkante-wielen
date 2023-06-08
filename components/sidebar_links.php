@@ -6,6 +6,10 @@
 <div id="Accountsettings" class="tabcontent">
     <h2>Accountinstellingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE ACCOUNTSINSTELLINGEN -->
+    <?php
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/Accountinstellingen-informatie.php");
+
+    ?>
 
 </div>
 

@@ -15,7 +15,7 @@
     <h2>Meldingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS OM JE MELDINGEN TE ZIEN -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/Meldingen-informatie.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "../include/meldingen.php");
     ?>
 </div>
 

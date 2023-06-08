@@ -19,6 +19,13 @@
     ?>
 </div>
 
+<div id="lestoevoegen" class="tabcontent">
+    <h2>Les Toevoegen</h2>
+    <?php
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "../pages/les_toevoegen.php");
+    ?>
+</div>
+
 <div id="Upgrade" class="tabcontent">
     <h2>Upgrade</h2>
     <!-- HIER KOMEN ALLE COMPONENTS OM JE ACCOUNT TE UPGRADEN -->

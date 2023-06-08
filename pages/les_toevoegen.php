@@ -1,5 +1,16 @@
 <?php
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vierkantewielendemo";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Fout bij verbinden met de database: " . mysqli_connect_error());
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $leerling = $_POST["leerling-select"];
     $instructeur = $_POST["instructeur-select"];
@@ -15,7 +26,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         VALUES ('$lesauto', '$leerling', '$instructeur', '$datum $tijd', '$adres', '$lesdoel', '$opmerking')";
 
         if (mysqli_query($conn, $insertQuery)) {
-            echo "Gegevens zijn succesvol opgeslagen.";
+            $insertedId = mysqli_insert_id($conn);
+
+            $meldingQuery = "INSERT INTO melding (id_les, id_gebruiker, bericht, datum_tijd)
+                             VALUES ('$insertedId', '$leerling', 'Een nieuwe les is ingepland.', NOW())";
+
+            if (mysqli_query($conn, $meldingQuery)) {
+                $instructeurQuery = "SELECT CONCAT(voornaam, ' ', achternaam) AS instructeur_naam FROM gebruiker WHERE id_gebruiker = '$instructeur'";
+                $instructeurResult = mysqli_query($conn, $instructeurQuery);
+
+                if ($instructeurResult) {
+                    $instructeurRow = mysqli_fetch_assoc($instructeurResult);
+                    $instructeurNaam = $instructeurRow['instructeur_naam'];
+                    echo "Les succesvol aangemaakt voor de leerling: " . $instructeurNaam;
+                } else {
+                    echo "Er is een fout opgetreden bij het ophalen van de instructeurgegevens: " . mysqli_error($conn);
+                }
+            } else {
+                echo "Er is een fout opgetreden bij het opslaan van de gegevens en verzenden van de melding: " . mysqli_error($conn);
+            }
         } else {
             echo "Er is een fout opgetreden bij het opslaan van de gegevens: " . mysqli_error($conn);
         }

@@ -31,6 +31,9 @@ if (isset($_POST['login_button'])) {
 
         if ($password === $row['wachtwoord']) {
             $_SESSION["gebruiker"] = array(
+                "voornaam" => $row["voornaam"],
+                "achternaam" => $row["achternaam"],
+                "telefoonnummer" => $row["telefoon"],
                 "id_gebruiker" => $row["id_gebruiker"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],

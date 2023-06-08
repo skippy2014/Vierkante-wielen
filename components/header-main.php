@@ -1,4 +1,4 @@
-<!-- Gebruik "include 'header-main.php';" -->
+<?php ?>
 <header class="navbar">
     <div class="logo">
         <a href="index.php"><img src="img/logo_light.png" alt="Logo"></a>
@@ -12,7 +12,12 @@
             } else {
                 echo '';
             } ?>
-            <li><a href="#">Upgraden</a></li>
+            <?php
+            if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'leerling') {
+                echo '<li><a href="#">Upgraden</a></li>';
+            }
+            ?>
+
             <?php
 
             if (isset($_SESSION['gebruiker'])) {

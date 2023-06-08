@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <html>
-    <?php include_once('../components/header-admin.php') ?>
 
     <body>
         <div class="general_layout">

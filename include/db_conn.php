@@ -22,8 +22,12 @@ if (isset($_POST['login_button'])) {
     $password = $_POST["password"];
 
     $stmt = $connection->prepare("SELECT * FROM gebruiker WHERE email = ?");
+    if ($stmt === false) {
+        die('Error: Unable to prepare statement. ' . $connection->error);
+    }
     $stmt->bind_param("s", $login);
     $stmt->execute();
+
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
@@ -44,3 +48,4 @@ if (isset($_POST['login_button'])) {
 } else {
     $message = "Login";
 }
+?>

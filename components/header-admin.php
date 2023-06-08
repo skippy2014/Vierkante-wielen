@@ -1,7 +1,3 @@
-<?php
-include_once('../include/db_conn.php');
-?>
-
 <style>
     .links a {
         text-decoration: none;
@@ -39,15 +35,13 @@ include_once('../include/db_conn.php');
                 echo "Error: " . $connection->error;
             }
 
-
-            foreach ($_SESSION as $key => $value) {
-                echo $key . " = ";
-                if (is_array($value)) {
-                    print_r($value);
-                } else {
-                    echo strval($value);
+            // check the role of the user
+            if (isset($_SESSION["gebruiker"])) {
+                foreach ($_SESSION["gebruiker"] as $gebruiker => $rol) {
+                    if ($gebruiker === "rol") {
+                        echo "Rol: " . $rol . "<br>";
+                    }
                 }
-                echo "<br>";
             }
 
 

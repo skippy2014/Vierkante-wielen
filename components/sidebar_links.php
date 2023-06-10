@@ -1,13 +1,16 @@
 <div id="Overzicht" class="tabcontent">
     <h2>Overzicht</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE OVERZICHTSPAGINA'S -->
+    <?php
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/overzicht-informatie.php");
+    ?>
 </div>
 
 <div id="Accountsettings" class="tabcontent">
     <h2>Accountinstellingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE ACCOUNTSINSTELLINGEN -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/Accountinstellingen-informatie.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/accountinstellingen-informatie.php");
     ?>
 </div>
 
@@ -15,7 +18,7 @@
     <h2>Meldingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS OM JE MELDINGEN TE ZIEN -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/meldingen.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/meldingen-informatie.php");
     ?>
 </div>
 

@@ -4,8 +4,6 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/head
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in
     header('location: /Vierkante-wielen/pages/account_settings.php');
-} else {
-    $rol = $_SESSION['gebruiker']['rol'];
 }
 
 if (isset($_POST['login_button'])) {

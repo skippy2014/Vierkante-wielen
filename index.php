@@ -145,6 +145,6 @@
     </div>
     <?php include 'components/footer-main.php'; ?>
   </body>
-  <script src='/vierkante-wielen/js/header-homepage.js'></script>
+  <script src='/vierkante-wielen/js/script.js'></script>
 
 </html>

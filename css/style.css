@@ -45,9 +45,12 @@
    border: none;
  }
 
- body:not(.headerImage) {
-   margin: 0 150px;
+ body {
+   padding: 0 150px;
+   box-sizing: border-box;
+   background-attachment: fixed;
  }
+
 
  /* REMOVE OUTLINE FROM SELECT BOXES */
  select:focus,

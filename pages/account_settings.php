@@ -4,6 +4,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+      /* Hide scrollbars */
+      body {
+        overflow: hidden;
+      }
+    </style>
   </head>
 
   <?php
@@ -38,7 +44,15 @@
     </div>
 
     <script>
-      function openTab(evt, cityName) {
+      // Wait until document is fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Remove overflow property to restore scrolling
+        document.body.style.overflow = "auto";
+
+        // Scroll to top of page
+        window.scrollTo(0, 0);
+      });
+      function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
@@ -48,8 +62,9 @@
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
+        document.documentElement.scrollTop = 0; // Scroll to the top of the page
       }
 
       // Initialize the page by opening the first tab or the tab specified in the hash
@@ -85,6 +100,7 @@
         }
       });
     </script>
+
   </body>
 
 </html>

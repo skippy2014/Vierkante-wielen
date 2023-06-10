@@ -4,66 +4,11 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-      * {
-        box-sizing: border-box
-      }
-
-      body {
-        font-family: "Lato", sans-serif;
-      }
-
-      .layout {
-        display: flex;
-      }
-
-      /* Style the tab */
-      .tab {
-        float: left;
-        background-color: #f1f1f1;
-        width: 30%;
-        height: 70vh;
-        border-radius: var(--border-rad);
-      }
-
-      /* Style the buttons inside the tab */
-      .tab button {
-        margin: unset;
-        display: block;
-        background-color: inherit;
-        color: black;
-        padding: 22px 16px;
-        width: 100%;
-        border: none;
-        outline: none;
-        text-align: left;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 17px;
-      }
-
-      /* Change background color of buttons on hover */
-      .tab button:hover {
-        background-color: #ddd;
-      }
-
-      /* Create an active/current "tab button" class */
-      .tab button.active {
-        background-color: #ccc;
-      }
-
-      /* Style the tab content */
-      .tabcontent {
-        float: left;
-        padding: 0px 12px;
-        height: 300px;
-      }
-    </style>
   </head>
 
   <?php
-  include_once("../components/header-admin.php");
-  include_once("../include/db_conn.php");
+  include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
+  include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/db_conn.php");
 
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in

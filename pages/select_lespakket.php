@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,15 +13,9 @@ session_start();
 include '../include/db_conn.php' ;
 
 
-$query = "SELECT id_lespakket, naampakket FROM lespakket";
-$result = $conn->query($query);
+$query = "SELECT * FROM lespakket";
+$result = $connection->query($query);
 
-if ($result->num_rows > 0) {
-    $data = array();
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
-}
 
 echo '<form method="POST" action="../include/post_lespakket.php">';
 echo '<select name="lespakket_id">';

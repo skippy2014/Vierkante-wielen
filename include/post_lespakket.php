@@ -1,17 +1,32 @@
 <?php
+include '../include/db_conn.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ontvang de geselecteerde waarde
-    $lespakketId = $_POST['lespakket_id'];
+    // Retrieve the selected lespakket_id from the form
+    $lespakket_id = $_POST['lespakket_id'];
 
-    // Update de lespakket_id in de gebruikerstabel
-    $userId = $_SESSION['user_id']; // Veronderstel dat de gebruikers-ID is opgeslagen in de sessie
-    $updateQuery = "UPDATE gebruikers SET lespakket_id = $lespakketId WHERE id = $userId";
-    mysqli_query($connection, $updateQuery);
+    $gebruikerId = $_SESSION['gebruiker']['id_gebruiker'];
 
-    // Voer andere gewenste acties uit na het bijwerken van de database
-    // ...
+    $selectQuery = "SELECT aantallessen FROM lespakket WHERE id_lespakket = '$lespakket_id'";
+    $selectResult = $connection->query($selectQuery);
 
-    echo "Lespakket succesvol gekoppeld!";
+    if ($selectResult && $selectResult->num_rows > 0) {
+        $row = $selectResult->fetch_assoc();
+        $aantalLessen = $row['aantallessen'];
+    } else {
+        // Handle the case when the aantalLessen is not found
+        $aantalLessen = 0; // Set a default value or handle the error as needed
+    }
+
+    // Insert the lespakket_id into another table in the database
+    $insertQuery = "INSERT INTO gebruiker_has_lespakket (id_gebruiker, id_lespakket, aantallessen) VALUES ('$gebruikerId', '$lespakket_id', '$aantalLessen')";
+    $insertResult = $connection->query($insertQuery);
+
+    if ($insertResult) {
+        header ('Location:../pages/account_settings.php');
+    } else {
+        echo "Error posting lespakket ID: " . $connection->error;
+    }
 }
-
-$conn->close();
+$connection->close();
+?>

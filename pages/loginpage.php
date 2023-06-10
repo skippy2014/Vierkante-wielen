@@ -40,6 +40,17 @@ if (isset($_POST['login_button'])) {
                 "rol" => $row["rol"]
             );
             
+            $idCheck = $_SESSION["gebruiker"]["id_gebruiker"];
+
+            $checkForles = "SELECT id_gebruiker FROM gebruiker_has_lespakket WHERE id_gebruiker = '$idCheck'";
+            $checkResult = $connection->query($checkForles);
+        
+            if ($checkResult->num_rows > 0) {
+                header('Location: ../pages/account_settings.php');
+            } else {
+                header('Location: ../pages/select_lespakket.php');
+            }
+
             header ('Location: ../pages/select_lespakket.php');
            // $message = "Welkom!";
         } else {

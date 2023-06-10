@@ -1,7 +1,9 @@
 <header class="navbar">
     <?php
-    if ($_SERVER['REQUEST_URI'] === "/vierkante-wielen/" . "index.php") {
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/db_conn.php");
+    if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
         // The user is on the homepage
+        error_log("The white font css is applied");
         ?>
         <style>
             /* HEADER NAVIGATION */
@@ -30,6 +32,7 @@
         </style>
         <?php
     } else {
+        error_log("The white font css is not applied");
         ?>
         <style>
             /* HEADER NAVIGATION */
@@ -63,19 +66,19 @@
     <div class="logo">
         <a href="index.php"><img src="<?php
         // Check if the current URL location is the homepage
-        if ($_SERVER['REQUEST_URI'] === "/vierkante-wielen/" . "index.php") {
+        if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
             // The user is on the homepage
-            echo "/vierkante-wielen/" . "img/logo_light.png";
+            echo "/Vierkante-wielen/" . "img/logo_light.png";
         } else {
             // The user is not on the homepage
-            echo "/vierkante-wielen/" . "img/logo_dark.png";
+            echo "/Vierkante-wielen/" . "img/logo_dark.png";
         }
         ?>" alt="Logo"></a>
     </div>
     <nav>
         <ul class="links">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="pages/account_settings.php">Overzicht</a></li>
+            <li><a href="/Vierkante-wielen/index.php">Home</a></li>
+            <li><a href="/Vierkante-wielen/pages/account_settings.php">Overzicht</a></li>
             <?php if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker'] != true) {
                 echo '<li><a href="#">Upgraden</a></li>';
             } else {
@@ -84,19 +87,12 @@
             <?php
             if (isset($_SESSION['gebruiker'])) {
                 // User is logged in
-                echo '<li><a href="pages/loginpage.php?loguit">Logout</a></li>';
+                echo '<li><a href="/Vierkante-wielen/pages/loginpage.php?loguit">Logout</a></li>';
             } else {
                 // User is not logged in
-                echo '<li><a href="pages/loginpage.php">Log in</a></li>';
+                echo '<li><a href="/Vierkante-wielen/pages/loginpage.php">Log in</a></li>';
             }
             ?>
         </ul>
     </nav>
-
-    <?php
-    if ($_SERVER['REQUEST_URI'] === "/vierkante-wielen/" . "index.php") {
-        // The user is on the homepage
-        echo "<script src='js/header-main.js'></script>";
-    }
-    ?>
 </header>

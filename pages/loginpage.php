@@ -1,6 +1,6 @@
 <?php
+include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
 
-include_once('../include/db_conn.php');
 
 if (isset($_POST['login_button'])) {
     $login = $_POST["email"];
@@ -45,7 +45,7 @@ if (isset($_POST['login_button'])) {
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<?php include_once('../components/header-admin.php') ?>
+
 <html>
 
     <body>

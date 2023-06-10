@@ -3,7 +3,6 @@
     include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/db_conn.php");
     if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
         // The user is on the homepage
-        error_log("The white font css is applied");
         ?>
         <style>
             /* HEADER NAVIGATION */
@@ -32,7 +31,6 @@
         </style>
         <?php
     } else {
-        error_log("The white font css is not applied");
         ?>
         <style>
             /* HEADER NAVIGATION */

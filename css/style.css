@@ -45,13 +45,19 @@
    border: none;
  }
 
+ body:not(.headerImage) {
+   margin: 0 150px;
+ }
+
  /* REMOVE OUTLINE FROM SELECT BOXES */
  select:focus,
  option:focus {
    outline: none;
  }
 
- option {}
+ option {
+   display: unset;
+ }
 
  button {
    background: var(--secondary-color);
@@ -521,7 +527,6 @@
 
  .general_layout {
    min-height: 100dvh;
-   width: 100dvw;
    display: flex;
  }
 

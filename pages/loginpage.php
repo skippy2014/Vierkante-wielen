@@ -29,12 +29,22 @@ if (isset($_POST['login_button'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        if ($password === $row['wachtwoord']) { // Check for plain text password match
+        if ($password === $row['wachtwoord']) {
             $_SESSION["gebruiker"] = array(
+                "id_gebruiker" => $row["id_gebruiker"],
+                "voornaam" => $row["voornaam"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
+                "achternaam" => $row["achternaam"],
+                "telefoonnummer" => $row["telefoon"],
+                "rol" => $row["rol"]
             );
+
+            echo "<script>console.log('id_gebruiker: " . $row["id_gebruiker"] . "');</script>";
+
             $message = "Welkom!";
+
+            //echo '<script>window.location.href = "/index.php";</script>';
         } else {
             $message = "Foutieve login gegevens";
         }
@@ -50,6 +60,7 @@ if (isset($_POST['login_button'])) {
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+<?php include_once('../components/header-admin.php') ?>
 <html>
 
     <body>
@@ -63,15 +74,24 @@ if (isset($_POST['login_button'])) {
                 <br>
                 <button type="submit" class="btn" name="login_button">Log in</button>
 
-                <p>Nog geen account? Maak er
-                    <a href="register.php">hier</a> een aan
-                </p>
+                <p>Nog geen account? Maak er <a href="register.php">hier</a> een aan</p>
                 <br><br>
 
                 <p><a href="../index.php">Website</a></p>
                 <p><a href="loginpage.php?loguit">Uitloggen</a></p>
-                <p><a href="homepage_instructeurs.php">Instructeur</p>
-                <p><a href="homepage_admin.php">Eigennaar</a></p>
+
+                <?php
+                if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
+                    echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
+                }
+                ?>
+                <?php
+                if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['rol'] === 'eigenaar') {
+                    echo '<p><a href="homepage_admin.php">Eigenaar</a></p>';
+                }
+                ?>
+
+
             </form>
 
         </div>

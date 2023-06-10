@@ -39,12 +39,9 @@ if (isset($_POST['login_button'])) {
                 "telefoonnummer" => $row["telefoon"],
                 "rol" => $row["rol"]
             );
-
-            echo "<script>console.log('id_gebruiker: " . $row["id_gebruiker"] . "');</script>";
-
-            $message = "Welkom!";
-
-            //echo '<script>window.location.href = "/index.php";</script>';
+            
+            header ('Location: ../pages/select_lespakket.php');
+           // $message = "Welkom!";
         } else {
             $message = "Foutieve login gegevens";
         }

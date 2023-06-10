@@ -50,8 +50,6 @@ if (isset($_POST['login_button'])) {
             } else {
                 header('Location: ../pages/select_lespakket.php');
             }
-
-            header ('Location: ../pages/select_lespakket.php');
            // $message = "Welkom!";
         } else {
             $message = "Foutieve login gegevens";

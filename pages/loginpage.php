@@ -1,21 +1,6 @@
 <?php
-session_start();
 
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'vierkantewielendemo';
-
-$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
-}
-
-if (isset($_GET["loguit"])) {
-    $_SESSION = array();
-    session_destroy();
-}
+include_once('../include/db_conn.php');
 
 if (isset($_POST['login_button'])) {
     $login = $_POST["email"];

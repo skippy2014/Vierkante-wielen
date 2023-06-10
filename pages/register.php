@@ -1,3 +1,48 @@
+<?php
+include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
+
+if (isset($_SESSION['gebruiker'])) {
+    // User is logged in
+    header('location: /Vierkante-wielen/pages/account_settings.php#Upgrade');
+} else {
+    $rol = $_SESSION['gebruiker']['rol'];
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Sanitize user inputs if needed.
+    $voornaam = $_POST['first_name'];
+    $achternaam = $_POST['last_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Check if the email is already in the database.
+    $checkEmailQuery = "SELECT * FROM gebruiker WHERE email = ?";
+    $statement = $connection->prepare($checkEmailQuery);
+    $statement->bind_param('s', $email);
+    $statement->execute();
+    $checkEmailResult = $statement->get_result();
+
+    if ($checkEmailResult->num_rows > 0) {
+        echo "Email word al gebruikt.";
+    } else {
+        // Insert the new user account into the database.
+        $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, wachtwoord) VALUES (?, ?, ?, ?)";
+        $statement = $connection->prepare($sql);
+        $statement->bind_param('ssss', $voornaam, $achternaam, $email, $password);
+
+        if ($statement->execute() === true) {
+            echo "Account aangemaakt!";
+        } else {
+            echo "Error: " . $sql . "<br>" . $connection->error;
+        }
+    }
+
+    // Close the database connection.
+    $connection->close();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,55 +50,6 @@
         <title>Registration</title>
         <link rel="stylesheet" href="../css/style.css">
     </head>
-
-    <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $dbHost = 'localhost';
-        $dbUsername = 'root';
-        $dbPassword = '';
-        $dbName = 'vierkantewielendemo';
-
-        $connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-        if ($connection->connect_error) {
-            die("Connection failed: " . $connection->connect_error);
-        }
-
-        // Sanitize user inputs if needed.
-        $voornaam = $_POST['first_name'];
-        $achternaam = $_POST['last_name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Check if the email is already in the database.
-        $checkEmailQuery = "SELECT * FROM gebruiker WHERE email = ?";
-        $statement = $connection->prepare($checkEmailQuery);
-        $statement->bind_param('s', $email);
-        $statement->execute();
-        $checkEmailResult = $statement->get_result();
-
-        if ($checkEmailResult->num_rows > 0) {
-            echo "Email word al gebruikt.";
-        } else {
-            // Insert the new user account into the database.
-            $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, wachtwoord) VALUES (?, ?, ?, ?)";
-            $statement = $connection->prepare($sql);
-            $statement->bind_param('ssss', $voornaam, $achternaam, $email, $password);
-
-            if ($statement->execute() === true) {
-                echo "Account aangemaakt!";
-            } else {
-                echo "Error: " . $sql . "<br>" . $connection->error;
-            }
-        }
-
-        // Close the database connection.
-        $connection->close();
-    }
-    ?>
 
     <body>
         <div class="general_layout">

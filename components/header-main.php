@@ -6,7 +6,7 @@
     <nav>
         <ul class="links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="#">Overzicht</a></li>
+            <li><a href="pages/account_settings.php">Overzicht</a></li>
             <?php if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker'] != true) {
                 echo '<li><a href="#">Upgraden</a></li>';
             } else {
@@ -14,7 +14,6 @@
             } ?>
             <li><a href="#">Upgraden</a></li>
             <?php
-
             if (isset($_SESSION['gebruiker'])) {
                 // User is logged in
                 echo '<li><a href="pages/loginpage.php?loguit">Logout</a></li>';

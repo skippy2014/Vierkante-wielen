@@ -109,7 +109,6 @@ $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
     </head>
 
     <body>
-        <h2 id="form-heading">Nieuwe les inplannen</h2>
         <div class="form-container">
             <form method="POST" action="">
                 <div class="form-row">
@@ -147,35 +146,12 @@ $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
                         ?>
                     </select>
                 </div>
-
-                <div class="form-row">
-                    <label for="datum">Datum</label>
-                    <input type="date" id="datum" name="datum" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="tijd">Tijd</label>
-                    <input type="time" id="tijd" name="tijd" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="adres">Ophaal adres</label>
-                    <input type="text" id="adres" name="adres" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="lesdoel">Les doel</label>
-                    <input type="text" id="lesdoel" name="lesdoel" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="opmerking">Extra opmerkingen</label>
-                    <input type="text" id="opmerking" name="opmerking">
-                </div>
-
-                <div class="form-row">
-                    <input type="submit" value="Verstuur" id="submit-btn">
-                </div>
+                <input type="date" id="datum" name="datum" placeholder="Datum" required>
+                <input type="time" id="tijd" name="tijd" placeholder="Tijd" required>
+                <input type="text" id="adres" name="adres" placeholder="Ophaal adres" required>
+                <input type="text" id="lesdoel" name="lesdoel" placeholder="Lesdoel" required>
+                <input type="text" id="opmerking" name="opmerking" placeholder="Extra opmerking">
+                <button type="submit" value="Verstuur" id="submit-btn">Verstuur</button>
             </form>
         </div>
 

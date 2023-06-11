@@ -1,0 +1,167 @@
+.kalenderBox {
+    width: 700px;
+    background: #F2F2F2;
+  }
+  
+  .KalenderHeel {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 110vh;
+  }
+  
+  .kalenderBox header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px 10px;
+    justify-content: space-between;
+    background-color: #E7E7E7;
+  }
+  
+  .Huidige-Datum {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  header .Huidige-Datum {
+    font-size: 27px;
+    display: inline-block;
+  }
+  
+  header .pijltjes {
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+    color: #100;
+  }
+  
+  .pijltje {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .vandaagButton button {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-size: 20px;
+    border: none;
+    border-radius: 11px;
+    box-shadow: 4px 4px 11px #00000029;
+    padding: 0.4vw 1.5vh;
+    cursor: pointer;
+    margin-right: 3.5vw;
+  }
+  
+  .lesButton button {
+    background-color: rgb(148, 6, 6);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 11px;
+    box-shadow: 4px 4px 11px #00000029;
+    padding: 0.4vw 1.5vh;
+    cursor: pointer;
+    margin-left: 3.5vw;
+  }
+  
+  .lesButton button a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  .kalender {
+    padding: 20px;
+    height: 400px;
+    overflow-y: auto;
+  }
+  
+  .kalender li {
+    width: calc(100% / 7);
+    font-size: 20px;
+  }
+  
+  .kalender ul {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  
+  .kalender .dagen {
+    margin-bottom: 17px;
+  }
+  
+.kalender .dagen li {
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 28px;
+  width: calc(100% / 7 - 14px); /* Adjust the width as needed */
+  margin-left: 7px;
+  margin-right: 7px;
+}
+  
+  .dagen li.inactief {
+    color: #878787;
+  }
+  
+  .dagen li.actief {
+    color: #fff;
+  }
+  
+  .dagen li::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 15%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: 2px solid transparent;
+    pointer-events: none;
+  }
+  
+  .dagen li.actief::before {
+    background: #878787;
+  }
+  
+  .dagen li:not(.actief):hover::before {
+    background: #f2f2f2;
+    border: 2px solid rgb(148, 6, 6);
+  }
+  
+  .rood {
+    background-color: red;
+  }
+  
+  /* Add the following styles for the popup */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .popup-close {
+    margin-top: 10px;
+  }
+  

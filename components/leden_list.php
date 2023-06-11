@@ -23,8 +23,8 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<form method='post'>";
-    echo "<input type='text' name='search' placeholder='Search by Voornaam' />";
-    echo "<button type='submit'>Search</button>";
+    echo "<input type='text' name='search' placeholder='Voer Voornaam in' />";
+    echo "<button type='submit'>Zoeken</button>";
     echo "</form>";
 
     echo "<table>";
@@ -58,8 +58,8 @@ if ($result->num_rows > 0) {
     echo "</table>";
 } else {
     echo "<form method='post'>";
-    echo "<input type='text' name='search' placeholder='Search by Voornaam' />";
-    echo "<button type='submit'>Search</button>";
+    echo "<input type='text' name='search' placeholder='Voer Voornaam in' />";
+    echo "<button type='submit'>Zoeken</button>";
     echo "</form>";
 
     echo "No results found.";

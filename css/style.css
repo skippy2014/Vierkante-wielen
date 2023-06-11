@@ -1,120 +1,678 @@
+ /* 
+ GLOBAL 
+ */
+
  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-} 
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: Arial, Helvetica, sans-serif;
+ }
 
+ :root {
+   --footer-color: #999999;
+   --link: #1592E6;
+   --inverted-font-color: #FEFEFE;
+   --secondary-font-color: #A0A0A0;
+   --additional-neutral-color: #E7E7E7;
+   --font-color: #000000;
+   --neutral-color: #FFFFFF;
+   --secondary-color: #9D001E;
+   --border-rad: 0.8vh;
+   --border-rad-large: 11px;
+ }
 
-.headerImage{
-  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/Images/ManDriving.png");
-  background-size:cover;
-height:1282px;
-  padding:15vw;
-  
-}
+ input {
+   margin: 4px 0px;
+   padding: 10px 10px;
+   width: 45vh;
+   height: 5vh;
+   font-size: 2vh;
+   align-self: center;
+   border-radius: var(--border-rad);
+   border: gray 0.3vh solid;
+ }
 
-.info-container1{
+ select {
+   margin: 3px 0px 24px 0;
+   padding: 0 8px;
+   font-size: 2vh;
+   width: 45vh;
+   height: 5vh;
+   align-self: center;
+   background: var(--additional-neutral-color);
+   border-radius: var(--border-rad);
+   border: none;
+ }
 
-  position: relative !important;
-  float:right;
-  text-align: right;
-  margin-top:3vh;
-  color:white;
-  
-  
-}
+ /* REMOVE OUTLINE FROM SELECT BOXES */
+ select:focus,
+ option:focus {
+   outline: none;
+ }
 
-.info-container1 button{
-  margin:50px ;
-  background-color:rgb(148, 6, 6);
-  color:white;
-  font-size:24px;
-  border:none;
-  border-radius: 11px;
-  box-shadow: 4px 4px 11px #00000029;
-padding:0.7vw 2.2vw;
+ option {}
 
-}
+ button {
+   background: var(--secondary-color);
+   color: var(--inverted-font-color);
+   border-radius: var(--border-rad);
+   border: none;
+   padding: 1vh 3vh;
+   font-size: 1.8vh;
+   font-weight: bold;
+   margin: 0.8vh;
+   width: max-content;
+   align-self: center;
+   cursor: pointer;
+ }
 
+ h2 {
+   font-size: 40px;
+ }
 
+ p {
+   font-size: 32px;
+ }
 
-.info-rijschool{
+ /* 
+ TABELLEN EN LIJSTEN 
+ */
 
-  background-color: rgb(235, 232, 232);
-  height:506px;
-  text-align:center;
-  
-}
+ table {
+   border-collapse: collapse;
+   width: 100%;
+ }
 
+ th,
+ td {
+   text-align: left;
+   padding: 8px;
+   border-bottom: 1px solid #9c1c1c;
+ }
 
+ th {
+   color: white;
+   background-color: #701919;
+ }
 
-.Over-ons{ 
+ /* 
+ HEADER 
+ */
+
+ .navbar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 20px 200px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   background-color: transparent;
+   transition: background-color 0.3s ease;
+   z-index: 1000;
+ }
+
+ .logo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ /* Change the size of the logo in the header */
+ .logo img {
+   width: 100px;
+ }
+
+ /* HEADER SCROLLED */
+ .scrolled header {
+   background-color: var(--neutral-color);
+ }
+
+ body.scrolled header .links a {
+   color: var(--font-color);
+ }
+
+ /* HEADER NAVIGATION */
+ .links {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   font-size: 20px;
+ }
+
+ /* Adjust the spacing between the links */
+ .links li {
+   margin-left: 40px;
+ }
+
+ .links li:first-child {
+   margin-left: 0;
+ }
+
+ .links a {
+   text-decoration: none;
+   color: var(--inverted-font-color);
+   transition: color 0.3s ease;
+ }
+
+ /* 
+ FOOTER
+  */
+
+ footer {
+   background-color: var(--footer-color);
+   padding: 40px;
+   text-align: center;
+ }
+
+ .footer-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+ }
+
+ .footer-logo img {
+   width: 150px;
+ }
+
+ .footer-logo p {
+   margin-top: 20px;
+   text-align: center;
+   color: var(--inverted-font-color);
+ }
+
+ .footer-middle-text {
+   flex-grow: 1;
+   margin: 20px;
+   text-align: center;
+   color: var(--inverted-font-color);
+ }
+
+ .footer-map {
+   margin: 20px;
+   text-align: center;
+ }
+
+ .footer-links ul {
+   list-style-type: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .footer-links li {
+   margin-left: 10px;
+   color: var(--inverted-font-color);
+ }
+
+ .footer-links a {
+   text-decoration: none;
+   color: var(--inverted-font-color);
+ }
+
+ .footer-copyright {
+   margin-top: 20px;
+   font-size: 14px;
+   color: var(--footer-color);
+   color: var(--inverted-font-color);
+ }
+
+ /* 
+ HOMEPAGE 
+ */
+
+ /* BANNER */
+
+ .headerImage {
+   background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('../img/ManDriving.png');
+   background-size: cover;
+   height: 1282px;
+   padding: 15vw;
+ }
+
+ .info-container1 {
+   position: relative !important;
+   float: right;
+   text-align: right;
+   margin-top: 3vh;
+   color: white;
+ }
+
+ .info-container1 button {
+   margin: 50px;
+   background-color: rgb(148, 6, 6);
+   color: white;
+   font-size: 24px;
+   border: none;
+   border-radius: var(--border-rad-large);
+   box-shadow: 4px 4px 11px #00000029;
+   padding: 0.7vw 2.2vw;
+   cursor: pointer;
+ }
+
+ /* BLOCK 1, INFORMATIE RIJSCHOOL */
+
+ .info-rijschool {
    background-color: rgb(235, 232, 232);
-  height:1207px;
-}
+   height: 450px;
+   text-align: center;
+ }
 
-.Info-Rijschoolhouder{
-  background-color: rgb(235, 232, 232);
-  height:760.25px;
-}
+ /* BLOCK 2, WAAROM RIJSCHOOL */
 
-.Call-to-action{
-  background-color: rgb(148, 6, 6);
-  height:647px;
-}
+ .registration {
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   text-align: center;
+ }
 
-h2{
- font-size: 40px;
-}
+ .regItem1 img {
+   align-items: center;
+   width: 60%;
+   height: auto;
+ }
 
-p{
-  font-size: 32px;
-}
+ .regItem1 {
+   grid-column: 1/2;
+   grid-row: 1/3;
+   padding: 3vw;
+   padding-left: 1vw;
+ }
 
-.registration{
- display:grid;
-grid-template-columns: repeat(2,2fr);
+ .regItem2 {
+   grid-column: 2/3;
+   grid-row: 1/2;
+   padding-top: 7vh;
+ }
+
+ .regItem3 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   padding-bottom: 10vh;
+ }
+
+ /* LIST OF SUBJECTS */
+ .pros li::marker,
+ .pros li {
+   content: '✔️';
+   font-size: 26px;
+   text-align: left;
+   margin-left: 8vw;
+   padding-left: 2vw;
+ }
+
+ /* BLOCK 3, OVER ONS */
+ .Over-ons {
+   background-color: rgb(235, 232, 232);
+   height: 1000px;
+   display: grid;
+   grid-template-rows: repeat(3, 0.5fr);
+   text-align: center;
+ }
+
+ .Over-ons img {
+   width: 50%;
+ }
+
+ .Over-ons h2 {
+   padding-bottom: 5vh;
+ }
+
+ .onsD1 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+ }
+
+ .onsD2 {
+   grid-column: 2/3;
+   grid-row: 1/2;
+ }
+
+ .onsD3 {
+   grid-column: 2/3;
+   grid-row: 3/3;
+ }
+
+ /* BLOCK 4, TARIEVEN */
+
+ .tarieven {
+   margin-top: 4vh;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   height: 900px;
+   font-size: 32px;
+ }
+
+ .pakket0 {
+   grid-column: 2/3;
+   grid-row: 1/4;
+   text-align: center;
+   padding-bottom: 2vh;
+ }
+
+ .pakket1 {
+   grid-column: 1/2;
+   grid-row: 2/4;
+ }
+
+ .pakket2 {
+   grid-column: 2/3;
+   grid-row: 2/4;
+ }
+
+ .pakket3 {
+   grid-column: 3/3;
+   grid-row: 2/4;
+ }
+
+ .pakketD1 {
+   grid-column: 1/2;
+   grid-row: 3/5;
+ }
+
+ .pakketD2 {
+   grid-column: 2/3;
+   grid-row: 3/5;
+ }
+
+ .pakketD3 {
+   grid-column: 3/3;
+   grid-row: 3/5;
+ }
+
+ .tarieven li::marker,
+ .tarieven li {
+   font-size: 26px;
+   text-align: left;
+   margin-left: 7vw;
+   margin-top: 3vh;
+ }
+
+ .pakket1,
+ .pakket2,
+ .pakket3 {
+   background-color: rgb(148, 6, 6);
+   color: white;
+   margin-left: 100px;
+   margin-right: 100px;
+   border: none;
+   border-radius: var(--border-rad-large);
+   padding-top: 4vh;
+   text-align: center;
+ }
+
+ .pakketD1,
+ .pakketD2,
+ .pakketD3 {
+   background-color: rgb(235, 232, 232);
+   color: black;
+   margin-left: 100px;
+   margin-right: 100px;
+   padding-top: 5vh;
+   border: none;
+   border-bottom-left-radius: var(--border-rad-large);
+   border-bottom-right-radius: var(--border-rad-large);
+   margin-bottom: 8vh;
+ }
+
+ .tarieven button {
+   background-color: rgb(148, 6, 6);
+   color: white;
+   font-size: 24px;
+   border: none;
+   border-radius: var(--border-rad-large);
+   box-shadow: 4px 4px 11px #00000029;
+   padding: 0.6vw 1.5vw;
+   margin-top: 40px;
+   margin-left: 100px;
+   margin-right: 100px;
+   cursor: pointer;
+ }
+
+ /* BLOCK 5, INFORMATIE RIJSCHOOLHOUDER */
+
+ .Info-Rijschoolhouder {
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   text-align: center;
+   background-color: rgb(235, 232, 232);
+ }
+
+ .infoR1 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   padding-bottom: 10vh;
+ }
+
+ .infoR1 img {
+   align-items: center;
+   width: 60%;
+   height: auto;
+ }
+
+ .infoR2 {
+   grid-column: 1/2;
+   grid-row: 1/2;
+   padding-top: 7vh;
+ }
+
+ .infoR3 {
+   grid-column: 1/2;
+   grid-row: 2/3;
+   padding: 3vw;
+   padding-left: 1vw;
+ }
+
+ /* BLOCK 6, SCHRIJF JE NU IN */
+
+ .Call-to-action {
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   text-align: center;
+   background-color: rgb(148, 6, 6);
+   height: 647px;
+   color: white;
+ }
+
+ .callA1 img {
+   align-items: center;
+   width: 60%;
+   height: auto;
+ }
+
+ .callA1 {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   padding-bottom: 10vh;
+ }
+
+ .callA2 {
+   grid-column: 1/2;
+   grid-row: 1/2;
+   padding-top: 7vh;
+ }
+
+ .callA3 {
+   grid-column: 1/2;
+   grid-row: 2/3;
+   padding: 3vw;
+   padding-left: 1vw;
+ }
+
+ .Call-to-action button {
+   margin: 50px;
+   color: black;
+   background: var(--neutral-color);
+   font-size: 24px;
+   border: none;
+   border-radius: var(--border-rad-large);
+   box-shadow: 4px 4px 11px #00000029;
+   padding: 1.2vw 3vw;
+   cursor: pointer;
+ }
+
+ /* 
+ REGISTER PAGE 
+ */
+
+ .general_layout {
+   min-height: 100dvh;
+   width: 100dvw;
+   display: flex;
+ }
+
+ .general_layout > div,
+ .general_layout > form {
+   width: -webkit-fill-available;
+   justify-content: center;
+ }
+
+ .form_register {
+   flex-direction: column;
+   text-align: center;
+   display: flex;
+ }
+
+ .form_register > h2 {
+   font-size: 5vh;
+   margin: 16px;
+ }
+
+ .form_register > p {
+   font-size: 2.5vh;
+   margin-top: 36px;
+ }
+
+ .tarieven_grid {
+   align-self: center;
+   text-align: -webkit-center;
+ }
+
+ .tarieven_card {
+   display: flex;
+   width: 40vw;
+   height: 20vh;
+   margin: 1rem;
+ }
+
+ .left_side_tarieven_card {
+   background: var(--secondary-color);
+   color: var(--inverted-font-color);
+   font-size: 12px;
+   height: 20vh;
+   width: 24vw;
+   border-radius: var(--border-rad-large) 0 0 var(--border-rad-large);
+   flex-flow: column;
+   display: flex;
+   justify-content: center;
+ }
+
+ .left_side_tarieven_card > h3 {
+   font-size: 3.5vh;
+   margin-bottom: 1.2vh;
+ }
+
+ .left_side_tarieven_card > p {
+   font-size: 3vw;
+   vertical-align: text-bottom;
+ }
+
+ .right_side_tarieven_card {
+   background: var(--additional-neutral-color);
+   height: -webkit-fill-available;
+   width: -webkit-fill-available;
+   border-radius: 0 var(--border-rad-large) var(--border-rad-large) 0;
+ }
+
+ .right_side_tarieven_card li {
+   text-align: start;
+   margin: 2.4vh 0 0 3vh;
+   font-size: 3vh;
+ }
+
+ .right_side_tarieven_card li::marker {
+   content: '✔️';
+   font-size: 2.5vh;
+   letter-spacing: 1vh;
+ }
+
+ /* 
+ LOGIN PAGE 
+ */
+
+ .form_login {
+   flex-direction: column;
+   text-align: center;
+   display: flex;
+ }
+
+ .form_login > h2 {
+   font-size: 5vh;
+   margin: 6vh;
+ }
+
+ .form_login > button {
+   margin: 2vh;
+ }
+
+ .form_login > p {
+   font-size: 2.5vh;
+   margin-top: 36px;
+ }
+
+ /* .TOPh1_login_page {
+  margin: 3% auto;
+  display: block;
   text-align:center;
-}
+  font-family: 'Segoe UI';
+ }
 
-.regItem1 img{
-align-items:center;
-width:60%;
-height:auto;
+ .login_input {
+  width: 100%;
+  margin: 4px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 70px;
+  font-family: 'Segoe UI';
+ }
 
-}
+ input[type="text"],
+ input[type="password"] {
+     border-radius: 5px;
+     text-align: left;
+     font-family: 'Segoe UI';
+ }
 
-.regItem1{
-  grid-column: 1/2;
-  grid-row: 1/3;
-  padding:3vw;
-  padding-left:1vw;
-}
+ .submit_login {
+     text-align: center;
+     margin-top: 10px;
+     font-family: 'Segoe UI';
+ }
 
-.regItem2{
-  grid-column: 2/3;
-  grid-row: 1/2;
- padding-top:7vh;
-}
+ .submit_login input[type="submit"] {
+     background-color: red;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 20px;
+     font-size: 16px;
+     font-family: 'Segoe UI';
+ }
 
-.regItem3{
-  grid-column: 2/3;
-  grid-row:2/3;
-  padding-bottom:10vh;
-}
+ .Register_Account {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Segoe UI';
+ }
 
-.pros li::marker, .pros li{
-  content:'✔️';
-  font-size:26px;
-  text-align:left;
-  margin-left:8vw;
-  padding-left:2vw;
-}
+ .Register_Account p {
+  font-size: 20px; /* Adjust the font size as desired */
+ }
 
-
-
-
-
-
-
+ */

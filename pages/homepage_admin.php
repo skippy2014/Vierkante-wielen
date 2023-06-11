@@ -9,15 +9,15 @@
 </head>
 <body>
 
-<h3>info klantnaam met counter van les tegoed </h3> <br><br>
+<h3>hier komt profiel gegevens </h3>
 
-<h3>Welkom klantnaam </h3><br><br>
+<h3>Welkom Admin</h3> <br><br>
 
-<h3>meldingen lijst komt hier </h3> <br><br>
+<a href="../pages/admin_ledenlijst.php"> hier krijg je overzicht van ledenlijst</a> <br><br>
+<a href="../pages/admin_werknemers.php"> hier krijg je overzicht van werknemerslijst</a> <br><br>
 
-<h3>lijst van ingeplande datums + annuleer en wijzig functie</h3> <br> <br>
+<h3> hier overzicht van alle planningen in de calender </h3>
 
-<h3>examen info  </h3> <br><br>
 
 
 </body>

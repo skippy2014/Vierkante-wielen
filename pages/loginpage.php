@@ -1,52 +1,96 @@
 <?php
 session_start();
 
-$gebruikers = array(
-    "Pjotrdevos@gmail.com" => array("pwd" => "admin", "rol" => "Admin"),
-    "Peter@gmail.com" => array("pwd" => "Peter1234", "rol" => "Admin"),
-    "John@gmail.com" => array("pwd" => "John1234", "rol" => "Gebruiker"),
-);
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'vierkantewielendemo';
+
+$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+}
 
 if (isset($_GET["loguit"])) {
     $_SESSION = array();
     session_destroy();
 }
 
-if (isset($_POST['knop'])
-    && isset($gebruikers[$_POST["login"]])
-    && $gebruikers[$_POST["login"]]["pwd"] == $_POST['pwd']) {
-    $_SESSION["gebruiker"] = array(
-        "naam" => $_POST["login"],
-        "pwd" => $gebruikers[$_POST["login"]]['pwd'],
-        "rol" => $gebruikers[$_POST["login"]]['rol']
-    );
-    $message = "Welkom met de rol ".$_SESSION["gebruiker"]["rol"];
-} elseif (isset($_POST['knop'])) {
-    $message = "Foutieve login gegevens";
+if (isset($_POST['login_button'])) {
+    $login = $_POST["email"];
+    $password = $_POST["password"];
+
+    $stmt = $connection->prepare("SELECT * FROM gebruiker WHERE email = ?");
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        if ($password === $row['wachtwoord']) {
+            $_SESSION["gebruiker"] = array(
+                "id_gebruiker" => $row["id_gebruiker"],
+                "email" => $row["email"],
+                "wachtwoord" => $row["wachtwoord"],
+                "rol" => $row["rol"]
+            );
+
+            echo "<script>console.log('id_gebruiker: " . $row["id_gebruiker"] . "');</script>";
+
+            $message = "Welkom!";
+
+            //echo '<script>window.location.href = "/index.php";</script>';
+        } else {
+            $message = "Foutieve login gegevens";
+        }
+    } else {
+        $message = "Foutieve login gegevens";
+    }
 } else {
     $message = "Login";
 }
 ?>
 
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
 <html>
+
 <body>
-<h1><?php echo $message; ?></h1>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <div class="form-group">
-        <label for="login">Email: </label>
-        <input type="text" name="login" value="">
+    <div class="general_layout">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form_login">
+            <h2 class="TOPh1_login_page">
+                <?php echo $message; ?>
+            </h2>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <br>
+            <button type="submit" class="btn" name="login_button">Log in</button>
+
+            <p>Nog geen account? Maak er <a href="register.php">hier</a> een aan</p>
+            <br><br>
+
+            <p><a href="../index.php">Website</a></p>
+            <p><a href="loginpage.php?loguit">Uitloggen</a></p>
+
+            <?php
+            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
+                echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['rol'] === 'eigenaar') {
+                echo '<p><a href="homepage_admin.php">Eigenaar</a></p>';
+            }
+            ?>
+
+
+        </form>
+
     </div>
-    <div class="form-group">
-        <label for="pwd">Password: </label>
-        <input type="password" name="pwd" value="">
-    </div>
-    <br>
-    <input type="submit" name="knop">
-</form>
-<p><a href="website.php">Website</a></p>
-<p><a href="index.php?loguit">Uitloggen</a></p>
-<p><a href="admin.php">Admin</a></p>
-<p>Nog geen lid? Log in 
-    <a href="register.php">here</a></p>
 </body>
+
 </html>

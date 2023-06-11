@@ -1,26 +1,24 @@
-<table>
-    <thead>
-      <tr>
-        <th>Instructeur</th>
-        <th>E-mail</th>
-        <th>Telefoon Nummer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Remco Boeie</td>
-        <td>123@mail</td>
-        <td>06-1234567</td>
-      </tr>
-      <tr>
-        <td>Bart Smit</td>
-        <td>321@mail</td>
-        <td>06-3213123</td>
-      </tr>
-      <tr>
-        <td>Mark Bal</td>
-        <td>222@mail</td>
-        <td>06-231313</td>
-      </tr>
-    </tbody>
-  </table>
+<?php
+require_once "../include/db_conn.php";
+
+$sql = "SELECT * FROM users";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Email</th></tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["id"] . "</td>";
+            echo "<td>" . $row["name"] . "</td>";
+            echo "<td>" . $row["email"] . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "No results found.";
+    }
+    $conn->close();
+    ?> 

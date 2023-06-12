@@ -1,5 +1,9 @@
 <head>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="<?php if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
+        echo 'css/style.css';
+    } else {
+        echo '../css/style.css';
+    } ?>">
 </head>
 
 <?php
@@ -126,4 +130,6 @@ if ($_SERVER['REQUEST_URI'] === dirname($_SERVER['PHP_SELF']) . "/index.php") {
         </li>
     </ul>
 </nav>
+
+
 </header>

@@ -50,6 +50,10 @@
    background-attachment: fixed;
  }
 
+ ul {
+   margin: 0 20px;
+ }
+
  /* REMOVE OUTLINE FROM SELECT BOXES */
  select:focus,
  option:focus {

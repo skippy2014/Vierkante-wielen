@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
+
+
   <?php
   include_once '../components/header.php';
+
+
+  if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
+
+    echo '<div> div </div>';
+
+  }
 
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in

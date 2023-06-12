@@ -26,6 +26,8 @@
 
   // Controleer of de gebruiker de rol "instructeur" heeft
   $toonLesToevoegen = ($rol == "instructeur" || $rol == "eigenaar");
+  $alleenLeerling = ($rol === "leerling");
+  $alleenEigenaar = ($rol === "eigenaar");
   ?>
 
   <body>
@@ -38,8 +40,14 @@
         <button class="tablinks" onclick="openTab(event, 'LesToevoegen')" <?php if (!$toonLesToevoegen)
           echo 'style="display:none"'; ?> id="LesToevoegen_btn">Les toevoegen</button>
         <button class="tablinks" onclick="openTab(event, 'Meldingen')" id="Meldingen_btn">Meldingen</button>
-        <button class="tablinks" onclick="openTab(event, 'Upgrade')" id="Upgrade_btn">Upgrade</button>
-        <button class="tablinks" onclick="openTab(event, 'Register')" <?php if (!$toonLesToevoegen)
+        <button class="tablinks" onclick="openTab(event, 'Update')" <?php if (!$alleenLeerling)
+          echo 'style="display:none"'; ?> id="Update_btn">Update</button>
+        <button class="tablinks" onclick="openTab(event, 'LeerlingLijst')" <?php if (!$alleenEigenaar)
+          echo 'style="display:none"'; ?> id="LeerlingLijst_btn">Leerling Lijst</button>
+        <button class="tablinks" onclick="openTab(event, 'WerknemersLijst')" <?php if (!$alleenEigenaar)
+          echo 'style="display:none"'; ?> id="WerknemersLijst_btn">Werknemers Lijst</button>            
+          
+                  <button class="tablinks" onclick="openTab(event, 'Register')" <?php if (!$alleenEigenaar)
           echo 'style="display:none"'; ?> id="Register_btn">Register</button>
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
       </div>
@@ -94,6 +102,12 @@
       });
       document.getElementById("Upgrade_btn").addEventListener("click", function () {
         window.location.hash = "Upgrade";
+      });
+      document.getElementById("LeerlingLijst_btn").addEventListener("click", function () {
+        window.location.hash = "LeerlingLijst";
+      });
+      document.getElementById("WerknemersLijst_btn").addEventListener("click", function () {
+        window.location.hash = "WerknemersLijst";
       });
       document.getElementById("Register_btn").addEventListener("click", function () {
         window.location.hash = "Register";

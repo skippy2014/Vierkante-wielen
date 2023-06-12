@@ -3,7 +3,7 @@ include_once "../components/header.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in
-    header('location: /Vierkante-wielen/pages/account_settings.php');
+    header('location: ../account_settings.php');
 }
 
 if (isset($_POST['login_button'])) {

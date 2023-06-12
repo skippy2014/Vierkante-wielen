@@ -3,7 +3,7 @@ include_once "../components/header.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in
-    header('location: /Vierkante-wielen/pages/account_settings.php#Upgrade');
+    header('location: ../account_settings.php#Upgrade');
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

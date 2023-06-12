@@ -12,7 +12,6 @@
   <body>
     <?php
     include_once "components/header.php";
-    include_once "include/db_conn.php";
     ?>
     <div class="headerImage">
 
@@ -145,6 +144,6 @@
     </div>
     <?php include 'components/footer-main.php'; ?>
   </body>
-  <script src='/vierkante-wielen/js/script.js'></script>
+  <script src='../js/script.js'></script>
 
 </html>

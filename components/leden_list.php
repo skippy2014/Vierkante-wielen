@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     echo "</form>";
 
     echo "<table>";
-    echo "<tr><th>ID_Gebruiker</th><th>Voornaam</th><th>Achternaam</th><th>E-mail</th><th>Wachtwoord</th><th>Telefoon</th><th>Rol</th><th>Rol bewerken</th></tr>";
+    echo "<tr><th>ID_Gebruiker</th><th>Voornaam</th><th>Achternaam</th><th>E-mail</th><th>Wachtwoord</th><th>Rol</th><th>Rol bewerken</th></tr>";
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
@@ -37,7 +37,6 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["achternaam"] . "</td>";
         echo "<td>" . $row["email"] . "</td>";
         echo "<td>" . $row["wachtwoord"] . "</td>";
-        echo "<td>" . $row["telefoon"] . "</td>";
         echo "<td>" . $row["rol"] . "</td>";
 
         echo "<td>";

@@ -25,7 +25,7 @@
   }
 
   // Controleer of de gebruiker de rol "instructeur" heeft
-  $toonLesToevoegen = ($rol == "instructeur");
+  $toonLesToevoegen = ($rol == "instructeur" || $rol == "eigenaar");
   ?>
 
   <body>

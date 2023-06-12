@@ -1,29 +1,29 @@
 <?php
-require_once 'db_connect.php';
+require_once 'db_conn.php';
 
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$phone = $_POST ['phone']
+$voornaam = $_POST['voornaam'];
+$achternaam = $_POST['achternaam'];
+$telefoon = $_POST ['telefoon'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+$rol = $_POST['rol'];
 
-$select = "select * from user WHERE email = '$email' ";
+$select = "SELECT * FROM gebruiker WHERE email = '$email'";
 
-$result = mysql_query($con, $select);
+$result = mysqli_query($conn, $select);
 
 if (mysqli_num_rows($result) > 0) {
-
-    $error[] = 'email already exists';
+    $error[] = 'Email already exists';
 }
 
 else {
     
-    $sql = "INSERT INTO users (first_name, last_name, email, password ) VALUES ('$firstname', '$lastname', '$email', '$password)";
+    $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, telefoon, wachtwoord, rol) VALUES ('$voornaam', '$achternaam', '$email', '$telefoon', '$password', '$rol')";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "user saved successfully!";
+    if ($conn->query($sql) === TRUE) {
+        echo "Registration successful";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 

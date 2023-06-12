@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <?php include '../components/leden_list.php'; ?>
+  <?php include '../components/leerlingen-list.php'; ?>
 
 </body>
 </html>

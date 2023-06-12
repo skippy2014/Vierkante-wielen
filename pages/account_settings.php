@@ -3,11 +3,11 @@
 
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/style.css">
   </head>
 
   <?php
-  include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
+  include_once '../components/header.php';
+  include_once '../include/db_conn.php';
 
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in

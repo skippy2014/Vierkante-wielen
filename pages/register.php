@@ -1,5 +1,6 @@
 <?php
-include "components/header.php";
+include_once "../components/header.php";
+include_once "../include/db_conn.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in
@@ -110,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
         </div>
-    </div>
-</body>
+        </div>
+    </body>
+
 </html>

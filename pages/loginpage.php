@@ -25,8 +25,8 @@ if (isset($_POST['login_button'])) {
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
                 "achternaam" => $row["achternaam"],
-                "rol" => $row["rol"]
                 "telefoonnummer" => $row["telefoon"],
+                "rol" => $row["rol"]
             );
 
             $idCheck = $_SESSION["gebruiker"]["id_gebruiker"];
@@ -77,9 +77,9 @@ if (isset($_POST['login_button'])) {
             ?>
 
 
-        </form>
+            </form>
 
-    </div>
-</body>
+        </div>
+    </body>
 
 </html>

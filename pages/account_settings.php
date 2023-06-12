@@ -27,13 +27,12 @@
         <button class="tablinks" onclick="openTab(event, 'LesToevoegen')" <?php if (!$toonLesToevoegen)
           echo 'style="display:none"'; ?> id="LesToevoegen_btn">Les toevoegen</button>
         <button class="tablinks" onclick="openTab(event, 'Meldingen')" id="Meldingen_btn">Meldingen</button>
-        <button class="tablinks" onclick="openTab(event, 'Upgrade')" id="Upgrade_btn">Upgrade</button>
+        <button class="tablinks" onclick="openTab(event, 'Subscription')" id="Subscription_btn">Subscription</button>
         <button class="tablinks" onclick="openTab(event, 'Register')" <?php if (!$toonLesToevoegen)
           echo 'style="display:none"'; ?> id="Register_btn">Register</button>
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
       </div>
-
-      <?php include_once("../components/sidebar_links.php") ?>
+      <?php include_once '../components/sidebar_links.php'; ?>
     </div>
 
     <script>
@@ -81,8 +80,8 @@
       document.getElementById("Meldingen_btn").addEventListener("click", function () {
         window.location.hash = "Meldingen";
       });
-      document.getElementById("Upgrade_btn").addEventListener("click", function () {
-        window.location.hash = "Upgrade";
+      document.getElementById("Subscription_btn").addEventListener("click", function () {
+        window.location.hash = "Subscription";
       });
       document.getElementById("Register_btn").addEventListener("click", function () {
         window.location.hash = "Register";

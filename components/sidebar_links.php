@@ -26,8 +26,8 @@
     ?>
 </div>
 
-<div id="Upgrade" class="tabcontent">
-    <h2>Upgrade</h2>
+<div id="Subscription" class="tabcontent">
+    <h2>Subscription</h2>
     <?php
     include_once "../include/subscription.php";
     ?>

@@ -1,6 +1,10 @@
 <?php
     session_start();
     ?>
+
+    <?php require_once "../include/db_conn.php"; ?>
+ 
+  
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -30,8 +34,8 @@
         <label for="Welke_Dag">Welke dag? *:</label>
         <input type="date" id="Welke_Dag" name="Welke_Dag" required><br><br>
 
-        <input type="submit" value="Verstuur">
-    
+        <button type="submit" value="Verstuur" name= it_Button>Submit</button>
+  
 
 
 
@@ -40,4 +44,15 @@
 
 
     </body>
+    <style>
+
+ 
+
+
+
+
+
+
+
+    </style>
     </html>

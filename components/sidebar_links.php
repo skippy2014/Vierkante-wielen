@@ -2,8 +2,8 @@
     <h2>Overzicht</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE OVERZICHTSPAGINA'S -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "../include/overzicht-informatie.php");
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "../pages/kalender.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/scripts/Vierkante-wielen/" . "include/overzicht-informatie.php");
+    include_once($_SERVER["DOCUMENT_ROOT"] . "/scripts/Vierkante-wielen/" . "pages/kalender.php");
     ?>
 </div>
 

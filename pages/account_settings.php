@@ -13,9 +13,8 @@
   </head>
 
   <?php
-  include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "/components/header.php");
+  include_once($_SERVER["DOCUMENT_ROOT"] . "/scripts/Vierkante-wielen/" . "components/header.php");
 
-  session_start();
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in
     $rol = $_SESSION['gebruiker']['rol'];

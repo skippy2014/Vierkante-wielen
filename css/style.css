@@ -628,7 +628,7 @@
  .tab {
    float: left;
    background-color: #f1f1f1;
-   width: 30%;
+   min-width: 25vw;
    height: 70vh;
    border-radius: var(--border-rad);
  }

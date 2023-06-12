@@ -105,24 +105,25 @@ if ($_SERVER['REQUEST_URI'] === dirname($_SERVER['PHP_SELF']) . "/index.php") {
         } else {
             echo '';
         } ?>
-        <li><a href="
-        <?php
-        if (isset($_SESSION['gebruiker'])) {
-            // User is logged in
-            if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
-                echo 'pages/loginpage.php?loguit">Logout';
+        <li>
+            <?php
+            if (isset($_SESSION['gebruiker'])) {
+                // User is logged in
+                if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
+                    echo '<a href="pages/loginpage.php?loguit">Logout';
+                } else {
+                    echo '<a href="loginpage.php?loguit">Logout';
+                }
             } else {
-                echo 'loginpage.php?loguit">Logout';
+                if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
+                    echo '<a href="pages/loginpage.php">Log in';
+                } else {
+                    echo '<a href="loginpage.php">Log in';
+                }
             }
-        } else {
-            if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
-                echo 'pages/loginpage.php">Log in';
-            } else {
-                echo 'loginpage.php">Log in';
-            }
-        }
-        ?>
-        </a></li>
+            ?>
+            </a>
+        </li>
     </ul>
 </nav>
 </header>

@@ -39,6 +39,7 @@
           echo 'style="display:none"'; ?> id="LesToevoegen_btn">Les toevoegen</button>
         <button class="tablinks" onclick="openTab(event, 'Meldingen')" id="Meldingen_btn">Meldingen</button>
         <button class="tablinks" onclick="openTab(event, 'Upgrade')" id="Upgrade_btn">Upgrade</button>
+        <button class="tablinks" onclick="openTab(event, 'Register')" id="Register_btn">Register</button>
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
       </div>
 
@@ -92,6 +93,9 @@
       });
       document.getElementById("Upgrade_btn").addEventListener("click", function () {
         window.location.hash = "Upgrade";
+      });
+      document.getElementById("Register_btn").addEventListener("click", function () {
+        window.location.hash = "Register";
       });
 
       // Update tab content when URL hash changes

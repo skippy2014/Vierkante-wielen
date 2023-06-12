@@ -1,4 +1,3 @@
-<h2>Register instructeur</h2>
 <form method="post" action="../include/post_register-instructeur.php">
   <input type="text" name="voornaam" placeholder="Voornaam" required><br>
   <input type="text" name="achternaam" placeholder="Achternaam" required><br>  

@@ -33,3 +33,11 @@
     <h2>Upgrade</h2>
     <!-- HIER KOMEN ALLE COMPONENTS OM JE ACCOUNT TE UPGRADEN -->
 </div>
+
+<div id="Register" class="tabcontent">
+    <h2>Register werknemer</h2>
+    <?php
+    include_once "../components/register-instructeur.php";
+    ?>
+    <!-- HIER KOMEN ALLE COMPONENTS OM account aantemaken -->
+</div>

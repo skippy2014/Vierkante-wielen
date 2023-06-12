@@ -144,6 +144,6 @@
     </div>
     <?php include 'components/footer-main.php'; ?>
   </body>
-  <script src='../js/script.js'></script>
+  <script src='js/script.js'></script>
 
 </html>

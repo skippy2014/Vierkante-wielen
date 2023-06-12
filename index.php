@@ -11,8 +11,7 @@
 
   <body>
     <?php
-    include_once("/Vierkante-wielen/components/header.php");
-
+    include "components/header.php";
     ?>
     <div class="headerImage">
 

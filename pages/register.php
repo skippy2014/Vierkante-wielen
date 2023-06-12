@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
+include "components/header.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in

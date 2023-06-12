@@ -1,16 +1,5 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vierkantewielendemo";
-
-$connection = mysqli_connect($servername, $username, $password, $dbname);
-
-if (!$connection) {
-    die("Fout bij verbinden met de database: " . mysqli_connect_error());
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $leerling = $_POST["leerling-select"];
     $instructeur = $_POST["instructeur-select"];
@@ -73,38 +62,7 @@ $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/style.css">
-        <style>
-            .form-container {
-                display: flex;
-                flex-direction: column;
-                max-width: 400px;
-                margin: 0 auto;
-                padding: 20px;
-            }
-
-            .form-row {
-                display: flex;
-                flex-direction: column;
-                margin-bottom: 10px;
-            }
-
-            .form-row label {
-                margin-bottom: 5px;
-            }
-
-            .form-row input,
-            .form-row select {
-                padding: 5px;
-            }
-
-            .form-row input[type="submit"] {
-                padding: 10px 20px;
-            }
-
-            #form-heading {
-                text-align: center;
-            }
-        </style>
+        
         <title>Vierkanten Wielen</title>
     </head>
 

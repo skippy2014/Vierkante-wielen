@@ -46,11 +46,9 @@
  }
 
  body {
-   padding: 0 150px;
    box-sizing: border-box;
    background-attachment: fixed;
  }
-
 
  /* REMOVE OUTLINE FROM SELECT BOXES */
  select:focus,
@@ -664,6 +662,39 @@
    float: left;
    padding: 0px 12px;
    height: 300px;
+ }
+
+ /* FORM ADD LESSON */
+
+ .form-container {
+   display: flex;
+   flex-direction: column;
+   max-width: 400px;
+   margin: 0 auto;
+   padding: 10px;
+ }
+
+ .form-row {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 10px;
+ }
+
+ .form-row label {
+   margin-bottom: 5px;
+ }
+
+ .form-row input,
+ .form-row select {
+   padding: 5px;
+ }
+
+ .form-row input[type="submit"] {
+   padding: 10px 20px;
+ }
+
+ #form-heading {
+   text-align: center;
  }
 
  /* .TOPh1_login_page {

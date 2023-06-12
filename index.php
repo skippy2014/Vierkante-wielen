@@ -11,7 +11,7 @@
 
   <body>
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "components/header.php");
+    include_once("/Vierkante-wielen/components/header.php");
 
     ?>
     <div class="headerImage">

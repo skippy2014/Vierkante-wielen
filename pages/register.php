@@ -1,6 +1,5 @@
 <?php
 include_once "../components/header.php";
-include_once "../include/db_conn.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in

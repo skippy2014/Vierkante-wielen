@@ -4,6 +4,13 @@
 
 <header class="navbar">
     <?php
+
+    if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
+        // The user is on the homepage
+        include_once "include/db_conn.php";
+    } else {
+        include_once "../include/db_conn.php";
+    }
     if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
         // The user is on the homepage
         ?>
@@ -65,14 +72,20 @@
     ?>
 
     <div class="logo">
-        <a href="index.php"><img src="<?php
+        <a href="<?php if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
+            // The user is on the homepage
+            echo "index.php";
+        } else {
+            echo "../index.php";
+        }
+        ?>"><img src="<?php
         // Check if the current URL location is the homepage
         if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
             // The user is on the homepage
-            echo "/Vierkante-wielen/" . "img/logo_light.png";
+            echo "img/logo_light.png";
         } else {
             // The user is not on the homepage
-            echo "/Vierkante-wielen/" . "img/logo_dark.png";
+            echo "img/logo_dark.png";
         }
         ?>" alt="Logo"></a>
     </div>

@@ -13,7 +13,7 @@
     <body>
 
 
-    <h2>Afmeld formulier</h2>
+    <h2>Afmelden</h2>
     <form method="POST" action="">
         <label for="naam">Naam *:</label>
         <input type="text" id="naam" name="naam" required><br><br>
@@ -21,12 +21,11 @@
         <label for="Welke_Dag"> E-mail *:</label>
         <input type="email" id="Welke_Dag" name="Welke_Dag" required><br><br>
 
-        <label for="reden_afwezig">Reden afwezig *:</label>
-        <input type="radio" id="Ziek" name="Reden_Ziek" value="Ziek">
-        <label for="Ziek">Ziek</label>
-        
-        <input type="radio" id="Andere_Reden" name="Reden_Ziek" value="Andere_Reden">
-        <label for="Reden_Ziek">Andere reden</label><br><br>
+        <label for="reden_afwezig">Reden voor afmelding *:</label>
+        <select name="Reden voor afmelding" id="ziek">
+  <option value="ziek">Ziek</option>
+  <option value="anders">Anders</option>
+</select><br><br>
 
         <label for="Welke_Dag">Welke dag? *:</label>
         <input type="date" id="Welke_Dag" name="Welke_Dag" required><br><br>

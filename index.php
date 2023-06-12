@@ -11,7 +11,8 @@
 
   <body>
     <?php
-    include "components/header.php";
+    include_once "components/header.php";
+    include_once "include/db_conn.php";
     ?>
     <div class="headerImage">
 

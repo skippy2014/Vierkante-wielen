@@ -1,6 +1,9 @@
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
 <header class="navbar">
     <?php
-    include 'include/db_conn.php';
     if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
         // The user is on the homepage
         ?>

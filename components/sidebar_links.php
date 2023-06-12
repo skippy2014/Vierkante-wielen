@@ -28,7 +28,7 @@
 </div>
 
 <div id="Subscription" class="tabcontent">
-    <h2>Subscription</h2>
+    <h2>Abonnement kiezen</h2>
     <?php
     include_once "../include/subscription.php";
     ?>

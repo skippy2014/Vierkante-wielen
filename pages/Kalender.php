@@ -1,3 +1,36 @@
+<?php
+// Databaseverbinding instellen
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vierkantewielendemo";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Verbinding met de database mislukt: " . $conn->connect_error);
+}
+
+// Query om lessen op te halen
+$sql = "SELECT datum_tijd, lesdoel, adres FROM les";
+$result = $conn->query($sql);
+
+// Array maken om de lessen op te slaan
+$lessen = array();
+
+if ($result->num_rows > 0) {
+    // Gegevens van elke les in de array opslaan
+    while ($row = $result->fetch_assoc()) {
+        $lessen[] = $row;
+    }
+}
+
+$conn->close();
+
+// Lessenarray omzetten naar JSON-string
+$lessenJSON = json_encode($lessen);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +39,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalender</title>
   <link rel="stylesheet" href="kalender.css">
+  <style>
+    .rode-dag {
+      background-color: red;
+    }
+
+.les-popup {
+  position: absolute;
+  display: none;
+  top: 100;
+  left: 0;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid black;
+  width: 200px; /* Aanpassen aan de gewenste breedte */
+  height: auto; /* Hiermee wordt de hoogte automatisch aangepast aan de inhoud */
+  z-index: 9999; /* Zet een hoge z-index-waarde om de pop-up op de voorgrond te plaatsen */
+}
+
+
+
+
+    .rode-dag:hover .les-popup {
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <div class="KalenderHeel">
@@ -60,6 +118,9 @@
       "December"
     ];
 
+    // Lessenarray ophalen uit PHP
+    const lessen = <?php echo $lessenJSON; ?>;
+
     const reloadKalender = () => {
       let EersteDagMaand = new Date(HuidigeJaar, HuidigeMaand, 1).getDay();
       let LaatsteDataMaand = new Date(HuidigeJaar, HuidigeMaand + 1, 0).getDate();
@@ -73,7 +134,31 @@
 
       for (let i = 1; i <= LaatsteDataMaand; i++) {
         let vandaag = i === datum.getDate() && HuidigeMaand === new Date().getMonth() && HuidigeJaar === new Date().getFullYear() ? "actief" : "";
-        li1 += `<li class="${vandaag}"><div class="day-wrapper" onclick="showPopup('Les', '${maanden[HuidigeMaand]} ${i}')">${i}</div></li>`;
+        let lesInformatie = "";
+
+        // Loop door de lessenarray en controleer op overeenkomende datums
+        lessen.forEach(les => {
+          let lesDatum = new Date(les.datum_tijd);
+          let lesDag = lesDatum.getDate();
+          let lesMaand = lesDatum.getMonth();
+          let lesJaar = lesDatum.getFullYear();
+
+          if (lesDag === i && lesMaand === HuidigeMaand && lesJaar === HuidigeJaar) {
+            let lesDoel = les.lesdoel;
+            let lesAdres = les.adres;
+            lesInformatie = `<div class="les-popup">
+                              <p>Lesdoel: ${lesDoel}</p>
+                              <p>Adres: ${lesAdres}</p>
+                              <p>Lesdag: ${lesDag}/${lesMaand}/${lesJaar}</p>
+                            </div>`;
+          }
+        });
+
+        let lesDagHTML = `<li class="${vandaag}${lesInformatie !== '' ? ' rode-dag' : ''}">
+                            <div class="day-wrapper">${i}</div>
+                            ${lesInformatie}
+                          </li>`;
+        li1 += lesDagHTML;
       }
 
       for (let i = LaatstedagMaand; i < 6; i++) {
@@ -101,63 +186,6 @@
         reloadKalender();
       });
     });
-
-    function showPopup(les, datum) {
-      var popup = document.createElement('div');
-      popup.className = 'popup';
-      popup.innerHTML = '<div class="popup-content">' +
-        '<h3>Melding</h3>' +
-        '<p><strong>Bericht:</strong> ' + les + '</p>' +
-        '<p><strong>Datum:</strong> ' + datum + '</p>' +
-        '<button class="popup-close" onclick="closePopup()">Sluiten</button>' +
-        '</div>';
-      document.body.appendChild(popup);
-    }
-
-    function closePopup() {
-      var popup = document.querySelector('.popup');
-      if (popup) {
-        popup.remove();
-      }
-    }
   </script>
-
-  <?php
-  // Maak de databaseverbinding
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $database = "vierkantewielendemo";
-
-  $conn = new mysqli($servername, $username, $password, $database);
-
-  // Controleer de verbinding
-  if ($conn->connect_error) {
-      die("Database connection failed: " . $conn->connect_error);
-  }
-
-  // Haal de lessen op voor de huidige gebruiker
-  session_start(); // Start de sessie
-  $ingelogdeGebruikerId = $_SESSION['gebruiker']['id_gebruiker']; // Haal het ingelogde gebruiker ID op
-  $sql = "SELECT * FROM les WHERE id_gebruiker = $ingelogdeGebruikerId";
-  $result = $conn->query($sql);
-
-  // Verwerk de resultaten en voeg de lesinformatie toe aan de kalender
-  if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-          $lesDatum = strtotime($row['datum_tijd']);
-          $lesDag = date('j', $lesDatum);
-          $lesMaand = date('n', $lesDatum) - 1; // Verlaag de maand met 1 om te compenseren voor nulindexering in JavaScript
-          $lesJaar = date('Y', $lesDatum);
-
-          // Voeg een extra class toe aan de agenda-items voor de lesdagen
-          echo "<script>document.querySelector(`.dagen li:nth-child($lesDag)`).classList.add('les-dag');</script>";
-      }
-  }
-
-  // Sluit de databaseverbinding
-  $conn->close();
-  ?>
-
 </body>
 </html>

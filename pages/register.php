@@ -81,30 +81,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li>3</li>
                     </div>
                 </div>
-                <div class="tarieven_card">
-                    <div class="left_side_tarieven_card">
-                        <h3>lespakket 2</h3>
-                        <p>€2424,-</p>
-                    </div>
-                    <div class="right_side_tarieven_card">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                    </div>
+                <div class="right_side_tarieven_card">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
                 </div>
-                <div class="tarieven_card">
-                    <div class="left_side_tarieven_card">
-                        <h3>lespakket 3</h3>
-                        <p>€2872,-</p>
-                    </div>
-                    <div class="right_side_tarieven_card">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                    </div>
+            </div>
+            <div class="tarieven_card">
+                <div class="left_side_tarieven_card">
+                    <h3>lespakket 2</h3>
+                    <p>€2424,-</p>
+                </div>
+                <div class="right_side_tarieven_card">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </div>
+            </div>
+            <div class="tarieven_card">
+                <div class="left_side_tarieven_card">
+                    <h3>lespakket 3</h3>
+                    <p>€2872,-</p>
+                </div>
+                <div class="right_side_tarieven_card">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
                 </div>
             </div>
         </div>
-    </body>
-
+    </div>
+</body>
 </html>

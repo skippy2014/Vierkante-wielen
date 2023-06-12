@@ -25,8 +25,8 @@ if (isset($_POST['login_button'])) {
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
                 "achternaam" => $row["achternaam"],
-                "telefoonnummer" => $row["telefoon"],
                 "rol" => $row["rol"]
+                "telefoonnummer" => $row["telefoon"],
             );
 
             $idCheck = $_SESSION["gebruiker"]["id_gebruiker"];
@@ -65,7 +65,21 @@ if (isset($_POST['login_button'])) {
                 <br><br>
             </form>
 
-        </div>
-    </body>
+            <?php
+            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
+                echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['rol'] === 'eigenaar') {
+                echo '<p><a href="homepage_admin.php">Eigenaar</a></p>';
+            }
+            ?>
+
+
+        </form>
+
+    </div>
+</body>
 
 </html>

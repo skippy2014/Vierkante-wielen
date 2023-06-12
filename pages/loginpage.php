@@ -1,20 +1,9 @@
 <?php
-session_start();
+include_once "../components/header.php";
 
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'vierkantewielendemo';
-
-$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
-}
-
-if (isset($_GET["loguit"])) {
-    $_SESSION = array();
-    session_destroy();
+if (isset($_SESSION['gebruiker'])) {
+    // User is logged in
+    header('location: ../account_settings.php');
 }
 
 if (isset($_POST['login_button'])) {
@@ -35,24 +24,26 @@ if (isset($_POST['login_button'])) {
                 "achternaam" => $row["achternaam"],
                 "telefoonnummer" => $row["telefoon"],
                 "id_gebruiker" => $row["id_gebruiker"],
+                "voornaam" => $row["voornaam"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
+                "achternaam" => $row["achternaam"],
+                "telefoonnummer" => $row["telefoon"],
                 "rol" => $row["rol"]
             );
 
-            echo "<script>console.log('id_gebruiker: " . $row["id_gebruiker"] . "');</script>";
+            $idCheck = $_SESSION["gebruiker"]["id_gebruiker"];
 
-            $message = "Welkom!";
+            $checkForles = "SELECT id_gebruiker FROM gebruiker_has_lespakket WHERE id_gebruiker = '$idCheck'";
+            $checkResult = $connection->query($checkForles);
 
-            //echo '<script>window.location.href = "/index.php";</script>';
-        } else {
-            $message = "Foutieve login gegevens";
+            if ($checkResult->num_rows > 0) {
+                header('Location: ../pages/account_settings.php');
+            } else {
+                header('Location: ../pages/select_lespakket.php');
+            }
         }
-    } else {
-        $message = "Foutieve login gegevens";
     }
-} else {
-    $message = "Login";
 }
 ?>
 

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php"
 } else {
     include_once "../include/db_conn.php";
 }
-if ($_SERVER['REQUEST_URI'] === dirname($_SERVER['PHP_SELF']) . "/index.php") {
+if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
     // The user is on the homepage
     ?>
     <style>

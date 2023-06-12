@@ -8,11 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tijd = $_POST["tijd"];
     $adres = $_POST["adres"];
     $lesdoel = $_POST["lesdoel"];
-    $opmerking = $_POST["opmerking"];
 
     if ($leerling != "" && $lesauto != "") {
-        $insertQuery = "INSERT INTO les (id_lesauto, id_gebruiker, id_instructeur, datum_tijd, adres, lesdoel, opmerking)
-                        VALUES ('$lesauto', '$leerling', '$instructeur', '$datum $tijd', '$adres', '$lesdoel', '$opmerking')";
+        $insertQuery = "INSERT INTO les (id_lesauto, id_gebruiker, id_instructeur, datum_tijd, adres, lesdoel)
+                        VALUES ('$lesauto', '$leerling', '$instructeur', '$datum $tijd', '$adres', '$lesdoel')";
 
         if (mysqli_query($connection, $insertQuery)) {
             $insertedId = mysqli_insert_id($connection);
@@ -108,7 +107,6 @@ $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
                 <input type="time" id="tijd" name="tijd" placeholder="Tijd" required>
                 <input type="text" id="adres" name="adres" placeholder="Ophaal adres" required>
                 <input type="text" id="lesdoel" name="lesdoel" placeholder="Lesdoel" required>
-                <input type="text" id="opmerking" name="opmerking" placeholder="Extra opmerking">
                 <button type="submit" value="Verstuur" id="submit-btn">Verstuur</button>
             </form>
         </div>

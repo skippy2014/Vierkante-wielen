@@ -108,16 +108,18 @@ if ($_SERVER['REQUEST_URI'] === dirname($_SERVER['PHP_SELF']) . "/index.php") {
         <li><a href="
         <?php
         if (isset($_SESSION['gebruiker'])) {
-            if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
-                echo "../pages/loginpage.php?loguit'>Logout";
-            } else {
-                echo "../index.php";
-            }
             // User is logged in
-            echo '/Vierkante-wielen/pages/loginpage.php?loguit">Logout</a></li>';
+            if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
+                echo 'pages/loginpage.php?loguit">Logout';
+            } else {
+                echo 'loginpage.php?loguit">Logout';
+            }
         } else {
-            // User is not logged in
-            echo '/Vierkante-wielen/pages/loginpage.php">Log in</a></li>';
+            if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php" || $_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/") {
+                echo 'pages/loginpage.php">Log in';
+            } else {
+                echo 'loginpage.php">Log in';
+            }
         }
         ?>
         </a></li>

@@ -21,7 +21,7 @@ else {
     $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, telefoon, wachtwoord, rol) VALUES ('$voornaam', '$achternaam', '$email', '$telefoon', '$password', '$rol')";
 
     if ($connection->query($sql) === TRUE) {
-        echo "Registration successful";
+       header ('Location: ../pages/account_settings.php');
     } else {
         echo "Error: " . $sql . "<br>" . $connection->error;
     }

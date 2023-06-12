@@ -39,7 +39,8 @@
           echo 'style="display:none"'; ?> id="LesToevoegen_btn">Les toevoegen</button>
         <button class="tablinks" onclick="openTab(event, 'Meldingen')" id="Meldingen_btn">Meldingen</button>
         <button class="tablinks" onclick="openTab(event, 'Upgrade')" id="Upgrade_btn">Upgrade</button>
-        <button class="tablinks" onclick="openTab(event, 'Register')" id="Register_btn">Register</button>
+        <button class="tablinks" onclick="openTab(event, 'Register')" <?php if (!$toonLesToevoegen)
+          echo 'style="display:none"'; ?> id="Register_btn">Register</button>
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
       </div>
 

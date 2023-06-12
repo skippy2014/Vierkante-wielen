@@ -4,18 +4,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-
-
-
   <?php
   include_once '../components/header.php';
-
-
-  if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
-
-    echo '<div> div </div>';
-
-  }
 
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in
@@ -29,7 +19,6 @@
   ?>
 
   <body>
-    <br><br><br><br>
     <div class="layout">
       <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Overzicht')" id="Overzicht_btn">Overzichtspagina</button>

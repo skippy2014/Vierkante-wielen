@@ -16,10 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_query($connection, $insertQuery)) {
             $insertedId = mysqli_insert_id($connection);
 
-            $meldingQuery = "INSERT INTO melding (id_les, id_gebruiker, bericht, datum_tijd)
-                             VALUES ('$insertedId', '$leerling', 'Een nieuwe les is ingepland.', NOW())";
+            $meldingQuery1 = "INSERT INTO melding (id_les, id_gebruiker, bericht, datum_tijd)
+                  VALUES ('$insertedId', '$leerling', 'Een nieuwe les is ingepland.', NOW())";
 
-            if (mysqli_query($connection, $meldingQuery)) {
+            $meldingQuery2 = "INSERT INTO melding (id_les, id_instructeur, bericht, datum_tijd)
+                  VALUES ('$insertedId', '$instructeur', 'Een nieuwe les is ingepland.', NOW())";
+
+            // Convert idinsttructeur to id_gebruiker with role
+
+            if (mysqli_query($connection, $meldingQuery1) && mysqli_query($connection, $meldingQuery2)) {
                 $instructeurQuery = "SELECT CONCAT(voornaam, ' ', achternaam) AS instructeur_naam FROM gebruiker WHERE id_gebruiker = '$instructeur'";
                 $instructeurResult = mysqli_query($connection, $instructeurQuery);
 
@@ -61,52 +66,60 @@ $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/style.css">
-        
+
         <title>Vierkanten Wielen</title>
     </head>
 
     <body>
         <div class="form-container">
             <form method="POST" action="">
-                <div class="form-row">
-                    <label for="leerling-select">Selecteer Leerling:</label>
-                    <select id="leerling-select" name="leerling-select" required>
-                        <option value="" disabled selected>-- Selecteer leerling --</option>
-                        <?php
-                        while ($row = mysqli_fetch_assoc($leerlingResult)) {
-                            echo '<option value="' . $row['id_gebruiker'] . '">' . $row['naam'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
+                <div class="flex">
+                    <div>
+                        <div class="form-row">
+                            <label for="leerling-select">Selecteer Leerling:</label>
+                            <select id="leerling-select" name="leerling-select" required>
+                                <option value="" disabled selected>-- Selecteer leerling --</option>
+                                <?php
+                                while ($row = mysqli_fetch_assoc($leerlingResult)) {
+                                    echo '<option value="' . $row['id_gebruiker'] . '">' . $row['naam'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
 
-                <div class="form-row">
-                    <label for="instructeur-select">Selecteer Instructeur:</label>
-                    <select id="instructeur-select" name="instructeur-select" required>
-                        <?php
-                        while ($row = mysqli_fetch_assoc($instructeurResult)) {
-                            $selected = $row['id_gebruiker'] == $ingelogdeInstructeurId ? 'selected' : '';
-                            echo '<option value="' . $row['id_gebruiker'] . '" ' . $selected . '>' . $row['naam'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
+                        <div class="form-row">
+                            <label for="instructeur-select">Selecteer Instructeur:</label>
+                            <select id="instructeur-select" name="instructeur-select" required>
+                                <?php
+                                while ($row = mysqli_fetch_assoc($instructeurResult)) {
+                                    $selected = $row['id_gebruiker'] == $ingelogdeInstructeurId ? 'selected' : '';
+                                    echo '<option value="' . $row['id_gebruiker'] . '" ' . $selected . '>' . $row['naam'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
 
-                <div class="form-row">
-                    <label for="auto-select">Selecteer Lesauto:</label>
-                    <select id="auto-select" name="auto-select" required>
-                        <option value="" disabled selected>-- Selecteer auto --</option>
-                        <?php
-                        while ($row = mysqli_fetch_assoc($lesautoResult)) {
-                            echo '<option value="' . $row['id_lesauto'] . '">' . $row['auto'] . '</option>';
-                        }
-                        ?>
-                    </select>
+                        <div class="form-row">
+                            <label for="auto-select">Selecteer Lesauto:</label>
+                            <select id="auto-select" name="auto-select" required>
+                                <option value="" disabled selected>-- Selecteer auto --</option>
+                                <?php
+                                while ($row = mysqli_fetch_assoc($lesautoResult)) {
+                                    echo '<option value="' . $row['id_lesauto'] . '">' . $row['auto'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="datum">Selecteer Datum:</label>
+                        <input type="date" id="datum" name="datum" placeholder="Datum" required>
+                        <label for="tijd">Selecteer Tijd:</label>
+                        <input type="time" id="tijd" name="tijd" placeholder="Tijd" required>
+                        <input type="text" id="adres" name="adres" placeholder="Ophaal adres" required>
+                        <input type="text" id="lesdoel" name="lesdoel" placeholder="Lesdoel" required>
+                    </div>
                 </div>
-                <input type="date" id="datum" name="datum" placeholder="Datum" required>
-                <input type="time" id="tijd" name="tijd" placeholder="Tijd" required>
-                <input type="text" id="adres" name="adres" placeholder="Ophaal adres" required>
-                <input type="text" id="lesdoel" name="lesdoel" placeholder="Lesdoel" required>
                 <button type="submit" value="Verstuur" id="submit-btn">Verstuur</button>
             </form>
         </div>

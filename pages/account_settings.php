@@ -12,7 +12,9 @@
     $rol = $_SESSION['gebruiker']['rol'];
   } else {
     header('location: loginpage.php');
+    exit(); // Make sure to exit after redirecting
   }
+
 
   // Controleer of de gebruiker de rol "instructeur" heeft
   $toonLesToevoegen = ($rol == "instructeur" || $rol == "eigenaar");

@@ -1,0 +1,194 @@
+.kalenderBox {
+  width: -webkit-fill-available;
+  background: #F2F2F2;
+}
+
+.KalenderHeel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 110vh;
+}
+
+.kalenderBox header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px 10px;
+  justify-content: space-between;
+  background-color: #E7E7E7;
+}
+
+.Huidige-Datum {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  text-overflow: ellipsis;
+  width: max-content;
+  margin-right: 10px;
+}
+
+header .Huidige-Datum {
+  font-size: 27px;
+  display: inline-block;
+}
+
+header .pijltjes {
+  display: flex;
+  align-items: center;
+  font-size: 27px;
+  color: var(--font-color);
+}
+
+.pijltje {
+  cursor: pointer;
+  user-select: none;
+}
+
+.vandaagButton button {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-size: 20px;
+  border: none;
+  border-radius: 11px;
+  box-shadow: 4px 4px 11px #00000029;
+  padding: 0.4vw 1.5vh;
+  cursor: pointer;
+  margin-right: 3.5vw;
+}
+
+.lesButton button {
+  background-color: rgb(148, 6, 6);
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 11px;
+  box-shadow: 4px 4px 11px #00000029;
+  padding: 0.4vw 1.5vh;
+  cursor: pointer;
+  margin-left: 3.5vw;
+}
+
+.lesButton button a {
+  text-decoration: none;
+  color: var(--neutral-color);
+}
+
+.kalender {
+  padding: 20px;
+  height: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+.kalender li {
+  width: calc(100% / 7);
+  font-size: 20px;
+}
+
+.kalender ul {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.kalender .dagen {
+  margin-bottom: 17px;
+}
+
+.kalender .dagen li {
+  cursor: pointer;
+  position: relative;
+  margin-top: 4vh;
+  width: calc(100% / 7 - 14px);
+  /* Adjust the width as needed */
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.dagen li.inactief {
+  color: #878787;
+}
+
+.dagen li.actief {
+  color: var(--secondary-color);
+  z-index: 1;
+}
+
+.dagen li::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 15%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 2px solid transparent;
+  pointer-events: none;
+}
+
+.dagen li.actief::before {
+  background: var(--additional-neutral-color);
+  z-index: -1;
+}
+
+.dagen li:not(.actief):hover::before {
+  background: var(--neutral-color);
+  border: 2px solid rgb(148, 6, 6);
+}
+
+.rood {
+  background-color: red;
+}
+
+/* Add the following styles for the popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.popup-content {
+  background-color: var(--neutral-color);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.popup-close {
+  margin-top: 10px;
+}
+
+.rode-dag {
+  color: var(--inverted-font-color);
+  background: var(--secondary-color);
+  border: 2px solid rgb(148, 6, 6);
+}
+
+.les-popup {
+  position: absolute;
+  display: none;
+  left: 0;
+  color: var(--font-color);
+  background-color: var(--neutral-color);
+  padding: 20px;
+  border: 1px solid black;
+  width: 200px;
+  /* Aanpassen aan de gewenste breedte */
+  height: auto;
+  /* Hiermee wordt de hoogte automatisch aangepast aan de inhoud */
+  z-index: 1;
+  /* Zet een hoge z-index-waarde om de pop-up op de voorgrond te plaatsen */
+}
+
+.rode-dag:hover .les-popup {
+  display: block;
+}

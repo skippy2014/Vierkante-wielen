@@ -11,10 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Check if a search query is submitted
 if (isset($_POST["search"])) {
     $searchQuery = $_POST["search"];
-    $sql = "SELECT * FROM gebruiker WHERE voornaam LIKE '%$searchQuery%'";
+    $sql = "SELECT * FROM gebruiker WHERE id_gebruiker LIKE '%$searchQuery%'";
 } else {
     $sql = "SELECT * FROM gebruiker";
 }

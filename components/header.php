@@ -4,6 +4,13 @@
 
 <header class="navbar">
     <?php
+
+    if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
+        // The user is on the homepage
+        include_once "include/db_conn.php";
+    } else {
+        include_once "../include/db_conn.php";
+    }
     if ($_SERVER['REQUEST_URI'] === "/Vierkante-wielen/" . "index.php") {
         // The user is on the homepage
         ?>

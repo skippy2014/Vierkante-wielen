@@ -2,7 +2,7 @@
     <h2>Overzicht</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE OVERZICHTSPAGINA'S -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/overzicht-informatie.php");
+    include_once "../include/overzicht-informatie.php";
     ?>
 </div>
 
@@ -10,7 +10,7 @@
     <h2>Accountinstellingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS VOOR DE ACCOUNTSINSTELLINGEN -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/accountinstellingen-informatie.php");
+    include_once "../include/accountinstellingen-informatie.php";
     ?>
 </div>
 
@@ -18,14 +18,14 @@
     <h2>Meldingen</h2>
     <!-- HIER KOMEN ALLE COMPONENTS OM JE MELDINGEN TE ZIEN -->
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "include/meldingen-informatie.php");
+    include_once "../include/meldingen-informatie.php";
     ?>
 </div>
 
 <div id="LesToevoegen" class="tabcontent">
     <h2>Les Toevoegen</h2>
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/Vierkante-wielen/" . "pages/les_toevoegen.php");
+    include_once "../pages/les_toevoegen.php";
     ?>
 </div>
 

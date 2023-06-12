@@ -64,9 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <option value="Pakket3">Instap pakket 3</option>
                 </select>
                 <button type="submit" class="btn" name="reg_user">Register</button>
-                <p>Sta je al ingeschreven? Log
-                    <a href="loginpage.php">hier</a> in
-                </p>
+                <p>Sta je al ingeschreven? Log <a href="loginpage.php">hier</a> in</p>
             </form>
             <div class="tarieven_grid">
                 <!-- LIJST MET TARIEVEN -->
@@ -76,41 +74,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <p>€2004,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="right_side_tarieven_card">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
+                <div class="tarieven_card">
+                    <div class="left_side_tarieven_card">
+                        <h3>lespakket 2</h3>
+                        <p>€2424,-</p>
+                    </div>
+                    <div class="right_side_tarieven_card">
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tarieven_card">
+                    <div class="left_side_tarieven_card">
+                        <h3>lespakket 3</h3>
+                        <p>€2872,-</p>
+                    </div>
+                    <div class="right_side_tarieven_card">
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="tarieven_card">
-                <div class="left_side_tarieven_card">
-                    <h3>lespakket 2</h3>
-                    <p>€2424,-</p>
-                </div>
-                <div class="right_side_tarieven_card">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </div>
-            </div>
-            <div class="tarieven_card">
-                <div class="left_side_tarieven_card">
-                    <h3>lespakket 3</h3>
-                    <p>€2872,-</p>
-                </div>
-                <div class="right_side_tarieven_card">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </div>
-            </div>
-        </div>
         </div>
     </body>
+
 
 </html>

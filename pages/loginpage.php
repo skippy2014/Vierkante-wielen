@@ -46,7 +46,6 @@ if (isset($_POST['login_button'])) {
 
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <html>

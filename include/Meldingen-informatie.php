@@ -4,7 +4,6 @@ $gebruikerId = $_SESSION["gebruiker"]["id_gebruiker"];
 
 $sql = "SELECT * FROM melding WHERE id_gebruiker = $gebruikerId";
 $result = $connection->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -66,33 +65,10 @@ $result = $connection->query($sql);
                 margin-top: 10px;
             }
         </style>
-        <script>
-            function showPopup(bericht, datum) {
-                var popup = document.createElement('div');
-                popup.className = 'popup';
-                popup.innerHTML = '<div class="popup-content">' +
-                    '<h3>Melding</h3>' +
-                    '<p><strong>Bericht:</strong> ' + bericht + '</p>' +
-                    '<p><strong>Datum:</strong> ' + datum + '</p>' +
-                    '<button class="popup-close" onclick="closePopup()">Sluiten</button>' +
-                    '</div>';
-                document.body.appendChild(popup);
-            }
-
-            function closePopup() {
-                var popup = document.querySelector('.popup');
-                if (popup) {
-                    popup.remove();
-                }
-            }
-        </script>
-    </head>
 
     <body>
-
         <div class="parent-box">
             <h2>Meldingen</h2>
-
             <div class="meldingen-container">
                 <?php
                 if ($result->num_rows > 0) {
@@ -107,9 +83,7 @@ $result = $connection->query($sql);
                 }
                 ?>
             </div>
-
         </div>
-
     </body>
 
 </html>

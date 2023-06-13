@@ -1,5 +1,5 @@
 <?php
-require_once "../include/db_conn.php";
+require '../include/db_conn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["role"]) && isset($_POST["userID"])) {
@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userID = $_POST["userID"];
 
         $updateQuery = "UPDATE gebruiker SET rol = '$selectedRole' WHERE id_gebruiker = $userID";
-        $conn->query($updateQuery);
+        $connection->query($updateQuery);
     }
 }
 
@@ -18,7 +18,7 @@ if (isset($_POST["search"])) {
     $sql = "SELECT * FROM gebruiker";
 }
 
-$result = $conn->query($sql);
+$result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<form method='post'>";
@@ -62,5 +62,5 @@ if ($result->num_rows > 0) {
     echo "No results found.";
 }
 
-$conn->close();
+$connection->close();
 ?>

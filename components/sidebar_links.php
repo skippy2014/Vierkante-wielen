@@ -35,7 +35,7 @@
 
 </div>
 
-<div id="LeerlingLijst" class="tabcontent">
+<div id="Leerlinglijst" class="tabcontent">
     <h2>Leerlingen Lijst</h2>
     <?php
     include_once "../components/leerlingen-list.php";
@@ -43,7 +43,7 @@
     <!-- HIER KOMEN ALLE COMPONENTS OM account aantemaken -->
 </div>
 
-<div id="WerknemersLijst" class="tabcontent">
+<div id="Werknemerslijst" class="tabcontent">
     <h2>WerknemersLijst Lijst</h2>
     <?php
     include_once "../components/werknemers_list.php";

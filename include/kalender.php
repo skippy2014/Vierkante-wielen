@@ -1,5 +1,4 @@
 <?php
-// Databaseverbinding instellen
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,32 +10,25 @@ if ($conn->connect_error) {
   die("Verbinding met de database mislukt: " . $conn->connect_error);
 }
 
-// Controleren of de gebruiker is ingelogd en de id_gebruiker ophalen
 if (isset($_SESSION["gebruiker"]["id_gebruiker"])) {
   $id_gebruiker = $_SESSION["gebruiker"]["id_gebruiker"];
 
-  // Query om lessen op te halen voor de ingelogde gebruiker en instructeur
   $sql = "SELECT datum_tijd, lesdoel, adres FROM les WHERE id_gebruiker = '$id_gebruiker' OR id_instructeur = '$id_gebruiker'";
   $result = $conn->query($sql);
 
-  // Array maken om de lessen op te slaan
   $lessen = array();
 
   if ($result->num_rows > 0) {
-    // Gegevens van elke les in de array opslaan
     while ($row = $result->fetch_assoc()) {
       $lessen[] = $row;
     }
   }
 } else {
-  // Handle the case when the "id_gebruiker" key is not set
-  // You can set a default value or show an error message
-  $lessen = array(); // Empty array if not logged in
+  $lessen = array();
 }
 
 $conn->close();
 
-// Lessenarray omzetten naar JSON-string
 $lessenJSON = json_encode($lessen);
 ?>
 
@@ -108,7 +100,6 @@ $lessenJSON = json_encode($lessen);
     "December"
   ];
 
-      // Lessenarray ophalen uit PHP
       const lessen = <?php echo $lessenJSON; ?>;
 
       const reloadKalender = () => {
@@ -126,7 +117,6 @@ $lessenJSON = json_encode($lessen);
           let vandaag = i === datum.getDate() && HuidigeMaand === new Date().getMonth() && HuidigeJaar === new Date().getFullYear() ? "actief" : "";
           let lesInformatie = "";
 
-          // Loop door de lessenarray en controleer op overeenkomende datums
           lessen.forEach(les => {
             let lesDatum = new Date(les.datum_tijd);
             let lesDag = lesDatum.getDate();

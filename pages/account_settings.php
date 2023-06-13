@@ -36,68 +36,67 @@
       </div>
       <?php include_once '../components/sidebar_links.php'; ?>
     </div>
+  </body>
 
-    <script>
-      // Wait until document is fully loaded
-      document.addEventListener("DOMContentLoaded", function () {
-        // Remove overflow property to restore scrolling
-        document.body.style.overflow = "auto";
+  <script>
+    // Wait until document is fully loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      // Remove overflow property to restore scrolling
+      document.body.style.overflow = "auto";
 
-        // Scroll to top of page
-        window.scrollTo(0, 0);
-      });
-      function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-        document.documentElement.scrollTop = 0; // Scroll to the top of the page
+      // Scroll to top of page
+      window.scrollTo(0, 0);
+    });
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
       }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+      document.documentElement.scrollTop = 0; // Scroll to the top of the page
+    }
 
-      // Initialize the page by opening the first tab or the tab specified in the hash
+    // Initialize the page by opening the first tab or the tab specified in the hash
+    var hash = window.location.hash.substring(1);
+    if (hash) {
+      document.querySelector(".tablinks[id='" + hash + "_btn']").click();
+    } else {
+      document.getElementById("Overzicht_btn").click();
+    }
+
+    // Initialize an event listener for each button
+    document.getElementById("LesToevoegen_btn").addEventListener("click", function () {
+      window.location.hash = "LesToevoegen";
+    });
+    document.getElementById("Overzicht_btn").addEventListener("click", function () {
+      window.location.hash = "Overzicht";
+    });
+    document.getElementById("Accountsettings_btn").addEventListener("click", function () {
+      window.location.hash = "Accountsettings";
+    });
+    document.getElementById("Meldingen_btn").addEventListener("click", function () {
+      window.location.hash = "Meldingen";
+    });
+    document.getElementById("Subscription_btn").addEventListener("click", function () {
+      window.location.hash = "Subscription";
+    });
+    document.getElementById("Register_btn").addEventListener("click", function () {
+      window.location.hash = "Register";
+    });
+
+    // Update tab content when URL hash changes
+    window.addEventListener("hashchange", function () {
       var hash = window.location.hash.substring(1);
       if (hash) {
         document.querySelector(".tablinks[id='" + hash + "_btn']").click();
-      } else {
-        document.getElementById("Overzicht_btn").click();
       }
-
-      // Initialize an event listener for each button
-      document.getElementById("LesToevoegen_btn").addEventListener("click", function () {
-        window.location.hash = "LesToevoegen";
-      });
-      document.getElementById("Overzicht_btn").addEventListener("click", function () {
-        window.location.hash = "Overzicht";
-      });
-      document.getElementById("Accountsettings_btn").addEventListener("click", function () {
-        window.location.hash = "Accountsettings";
-      });
-      document.getElementById("Meldingen_btn").addEventListener("click", function () {
-        window.location.hash = "Meldingen";
-      });
-      document.getElementById("Subscription_btn").addEventListener("click", function () {
-        window.location.hash = "Subscription";
-      });
-      document.getElementById("Register_btn").addEventListener("click", function () {
-        window.location.hash = "Register";
-      });
-
-      // Update tab content when URL hash changes
-      window.addEventListener("hashchange", function () {
-        var hash = window.location.hash.substring(1);
-        if (hash) {
-          document.querySelector(".tablinks[id='" + hash + "_btn']").click();
-        }
-      });
-    </script>
-
-  </body>
+    });
+  </script>
 
 </html>

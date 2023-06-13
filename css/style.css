@@ -624,16 +624,18 @@
 
  .layout {
    display: flex;
-   margin: 100px 0;
+   margin: 100px 0 0 30%;
  }
 
  /* Style the tab */
  .tab {
    float: left;
    background-color: #f1f1f1;
-   min-width: 25vw;
+   min-width: 30%;
    height: 70vh;
    border-radius: var(--border-rad);
+   position: fixed;
+   transform: translateX(-100%);
  }
 
  /* Style the buttons inside the tab */

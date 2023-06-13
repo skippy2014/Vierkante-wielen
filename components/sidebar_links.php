@@ -2,7 +2,7 @@
     <h2>Overzicht</h2>
     <?php
     include_once "../include/overzicht-informatie.php";
-    include_once "../include/kalender.php";
+    include_once "../components/kalender.php";
     ?>
 </div>
 

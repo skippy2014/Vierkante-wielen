@@ -332,6 +332,10 @@
    grid-template-columns: repeat(3, 1fr);
    height: 900px;
    font-size: 32px;
+<<<<<<< HEAD
+=======
+   max-width: 1920px !important;
+>>>>>>> homepage
  }
 
  .pakket0 {

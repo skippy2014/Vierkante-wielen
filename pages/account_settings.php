@@ -18,6 +18,8 @@
 
   // Controleer of de gebruiker de rol "instructeur" heeft
   $toonLesToevoegen = ($rol == "instructeur" || $rol == "eigenaar");
+  $alleenLeerling = ($rol === "leerling");
+  $alleenEigenaar = ($rol === "eigenaar");
   ?>
 
   <body>
@@ -64,6 +66,7 @@
       if (hash) {
         elemToClick = document.querySelector(".tablinks[id='" + hash + "_btn']");
       }
+    });
 
       elemToClick.click();
     });

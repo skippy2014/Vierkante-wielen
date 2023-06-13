@@ -1,5 +1,4 @@
 <?php
-// Databaseverbinding instellen
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,25 +10,30 @@ if ($conn->connect_error) {
   die("Verbinding met de database mislukt: " . $conn->connect_error);
 }
 
-// Query om lessen op te halen
-$sql = "SELECT datum_tijd, lesdoel, adres FROM les";
-$result = $conn->query($sql);
+if (isset($_SESSION["gebruiker"]["id_gebruiker"])) {
+  $id_gebruiker = $_SESSION["gebruiker"]["id_gebruiker"];
 
-// Array maken om de lessen op te slaan
-$lessen = array();
+  $sql = "SELECT datum_tijd, lesdoel, adres FROM les WHERE id_gebruiker = '$id_gebruiker' OR id_instructeur = '$id_gebruiker'";
+  $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-  // Gegevens van elke les in de array opslaan
-  while ($row = $result->fetch_assoc()) {
-    $lessen[] = $row;
+  $lessen = array();
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $lessen[] = $row;
+    }
   }
+} else {
+  $lessen = array();
 }
 
 $conn->close();
 
-// Lessenarray omzetten naar JSON-string
 $lessenJSON = json_encode($lessen);
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,28 +79,27 @@ $lessenJSON = json_encode($lessen);
     </div>
 
     <script>
-      const Dag1 = document.querySelector(".dagen");
-      const huidigeDag1 = document.querySelector(".Huidige-Datum");
-      const pijltjeLR = document.querySelectorAll(".pijltjes span");
-      let datum = new Date();
-      let HuidigeJaar = datum.getFullYear();
-      let HuidigeMaand = datum.getMonth();
-      const maanden = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
+  const Dag1 = document.querySelector(".dagen");
+  const huidigeDag1 = document.querySelector(".Huidige-Datum");
+  const pijltjeLR = document.querySelectorAll(".pijltjes span");
+  let datum = new Date();
+  let HuidigeJaar = datum.getFullYear();
+  let HuidigeMaand = datum.getMonth();
+  const maanden = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
 
-      // Lessenarray ophalen uit PHP
       const lessen = <?php echo $lessenJSON; ?>;
 
       const reloadKalender = () => {
@@ -114,7 +117,6 @@ $lessenJSON = json_encode($lessen);
           let vandaag = i === datum.getDate() && HuidigeMaand === new Date().getMonth() && HuidigeJaar === new Date().getFullYear() ? "actief" : "";
           let lesInformatie = "";
 
-          // Loop door de lessenarray en controleer op overeenkomende datums
           lessen.forEach(les => {
             let lesDatum = new Date(les.datum_tijd);
             let lesDag = lesDatum.getDate();

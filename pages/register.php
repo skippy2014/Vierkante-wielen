@@ -57,12 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" name="last_name" placeholder="Acthernaam" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Wachtwoord" required>
-                <select name="pakket" class="pakket">
-                    <option value="Default" disabled selected>Kies een instappakket</option>
-                    <option value="Pakket1">Instap pakket 1</option>
-                    <option value="Pakket2">Instap pakket 2</option>
-                    <option value="Pakket3">Instap pakket 3</option>
-                </select>
                 <button type="submit" class="btn" name="reg_user">Register</button>
                 <p>Sta je al ingeschreven? Log <a href="loginpage.php">hier</a> in</p>
             </form>

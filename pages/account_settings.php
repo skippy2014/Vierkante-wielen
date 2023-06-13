@@ -10,21 +10,15 @@
   <?php
   include_once '../components/header.php';
 
-
-  if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
-
-    echo '<div> div </div>';
-
-  }
-
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in
     $rol = $_SESSION['gebruiker']['rol'];
   } else {
     header('location: loginpage.php');
+    exit;
   }
 
-  // Controleer of de gebruiker de rol "instructeur" heeft
+  // Boolean variables for showing/hiding tabs based on user role
   $toonLesToevoegen = ($rol == "instructeur" || $rol == "eigenaar");
   $alleenLeerling = ($rol === "leerling");
   $alleenEigenaar = ($rol === "eigenaar");
@@ -34,94 +28,57 @@
     <br><br><br><br>
     <div class="layout">
       <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Overzicht')" id="Overzicht_btn">Overzichtspagina</button>
-        <button class="tablinks" onclick="openTab(event, 'Accountsettings')" id="Accountsettings_btn">Account
-          Instellingen</button>
-        <button class="tablinks" onclick="openTab(event, 'LesToevoegen')" <?php if (!$toonLesToevoegen)
-          echo 'style="display:none"'; ?> id="LesToevoegen_btn">Les toevoegen</button>
-        <button class="tablinks" onclick="openTab(event, 'Meldingen')" id="Meldingen_btn">Meldingen</button>
-        <button class="tablinks" onclick="openTab(event, 'Update')" <?php if (!$alleenLeerling)
-          echo 'style="display:none"'; ?> id="Update_btn">Update</button>
-        <button class="tablinks" onclick="openTab(event, 'LeerlingLijst')" <?php if (!$alleenEigenaar)
-          echo 'style="display:none"'; ?> id="LeerlingLijst_btn">Leerling Lijst</button>
-        <button class="tablinks" onclick="openTab(event, 'WerknemersLijst')" <?php if (!$alleenEigenaar)
-          echo 'style="display:none"'; ?> id="WerknemersLijst_btn">Werknemers Lijst</button>            
-          
-                  <button class="tablinks" onclick="openTab(event, 'Register')" <?php if (!$alleenEigenaar)
-          echo 'style="display:none"'; ?> id="Register_btn">Register</button>
+        <!-- Use a loop to generate tab buttons instead of repeating the code -->
+        <?php foreach ([['name' => 'Overzichtspagina', 'id' => 'Overzicht', 'hidden' => false], ['name' => 'Account Instellingen', 'id' => 'Accountsettings', 'hidden' => false], ['name' => 'Les toevoegen', 'id' => 'LesToevoegen', 'hidden' => !$toonLesToevoegen], ['name' => 'Meldingen', 'id' => 'Meldingen', 'hidden' => false], ['name' => 'Update', 'id' => 'Update', 'hidden' => !$alleenLeerling], ['name' => 'LeerlingLijst', 'id' => 'LeerlingLijst', 'hidden' => !$alleenEigenaar], ['name' => 'WerknemersLijst', 'id' => 'WerknemersLijst', 'hidden' => !$alleenEigenaar], ['name' => 'Register', 'id' => 'Register', 'hidden' => !$alleenEigenaar],] as $tab): ?>
+          <button class="tablinks" onclick="openTab(event, '<?= $tab['id'] ?>')" <?= $tab['hidden'] ? 'style="display:none" ' : '' ?> id="<?= $tab['id'] ?>_btn"><?= $tab['name'] ?></button>
+        <?php endforeach; ?>
+
         <button class="tablinks" onclick="window.location='loginpage.php?loguit'">Log Uit</button>
       </div>
 
       <?php include_once("../components/sidebar_links.php") ?>
     </div>
+  </body>
 
-    <script>
-      // Wait until document is fully loaded
-      document.addEventListener("DOMContentLoaded", function () {
-        // Remove overflow property to restore scrolling
-        document.body.style.overflow = "auto";
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.overflow = "auto";
+      window.scrollTo(0, 0);
+    });
 
-        // Scroll to top of page
-        window.scrollTo(0, 0);
+
+    function openTab(evt, tabName) {
+      const hideTabs = (query) => document.querySelectorAll(query).forEach(el => el.style.display = "none");
+      hideTabs('.tabcontent');
+      document.getElementById(tabName).style.display = "block";
+
+      const tablinks = document.getElementsByClassName("tablinks");
+      for (let link of tablinks) link.classList.remove('active');
+      evt.currentTarget.classList.add("active");
+
+      document.documentElement.scrollTop = 0;
+    }
+
+
+    window.addEventListener("load", function () {
+      document.getElementById("Overzicht_btn").click();
+    });
+
+    const buttons = ['LesToevoegen', 'Overzicht', 'Accountsettings', 'Meldingen', 'Upgrade', 'LeerlingLijst', 'WerknemersLijst', 'Register'];
+    for (let btn of buttons) {
+      document.getElementById(`${btn}_btn`).addEventListener('click', function () {
+        window.location.hash = btn;
       });
-      function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-        document.documentElement.scrollTop = 0; // Scroll to the top of the page
-      }
+    }
 
-      // Initialize the page by opening the first tab or the tab specified in the hash
+    window.addEventListener("hashchange", function () {
       var hash = window.location.hash.substring(1);
       if (hash) {
-        document.querySelector(".tablinks[id='" + hash + "_btn']").click();
-      } else {
-        document.getElementById("Overzicht_btn").click();
+        document.querySelector(`.tablinks[id='${hash}_btn']`).click();
       }
+    });
 
-      // Initialize an event listener for each button
-      document.getElementById("LesToevoegen_btn").addEventListener("click", function () {
-        window.location.hash = "LesToevoegen";
-      });
-      document.getElementById("Overzicht_btn").addEventListener("click", function () {
-        window.location.hash = "Overzicht";
-      });
-      document.getElementById("Accountsettings_btn").addEventListener("click", function () {
-        window.location.hash = "Accountsettings";
-      });
-      document.getElementById("Meldingen_btn").addEventListener("click", function () {
-        window.location.hash = "Meldingen";
-      });
-      document.getElementById("Upgrade_btn").addEventListener("click", function () {
-        window.location.hash = "Upgrade";
-      });
-      document.getElementById("LeerlingLijst_btn").addEventListener("click", function () {
-        window.location.hash = "LeerlingLijst";
-      });
-      document.getElementById("WerknemersLijst_btn").addEventListener("click", function () {
-        window.location.hash = "WerknemersLijst";
-      });
-      document.getElementById("Register_btn").addEventListener("click", function () {
-        window.location.hash = "Register";
-      });
+  </script>
 
-      // Update tab content when URL hash changes
-      window.addEventListener("hashchange", function () {
-        var hash = window.location.hash.substring(1);
-        if (hash) {
-          document.querySelector(".tablinks[id='" + hash + "_btn']").click();
-        }
-      });
-    </script>
-
-  </body>
 
 </html>

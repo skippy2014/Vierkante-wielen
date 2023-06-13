@@ -50,8 +50,6 @@
     <!-- HIER KOMEN ALLE COMPONENTS OM account aantemaken -->
 </div>
 
-
-
 <div id="Register" class="tabcontent">
     <h2>Register werknemer</h2>
     <?php

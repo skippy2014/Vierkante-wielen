@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <?php
-  include_once '../components/header.php';
 
   if (isset($_SESSION['gebruiker'])) {
     // User is logged in
@@ -21,6 +20,18 @@
   $alleenLeerling = ($rol === "leerling");
   $alleenEigenaar = ($rol === "eigenaar");
   ?>
+
+  // Print id_gebruiker in console
+  $id_gebruiker = $_SESSION['gebruiker']['id_gebruiker'];
+  echo '<script>console.log("' . $id_gebruiker . '");</script>';
+} else {
+  header('location: loginpage.php');
+}
+
+// Controleer of de gebruiker de rol "instructeur" heeft
+$toonLesToevoegen = ($rol == "instructeur");
+
+?>
 
   <body>
     <div class="layout">
@@ -113,6 +124,9 @@
         }
       });
     </script>
+
+    <a href="ziekmelden.php">Ziekmelden</a>
+
   </body>
 
 

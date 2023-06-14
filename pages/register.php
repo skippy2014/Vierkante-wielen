@@ -32,12 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($statement->execute() === true) {
             echo "Account aangemaakt!";
         } else {
-            echo "Error: " . $sql . "<br>" . $connection->error;
+            echo "Error: " . $sql . "<br>" . $connection->$error;
         }
     }
-
-    // Close the database connection.
-    $connection->close();
 }
 ?>
 

@@ -74,8 +74,6 @@ $connection->close();
 
 
 <body>
-
-  <h2>Afmelden</h2>
   <form method="POST" action="">
     <label for="reden_afmelding">Reden voor afmelding *:</label>
     <select name="reden_afmelding" id="reden_afmelding" onchange="toggleReasonField()">

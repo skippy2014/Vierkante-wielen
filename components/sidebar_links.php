@@ -36,7 +36,7 @@
 </div>
 
 <div id="ZiekMelden" class="tabcontent">
-    <h2>Abonnement kiezen</h2>
+    <h2>Afmelden/Ziekmelden</h2>
     <?php
     include_once "../components/ziekmelden.php";
     ?>

@@ -27,14 +27,14 @@
       <div class="tab">
         <?php
         $tabs = [
-          ['Overzichtspagina', 'Overzicht', true],
+          ['Overzicht', 'Overzicht', true],
           ['Account Instellingen', 'Accountsettings', true],
-          ['Les toevoegen', 'LesToevoegen', $toonLesToevoegen],
+          ['Les Toevoegen', 'LesToevoegen', $toonLesToevoegen],
           ['Meldingen', 'Meldingen', true],
           ['Abonnement', 'Subscription', $alleenLeerling],
           ['Leerlinglijst', 'Leerlinglijst', $alleenEigenaar],
           ['Werknemerslijst', 'Werknemerslijst', $alleenEigenaar],
-          ['ZiekMelden', 'ZiekMelden', true],
+          ['Ziek Melden', 'ZiekMelden', true],
           ['Register', 'Register', $alleenEigenaar],
         ];
 

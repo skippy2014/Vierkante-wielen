@@ -26,3 +26,21 @@ if (isset($_SESSION["gebruiker"])) {
 
     echo "</ul>";
 }
+
+$sql = "SELECT aantallessen FROM gebruiker_has_lespakket WHERE id_gebruiker = $id_gebruiker";
+
+// Execute the query
+$result = $connection->query($sql);
+
+// Check if the query executed successfully
+if ($result) {
+    // Fetch each row from the result set and print the aantallessen value
+    while ($row = $result->fetch_assoc()) {
+        echo "aantallessen: " . $row["aantallessen"] . "<br>";
+    }
+} else {
+    echo "Error: " . $sql . "<br>" . $connection->error;
+}
+
+// Close the database connection
+?>

@@ -35,6 +35,14 @@
 
 </div>
 
+<div id="ZiekMelden" class="tabcontent">
+    <h2>Abonnement kiezen</h2>
+    <?php
+    include_once "../components/ziekmelden.php";
+    ?>
+
+</div>
+
 <div id="Leerlinglijst" class="tabcontent">
     <h2>Leerlingen Lijst</h2>
     <?php

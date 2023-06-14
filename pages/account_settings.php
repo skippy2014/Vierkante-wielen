@@ -34,8 +34,10 @@
           ['Abonnement', 'Subscription', $alleenLeerling],
           ['Leerlinglijst', 'Leerlinglijst', $alleenEigenaar],
           ['Werknemerslijst', 'Werknemerslijst', $alleenEigenaar],
+          ['ZiekMelden', 'ZiekMelden', true],
           ['Register', 'Register', $toonLesToevoegen],
         ];
+
         foreach ($tabs as [$label, $id, $visible]) {
           if (!$visible) {
             continue;
@@ -96,6 +98,9 @@
         "Accountsettings_btn",
         "Meldingen_btn",
         "Subscription_btn",
+        "Leerlinglijst_btn",
+        "Werknemerslijst_btn",
+        "ZiekMelden_btn",
         "Register_btn",
       ];
 
@@ -104,6 +109,7 @@
           window.location.hash = btnId.substring(0, btnId.lastIndexOf("_"));
         });
       });
+
 
       // Update tab content when URL hash changes
       window.addEventListener("hashchange", function () {

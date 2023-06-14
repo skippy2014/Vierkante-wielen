@@ -37,7 +37,12 @@ if (isset($_POST['login_button'])) {
             if ($checkResult->num_rows > 0) {
                 header('Location: ../pages/account_settings.php');
             } else {
-                header('Location: ../pages/select_lespakket.php');
+                // Check the rol value and redirect accordingly
+                if ($_SESSION["gebruiker"]["rol"] === "instructeur" || $_SESSION["gebruiker"]["rol"] === "eigenaar") {
+                    header('Location: ../pages/account_settings.php');
+                } else {
+                    header('Location: ../pages/select_lespakket.php');
+                }
             }
         }
     }

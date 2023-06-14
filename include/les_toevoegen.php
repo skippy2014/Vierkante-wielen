@@ -1,62 +1,66 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $leerling = $_POST["leerling-select"];
-    $instructeur = $_POST["instructeur-select"];
-    $lesauto = $_POST["auto-select"];
-    $datum = $_POST["datum"];
-    $tijd = $_POST["tijd"];
-    $adres = $_POST["adres"];
-    $lesdoel = $_POST["lesdoel"];
+// Check if the logged-in user has the role 'instructeur'
+if ($_SESSION["gebruiker"]["rol"] == "instructeur") {
 
-    if ($leerling != "" && $lesauto != "") {
-        $insertQuery = "INSERT INTO les (id_lesauto, id_gebruiker, id_instructeur, datum_tijd, adres, lesdoel)
-                        VALUES ('$lesauto', '$leerling', '$instructeur', '$datum $tijd', '$adres', '$lesdoel')";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $leerling = $_POST["leerling-select"];
+        $instructeur = $_POST["instructeur-select"];
+        $lesauto = $_POST["auto-select"];
+        $datum = $_POST["datum"];
+        $tijd = $_POST["tijd"];
+        $adres = $_POST["adres"];
+        $lesdoel = $_POST["lesdoel"];
 
-        if (mysqli_query($connection, $insertQuery)) {
-            $insertedId = mysqli_insert_id($connection);
+        if ($leerling != "" && $lesauto != "") {
+            $insertQuery = "INSERT INTO les (id_lesauto, id_gebruiker, id_instructeur, datum_tijd, adres, lesdoel)
+                            VALUES ('$lesauto', '$leerling', '$instructeur', '$datum $tijd', '$adres', '$lesdoel')";
 
-            $meldingQuery = "INSERT INTO melding (id_les, id_gebruiker, bericht, datum_tijd)
-                            VALUES ('$insertedId', '$leerling', 'Een nieuwe les is ingepland.', NOW())";
+            if (mysqli_query($connection, $insertQuery)) {
+                $insertedId = mysqli_insert_id($connection);
 
-            if (mysqli_query($connection, $meldingQuery)) {
-                $instructeurQuery = "SELECT CONCAT(voornaam, ' ', achternaam) AS instructeur_naam FROM gebruiker WHERE id_gebruiker = '$instructeur'";
-                $instructeurResult = mysqli_query($connection, $instructeurQuery);
+                $meldingQuery = "INSERT INTO melding (id_les, id_gebruiker, bericht, datum_tijd)
+                                VALUES ('$insertedId', '$leerling', 'Een nieuwe les is ingepland.', NOW())";
 
-                if ($instructeurResult) {
-                    $instructeurRow = mysqli_fetch_assoc($instructeurResult);
-                    $instructeurNaam = $instructeurRow['instructeur_naam'];
-                    echo "Les succesvol aangemaakt voor de leerling: " . $instructeurNaam;
+                if (mysqli_query($connection, $meldingQuery)) {
+                    $instructeurQuery = "SELECT CONCAT(voornaam, ' ', achternaam) AS instructeur_naam FROM gebruiker WHERE id_gebruiker = '$instructeur'";
+                    $instructeurResult = mysqli_query($connection, $instructeurQuery);
 
-                    $updateAantalLessenQuery = "UPDATE gebruiker_has_lespakket SET aantallessen = aantallessen - 1 WHERE id_gebruiker = '$leerling'";
-                    $updateAantalLessenResult = mysqli_query($connection, $updateAantalLessenQuery);
-                    if (!$updateAantalLessenResult) {
-                        echo "Er is een fout opgetreden bij het bijwerken van het aantal lessen: " . mysqli_error($connection);
+                    if ($instructeurResult) {
+                        $instructeurRow = mysqli_fetch_assoc($instructeurResult);
+                        $instructeurNaam = $instructeurRow['instructeur_naam'];
+                        echo "Les succesvol aangemaakt voor de leerling: " . $instructeurNaam;
+
+                        $updateAantalLessenQuery = "UPDATE gebruiker_has_lespakket SET aantallessen = aantallessen - 1 WHERE id_gebruiker = '$leerling'";
+                        $updateAantalLessenResult = mysqli_query($connection, $updateAantalLessenQuery);
+                        if (!$updateAantalLessenResult) {
+                            echo "Er is een fout opgetreden bij het bijwerken van het aantal lessen: " . mysqli_error($connection);
+                        }
+                    } else {
+                        echo "Er is een fout opgetreden bij het ophalen van de instructeurgegevens: " . mysqli_error($connection);
                     }
                 } else {
-                    echo "Er is een fout opgetreden bij het ophalen van de instructeurgegevens: " . mysqli_error($connection);
+                    echo "Er is een fout opgetreden bij het opslaan van de gegevens en verzenden van de melding: " . mysqli_error($connection);
                 }
             } else {
-                echo "Er is een fout opgetreden bij het opslaan van de gegevens en verzenden van de melding: " . mysqli_error($connection);
+                echo "Er is een fout opgetreden bij het opslaan van de gegevens: " . mysqli_error($connection);
             }
         } else {
-            echo "Er is een fout opgetreden bij het opslaan van de gegevens: " . mysqli_error($connection);
+            echo "Selecteer a.u.b. een leerling en een auto.";
         }
-    } else {
-        echo "Selecteer a.u.b. een leerling en een auto.";
     }
 }
 
-$leerlingQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'leerling'";
-$leerlingResult = mysqli_query($connection, $leerlingQuery);
+    $leerlingQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'leerling'";
+    $leerlingResult = mysqli_query($connection, $leerlingQuery);
 
-$instructeurQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'instructeur'";
-$instructeurResult = mysqli_query($connection, $instructeurQuery);
+    $instructeurQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'instructeur'";
+    $instructeurResult = mysqli_query($connection, $instructeurQuery);
 
-$lesautoQuery = "SELECT id_lesauto, CONCAT(type, ' (', kenteken, ')') AS auto FROM lesauto";
-$lesautoResult = mysqli_query($connection, $lesautoQuery);
+    $lesautoQuery = "SELECT id_lesauto, CONCAT(type, ' (', kenteken, ')') AS auto FROM lesauto";
+    $lesautoResult = mysqli_query($connection, $lesautoQuery);
 
-$ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
+    $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
 ?>
 
     <!DOCTYPE html>

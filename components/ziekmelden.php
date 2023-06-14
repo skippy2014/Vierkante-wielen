@@ -62,17 +62,6 @@ mysqli_free_result($resultDates);
 $connection->close();
 ?>
 
-<!-- HTML code for the form -->
-
-
-
-
-
-
-
-
-
-
 <body>
   <form method="POST" action="">
     <label for="reden_afmelding">Reden voor afmelding *:</label>

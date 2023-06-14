@@ -35,7 +35,7 @@
           ['Leerlinglijst', 'Leerlinglijst', $alleenEigenaar],
           ['Werknemerslijst', 'Werknemerslijst', $alleenEigenaar],
           ['ZiekMelden', 'ZiekMelden', true],
-          ['Register', 'Register', $toonLesToevoegen],
+          ['Register', 'Register', $alleenEigenaar],
         ];
 
         foreach ($tabs as [$label, $id, $visible]) {

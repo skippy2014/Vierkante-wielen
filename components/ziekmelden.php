@@ -1,15 +1,6 @@
 <?php
-
 $id_gebruiker = $_SESSION['gebruiker']['id_gebruiker'];
-
-// Create a new mysqli connection
-$connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-// Check if the connection to the database is still open
-if ($connection->connect_error) {
-  die("Connection failed: " . $connection->connect_error);
-}
-
+include '../include/db_conn.php';
 // Fetch the dates associated with the user from the les table
 $dateQuery = "SELECT DISTINCT datum_tijd FROM les WHERE id_gebruiker = '$id_gebruiker' AND ziek = ''";
 $resultDates = mysqli_query($connection, $dateQuery);
@@ -24,36 +15,46 @@ while ($row = mysqli_fetch_assoc($resultDates)) {
 
 if (isset($_POST['submit'])) {
   $reden_afmelding = $_POST['reden_afmelding'];
-  $selected_date = $_POST['selected_date'];
 
-  if ($reden_afmelding === "anders") {
-    $anders_reden = $_POST['anders_reden'];
+  if (isset($_POST['selected_date'])) {
+    $selected_date = $_POST['selected_date'];
+  }
 
-    $updateOpmerkingQuery = "UPDATE les SET opmerking = '$anders_reden' WHERE id_gebruiker = '$id_gebruiker' AND datum_tijd = '$selected_date'";
-    $updateOpmerkingResult = mysqli_query($connection, $updateOpmerkingQuery);
-    if (!$updateOpmerkingResult) {
+  // add the if statement to check if $selected_date is empty after the submit button is pressed
+  if (empty($selected_date)) {
+    echo '<p style="color: red;">Selecteer a.u.b. een datum.</p>';
+  } else {
+    if ($reden_afmelding === 'anders') {
+      $anders_reden = $_POST['anders_reden'];
+
+      $updateOpmerkingQuery = "UPDATE les SET opmerking = '$anders_reden' WHERE id_gebruiker = '$id_gebruiker' AND datum_tijd = '$selected_date'";
+      $updateOpmerkingResult = mysqli_query($connection, $updateOpmerkingQuery);
+      if (!$updateOpmerkingResult) {
+        die("Query failed: " . mysqli_error($connection));
+      }
+    }
+
+    $updateQuery = "UPDATE les SET ziek = 1 WHERE id_gebruiker = '$id_gebruiker' AND datum_tijd = '$selected_date'";
+    $updateResult = mysqli_query($connection, $updateQuery);
+    if (!$updateResult) {
       die("Query failed: " . mysqli_error($connection));
     }
+
+    $updateAantalLessenQuery = "UPDATE gebruiker_has_lespakket SET aantallessen = aantallessen + 1 WHERE id_gebruiker = '$id_gebruiker'";
+    $updateAantalLessenResult = mysqli_query($connection, $updateAantalLessenQuery);
+    if (!$updateAantalLessenResult) {
+      die("Query failed: " . mysqli_error($connection));
+    }
+
+    // Close the mysqli connection
+    $connection->close();
+
+    header('Location: account_settings.php');
+    exit();
   }
-
-  $updateQuery = "UPDATE les SET ziek = 1 WHERE id_gebruiker = '$id_gebruiker' AND datum_tijd = '$selected_date'";
-  $updateResult = mysqli_query($connection, $updateQuery);
-  if (!$updateResult) {
-    die("Query failed: " . mysqli_error($connection));
-  }
-
-  $updateAantalLessenQuery = "UPDATE gebruiker_has_lespakket SET aantallessen = aantallessen + 1 WHERE id_gebruiker = '$id_gebruiker'";
-  $updateAantalLessenResult = mysqli_query($connection, $updateAantalLessenQuery);
-  if (!$updateAantalLessenResult) {
-    die("Query failed: " . mysqli_error($connection));
-  }
-
-  // Close the mysqli connection
-  $connection->close();
-
-  header('location: account_settings.php');
-  exit();
 }
+
+
 
 // Free the result set
 mysqli_free_result($resultDates);
@@ -95,5 +96,13 @@ $connection->close();
         reasonField.style.display = "none";
       }
     }
+    const dateInput = document.getElementById('selected_date');
+
+    dateInput.addEventListener('change', function () {
+      const selectedDate = dateInput.value;
+      if (selectedDate === '') {
+        console.log("Selecteer a.u.b. een datum.");
+      }
+    });
   </script>
 </body>

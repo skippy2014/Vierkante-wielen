@@ -299,6 +299,7 @@
    display: grid;
    grid-template-rows: repeat(3, 0.5fr);
    text-align: center;
+   padding-top:50px;
  }
 
  .Over-ons img {
@@ -332,10 +333,6 @@
    grid-template-columns: repeat(3, 1fr);
    height: 900px;
    font-size: 32px;
-<<<<<<< HEAD
-=======
-   max-width: 1920px !important;
->>>>>>> homepage
  }
 
  .pakket0 {
@@ -396,13 +393,26 @@
    text-align: center;
  }
 
+ .pakket1,
+ .pakket2,
+ .pakket3 {
+   background-color: rgb(148, 6, 6);
+   color: white;
+   margin-left: 30px;
+   margin-right: 30px;
+   border: none;
+   border-radius: var(--border-rad-large);
+   padding-top: 4vh;
+   text-align: center;
+ }
+
  .pakketD1,
  .pakketD2,
  .pakketD3 {
    background-color: rgb(235, 232, 232);
    color: black;
-   margin-left: 40px;
-   margin-right: 40px;
+   margin-left: 30px;
+   margin-right: 30px;
    padding-top: 5vh;
    border: none;
    border-bottom-left-radius: var(--border-rad-large);

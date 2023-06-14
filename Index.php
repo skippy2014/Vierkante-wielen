@@ -21,7 +21,7 @@
         <p>Klaar om de weg op te gaan? <br> Rijschool Vierkante wielen helpt je bij het behalen van je rijbewijs.<br>
           Wij bieden flexibele lessen en ervaren instructeurs <br> om je te helpen vertrouwen te krijgen achter het
           stuur
-          en klaar te zijn voor de weg. <br> Meld je vandaag nog aan!
+          en klaar te zijn voor de weg. <br><br> Meld je vandaag nog aan!
         </p>
         <a href="pages/register.php">
           <button>Schrijf je in!</button></a>
@@ -32,10 +32,10 @@
     <div class="info-rijschool">
       <h2 style="padding-top:25px;"> Informatie rijschool</h2>
       <br>
-      <p>Onze rijschool is gericht op klanten met een fysieke beperking <br> en we zijn er trots op dat we onze
+      <p>Onze rijschool is gericht op klanten met een fysieke beperking  en we zijn er trots op <br> dat we onze
         studenten kunnen helpen om snel en zelfverzekerd de weg op te gaan. <br>
-        We begrijpen de uitdagingen die gepaard gaan met het leren rijden met een fysieke beperking<br> en we
-        zijn er om onze studenten te ondersteunen en te begeleiden op hun reis naar het behalen van hun rijbewijs. <br>
+        We begrijpen de uitdagingen die gepaard gaan met het leren rijden met een fysieke beperking en we
+        zijn <br>er om onze studenten te ondersteunen en te begeleiden op hun reis naar het behalen van hun rijbewijs. <br><br>
         Onze lessen zijn rustig en doelgericht,<br> en of je nu net begint of al wat ervaring hebt, we hebben lessen
         die aansluiten op jou behoeften.<br> zodat onze studenten zich op hun gemak voelen en hun volledige aandacht
         kunnen richten op het leren rijden. </p>
@@ -44,7 +44,7 @@
     <div class="registration">
       <div class="regItem1"><img src="img/Bestuurder.png" alt="Bestuurder"></div>
       <div class="regItem2">
-        <h2> Waarom is autorijschool Vierkante wielen <br> de beste keuze?</h2>
+        <h2> Waarom is autorijschool <br> Vierkante wielen  de beste keuze?</h2> <br>
       </div>
       <div class="regItem3">
         <ul class="pros">
@@ -61,12 +61,12 @@
       <div class="onsD2">
         <h2>Over ons</h2>
         <p>Het is onze passie om mensen te helpen bij het leren rijden. We zijn trots op onze duidelijke uitleg,
-          professionele begeleiding <br> en de steun die we kunnen geven aan mensen met een fysieke beperking,
+          professionele begeleiding  en de steun die we kunnen geven<br> aan mensen met een fysieke beperking,
           waarmee we onze studenten in staat stellen<br> om snel en zelfverzekerd
           de weg op te gaan.</p>
       </div>
       <div class="onsD3">
-        <p>
+        <br><br><p>
           We willen onze studenten niet alleen helpen om hun rijbewijs te halen,<br> maar ook om hun
           onafhankelijkheid en vrijheid te vergroten.<br> We zijn er trots op dat we een verschil kunnen maken in het
           leven

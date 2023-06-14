@@ -34,7 +34,7 @@
           ['Abonnement', 'Subscription', $alleenLeerling],
           ['Leerlinglijst', 'Leerlinglijst', $alleenEigenaar],
           ['Werknemerslijst', 'Werknemerslijst', $alleenEigenaar],
-          ['Ziek Melden', 'ZiekMelden', true],
+          ['Ziek Melden', 'ZiekMelden', $alleenLeerling],
           ['Register', 'Register', $alleenEigenaar],
         ];
 

@@ -21,13 +21,10 @@ $lessenJSON = json_encode($lessen);
 <div class="KalenderHeel">
   <div class="kalenderBox">
     <header>
-      <div class="vandaagButton">
-        <button onclick="location.reload()">Vandaag</button>
-      </div>
       <div class="pijltjes">
         <span id="linksL" class="pijltje">
           < </span>
-            <p class="Huidige-Datum"></p>
+            <p class="Huidige-Datum" onclick="location.reload()"></p>
             <span id="rechts" class="pijltje">></span>
       </div>
     </header>

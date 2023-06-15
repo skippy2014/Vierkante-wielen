@@ -739,19 +739,13 @@
    padding: 15px 40px;
    justify-content: space-between;
    background-color: #E7E7E7;
- }
-
- .Huidige-Datum {
-   padding-left: 2vw;
-   padding-right: 2vw;
-   text-overflow: ellipsis;
-   width: max-content;
-   margin-right: 10px;
+   justify-content: center;
  }
 
  header .Huidige-Datum {
    font-size: 27px;
    display: inline-block;
+   cursor: pointer;
  }
 
  header .pijltjes {
@@ -764,6 +758,9 @@
  .pijltje {
    cursor: pointer;
    user-select: none;
+   margin: 10px 20px;
+   font-weight: bold;
+   font-family: monospace;
  }
 
  .vandaagButton button {

@@ -13,9 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (isset($_POST["search"])) {
     $searchQuery = $_POST["search"];
-    $sql = "SELECT * FROM gebruiker WHERE id_gebruiker LIKE '%$searchQuery%'";
+    $sql = "SELECT * FROM gebruiker WHERE id_gebruiker LIKE '%$searchQuery%' AND rol <> 'leerling'";
 } else {
-    $sql = "SELECT * FROM gebruiker";
+    $sql = "SELECT * FROM gebruiker WHERE rol <> 'leerling'";
 }
 
 $result = $connection->query($sql);

@@ -667,6 +667,7 @@
  .tabcontent {
    float: left;
    padding: 0px 12px;
+   width: -webkit-fill-available;
    height: 300px;
  }
 

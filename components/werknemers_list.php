@@ -22,7 +22,7 @@ $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<form method='post'>";
-    echo "<input type='text' name='search' placeholder='Voer Voornaam in' />";
+    echo "<input type='text' name='search' placeholder='Voer ID in' />";
     echo "<button type='submit'>Zoeken</button>";
     echo "</form>";
 

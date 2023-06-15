@@ -544,9 +544,8 @@
 
  .tarieven_card {
    display: flex;
-   width: 40vw;
    height: 20vh;
-   margin: 1rem;
+   margin: 1rem 4rem 1rem 1rem;
  }
 
  .left_side_tarieven_card {
@@ -554,7 +553,7 @@
    color: var(--inverted-font-color);
    font-size: 12px;
    height: 20vh;
-   width: 24vw;
+   min-width: 16vw;
    border-radius: var(--border-rad-large) 0 0 var(--border-rad-large);
    flex-flow: column;
    display: flex;
@@ -582,6 +581,7 @@
    text-align: start;
    margin: 2.4vh 0 0 3vh;
    font-size: 3vh;
+   white-space: nowrap;
  }
 
  .right_side_tarieven_card li::marker {

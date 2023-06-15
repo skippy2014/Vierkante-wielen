@@ -45,9 +45,6 @@ $lessenJSON = json_encode($lessen);
             <p class="Huidige-Datum"></p>
             <span id="rechts" class="pijltje">></span>
       </div>
-      <div class="lesButton">
-        <button><a href="/pages/nieuwe_les_inplannen.php">Les aanmaken</a></button>
-      </div>
     </header>
     <div class="kalender">
       <ul class="weeks">

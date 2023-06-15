@@ -1,6 +1,8 @@
 <?php
-$id_gebruiker = $_SESSION['gebruiker']['id_gebruiker'];
 include '../include/db_conn.php';
+
+$id_gebruiker = $_SESSION['gebruiker']['id_gebruiker'];
+
 // Fetch the dates associated with the user from the les table
 $dateQuery = "SELECT DISTINCT datum_tijd FROM les WHERE id_gebruiker = '$id_gebruiker' AND ziek = ''";
 $resultDates = mysqli_query($connection, $dateQuery);
@@ -12,6 +14,9 @@ $dates = array();
 while ($row = mysqli_fetch_assoc($resultDates)) {
   $dates[] = $row['datum_tijd'];
 }
+
+// Free the result set
+mysqli_free_result($resultDates);
 
 if (isset($_POST['submit'])) {
   $reden_afmelding = $_POST['reden_afmelding'];
@@ -49,15 +54,11 @@ if (isset($_POST['submit'])) {
     // Close the mysqli connection
     $connection->close();
 
-    header('Location: account_settings.php');
+    // Redirect to account_settings.php
+    echo '<script>window.location.href = "account_settings.php";</script>';
     exit();
   }
 }
-
-
-
-// Free the result set
-mysqli_free_result($resultDates);
 
 // Close the mysqli connection
 $connection->close();

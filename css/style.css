@@ -95,6 +95,11 @@
    width: 100%;
  }
 
+ table select {
+   width: max-content;
+   margin: 0;
+ }
+
  th,
  td {
    text-align: left;
@@ -120,7 +125,6 @@
    top: 0;
    left: 0;
    right: 0;
-   background-color: transparent;
    transition: background-color 0.3s ease;
    z-index: 1000;
  }
@@ -540,9 +544,8 @@
 
  .tarieven_card {
    display: flex;
-   width: 40vw;
    height: 20vh;
-   margin: 1rem;
+   margin: 1rem 4rem 1rem 1rem;
  }
 
  .left_side_tarieven_card {
@@ -550,7 +553,7 @@
    color: var(--inverted-font-color);
    font-size: 12px;
    height: 20vh;
-   width: 24vw;
+   min-width: 16vw;
    border-radius: var(--border-rad-large) 0 0 var(--border-rad-large);
    flex-flow: column;
    display: flex;
@@ -578,6 +581,7 @@
    text-align: start;
    margin: 2.4vh 0 0 3vh;
    font-size: 3vh;
+   white-space: nowrap;
  }
 
  .right_side_tarieven_card li::marker {
@@ -644,14 +648,14 @@
    display: block;
    background-color: inherit;
    color: black;
-   padding: 22px 16px;
+   padding: 3.3vh 16px;
    width: 100%;
    border: none;
    outline: none;
    text-align: left;
    cursor: pointer;
    transition: 0.3s;
-   font-size: 17px;
+   font-size: 2vh;
  }
 
  /* Change background color of buttons on hover */
@@ -668,15 +672,17 @@
  .tabcontent {
    float: left;
    padding: 0px 12px;
+   width: -webkit-fill-available;
    height: 300px;
  }
+
+ .tablinks {}
 
  /* FORM ADD LESSON */
 
  .form-container {
    display: flex;
    max-width: 400px;
-   margin: 0 auto;
    padding: 10px;
  }
 
@@ -727,13 +733,13 @@
   justify-content: center;
 }
 
-.kalenderBox header {
-  display: flex;
-  align-items: center;
-  padding: 15px 20px 10px;
-  justify-content: space-between;
-  background-color: #E7E7E7;
-}
+ .kalenderBox header {
+   display: flex;
+   align-items: center;
+   padding: 15px 40px;
+   justify-content: space-between;
+   background-color: #E7E7E7;
+ }
 
 .Huidige-Datum {
   padding-left: 2vw;
@@ -760,17 +766,13 @@ header .pijltjes {
   user-select: none;
 }
 
-.vandaagButton button {
-  background-color: rgb(255, 255, 255);
-  color: black;
-  font-size: 20px;
-  border: none;
-  border-radius: 11px;
-  box-shadow: 4px 4px 11px #00000029;
-  padding: 0.4vw 1.5vh;
-  cursor: pointer;
-  margin-right: 3.5vw;
-}
+ .vandaagButton button {
+   background-color: rgb(255, 255, 255);
+   color: black;
+   margin-left: 0;
+   height: max-content;
+   font-size: 18px;
+ }
 
 .lesButton button {
   background-color: rgb(148, 6, 6);

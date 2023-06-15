@@ -1,19 +1,34 @@
 <?php
-// Query om lessen op te halen
-$sql = "SELECT datum_tijd, lesdoel, adres FROM les";
-$result = $connection->query($sql);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vierkantewielendemo";
 
-// Array maken om de lessen op te slaan
-$lessen = array();
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($result->num_rows > 0) {
-  // Gegevens van elke les in de array opslaan
-  while ($row = $result->fetch_assoc()) {
-    $lessen[] = $row;
-  }
+if ($conn->connect_error) {
+  die("Verbinding met de database mislukt: " . $conn->connect_error);
 }
 
-// Lessenarray omzetten naar JSON-string
+if (isset($_SESSION["gebruiker"]["id_gebruiker"])) {
+  $id_gebruiker = $_SESSION["gebruiker"]["id_gebruiker"];
+
+  $sql = "SELECT datum_tijd, lesdoel, adres FROM les WHERE id_gebruiker = '$id_gebruiker' OR id_instructeur = '$id_gebruiker'";
+  $result = $conn->query($sql);
+
+  $lessen = array();
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $lessen[] = $row;
+    }
+  }
+} else {
+  $lessen = array();
+}
+
+$conn->close();
+
 $lessenJSON = json_encode($lessen);
 ?>
 
@@ -41,6 +56,14 @@ $lessenJSON = json_encode($lessen);
       <ul class="dagen"></ul>
     </div>
   </div>
+</div>
+
+<div id="popupBackground" class="popup-background"></div>
+<div id="popup" class="les-popup">
+  <p id="lesdoel"></p>
+  <p id="adres"></p>
+  <p id="lesdag"></p>
+  <button id="closeButton">Close</button>
 </div>
 
 <script>
@@ -102,9 +125,9 @@ $lessenJSON = json_encode($lessen);
       });
 
       let lesDagHTML = `<li class="${vandaag}${lesInformatie !== '' ? ' rode-dag' : ''}">
-                            <div class="day-wrapper">${i}</div>
-                            ${lesInformatie}
-                          </li>`;
+                    <div class="day-wrapper">${i}</div>
+                  </li>`;
+
       li1 += lesDagHTML;
     }
 
@@ -132,5 +155,63 @@ $lessenJSON = json_encode($lessen);
 
       reloadKalender();
     });
+  });
+
+  // Voeg de volgende functie toe om de pop-up te openen
+  function toonLesPopup(dag) {
+    const popup = document.getElementById("popup");
+    const popupBackground = document.getElementById("popupBackground");
+    const closeButton = document.getElementById("closeButton");
+    const lesdoel = document.getElementById("lesdoel");
+    const adres = document.getElementById("adres");
+    const lesdag = document.getElementById("lesdag");
+
+    // Zoek de juiste lesinformatie op basis van de geselecteerde dag
+    const geselecteerdeLes = lessen.find(les => {
+      const lesDatum = new Date(les.datum_tijd);
+      const lesDag = lesDatum.getDate();
+      const lesMaand = lesDatum.getMonth();
+      const lesJaar = lesDatum.getFullYear();
+      return lesDag === dag && lesMaand === HuidigeMaand && lesJaar === HuidigeJaar;
+    });
+
+    // Vul de pop-up met de gevonden lesinformatie
+    if (geselecteerdeLes) {
+      lesdoel.textContent = `Lesdoel: ${geselecteerdeLes.lesdoel}`;
+      adres.textContent = `Adres: ${geselecteerdeLes.adres}`;
+      lesdag.textContent = `Lesdag: ${dag}/${HuidigeMaand}/${HuidigeJaar}`;
+
+      // Toon de pop-up en de achtergrond
+      popup.style.display = "block";
+      popupBackground.style.display = "block";
+    }
+  }
+
+  document.addEventListener("click", function(event) {
+  const dagWrapper = event.target.closest(".day-wrapper");
+  if (dagWrapper) {
+    const dag = parseInt(dagWrapper.textContent);
+    toonLesPopup(dag);
+  }
+  
+  const popupBackground = document.getElementById("popupBackground");
+  if (event.target === popupBackground) {
+    const popup = document.getElementById("popup");
+    
+    // Sluit de pop-up en verberg de achtergrond
+    popup.style.display = "none";
+    popupBackground.style.display = "none";
+  }
+});
+
+
+  const closeButton = document.getElementById("closeButton");
+  closeButton.addEventListener("click", function() {
+    const popup = document.getElementById("popup");
+    const popupBackground = document.getElementById("popupBackground");
+
+    // Sluit de pop-up en verberg de achtergrond
+    popup.style.display = "none";
+    popupBackground.style.display = "none";
   });
 </script>

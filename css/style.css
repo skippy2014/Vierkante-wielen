@@ -916,7 +916,7 @@
  }
 
 
- .les-popup {
+ .les-popup:not(.les-popup button) {
    display: none;
    margin-top: 25px;
    padding: 20px;
@@ -927,13 +927,15 @@
  }
 
  .les-popup button::before {
-   content: '❌';
-   font-size: 24px;
+   content: '\00d7';
+   font-size: 50px;
+   color: var(--secondary-color);
+   position: relative;
+   top: -16px;
  }
 
  .les-popup button {
    background-color: unset;
-   color: gray;
    width: fit-content;
    height: fit-content;
    margin: 0;

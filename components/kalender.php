@@ -1,37 +1,45 @@
 <?php
-// Query om lessen op te halen
-$sql = "SELECT datum_tijd, lesdoel, adres FROM les";
-$result = $connection->query($sql);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vierkantewielendemo";
 
-// Array maken om de lessen op te slaan
-$lessen = array();
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($result->num_rows > 0) {
-  // Gegevens van elke les in de array opslaan
-  while ($row = $result->fetch_assoc()) {
-    $lessen[] = $row;
+if ($conn->connect_error) {
+  die("Verbinding met de database mislukt: " . $conn->connect_error);
+}
+
+$lessen = [];
+
+if (isset($_SESSION["gebruiker"]["id_gebruiker"])) {
+  $id_gebruiker = $_SESSION["gebruiker"]["id_gebruiker"];
+
+  $sql = "SELECT datum_tijd, lesdoel, adres FROM les WHERE id_gebruiker = ? OR id_instructeur = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ii", $id_gebruiker, $id_gebruiker);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $lessen[] = $row;
+    }
   }
 }
 
-// Lessenarray omzetten naar JSON-string
+$conn->close();
+
 $lessenJSON = json_encode($lessen);
 ?>
-
 
 <div class="KalenderHeel">
   <div class="kalenderBox">
     <header>
-      <div class="vandaagButton">
-        <button onclick="location.reload()">Vandaag</button>
-      </div>
       <div class="pijltjes">
-        <span id="linksL" class="pijltje">
-          < </span>
-            <p class="Huidige-Datum"></p>
-            <span id="rechts" class="pijltje">></span>
-      </div>
-      <div class="lesButton">
-        <button><a href="/pages/nieuwe_les_inplannen.php">Les aanmaken</a></button>
+        <span id="linksL" class="pijltje">&lt;</span>
+        <p class="Huidige-Datum" onclick="location.reload()"></p>
+        <span id="rechts" class="pijltje">&gt;</span>
       </div>
     </header>
     <div class="kalender">
@@ -47,6 +55,17 @@ $lessenJSON = json_encode($lessen);
       <ul class="dagen"></ul>
     </div>
   </div>
+</div>
+
+<div id="popupBackground" class="popup-background"></div>
+<div id="popup" class="les-popup">
+  <div>
+    <p id="lesdag"></p>
+    <p id="lestijd"></p>
+    <p id="adres"></p>
+    <p id="lesdoel"></p>
+  </div>
+  <div><button id="closeButton"></button></div>
 </div>
 
 <script>
@@ -71,7 +90,6 @@ $lessenJSON = json_encode($lessen);
     "December"
   ];
 
-  // Lessenarray ophalen uit PHP
   const lessen = <?php echo $lessenJSON; ?>;
 
   const reloadKalender = () => {
@@ -89,7 +107,6 @@ $lessenJSON = json_encode($lessen);
       let vandaag = i === datum.getDate() && HuidigeMaand === new Date().getMonth() && HuidigeJaar === new Date().getFullYear() ? "actief" : "";
       let lesInformatie = "";
 
-      // Loop door de lessenarray en controleer op overeenkomende datums
       lessen.forEach(les => {
         let lesDatum = new Date(les.datum_tijd);
         let lesDag = lesDatum.getDate();
@@ -108,9 +125,9 @@ $lessenJSON = json_encode($lessen);
       });
 
       let lesDagHTML = `<li class="${vandaag}${lesInformatie !== '' ? ' rode-dag' : ''}">
-                            <div class="day-wrapper">${i}</div>
-                            ${lesInformatie}
-                          </li>`;
+                    <div class="day-wrapper">${i}</div>
+                  </li>`;
+
       li1 += lesDagHTML;
     }
 
@@ -138,5 +155,61 @@ $lessenJSON = json_encode($lessen);
 
       reloadKalender();
     });
+  });
+
+  function toonLesPopup(dag) {
+    const popup = document.getElementById("popup");
+    const popupBackground = document.getElementById("popupBackground");
+    const closeButton = document.getElementById("closeButton");
+    const lesdoel = document.getElementById("lesdoel");
+    const adres = document.getElementById("adres");
+    const lesdag = document.getElementById("lesdag");
+    const lestijd = document.getElementById("lestijd");
+
+    const geselecteerdeLes = lessen.find(les => {
+      const lesDatum = new Date(les.datum_tijd);
+      const lesDag = lesDatum.getDate();
+      const lesMaand = lesDatum.getMonth();
+      const lesJaar = lesDatum.getFullYear();
+      return lesDag === dag && lesMaand === HuidigeMaand && lesJaar === HuidigeJaar;
+    });
+
+    if (geselecteerdeLes) {
+      lesdoel.textContent = `Les doel: ${geselecteerdeLes.lesdoel}`;
+      adres.textContent = `Adres: ${geselecteerdeLes.adres}`;
+      lesdag.textContent = `Les dag: ${dag}/${HuidigeMaand}/${HuidigeJaar}`;
+
+      const lesDatum = new Date(geselecteerdeLes.datum_tijd);
+      const uren = lesDatum.getHours().toString().padStart(2, "0");
+      const minuten = lesDatum.getMinutes().toString().padStart(2, "0");
+      const lestijdTekst = `${uren}:${minuten}`;
+      lestijd.textContent = `Les tijd: ${lestijdTekst}`;
+
+      popup.style.display = "flex";
+      popupBackground.style.display = "block";
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    const dagWrapper = event.target.closest(".day-wrapper");
+    if (dagWrapper) {
+      const dag = parseInt(dagWrapper.textContent);
+      toonLesPopup(dag);
+    }
+
+    const popupBackground = document.getElementById("popupBackground");
+    if (event.target === popupBackground) {
+      const popup = document.getElementById("popup");
+      popup.style.display = "none";
+      popupBackground.style.display = "none";
+    }
+  });
+
+  const closeButton = document.getElementById("closeButton");
+  closeButton.addEventListener("click", function () {
+    const popup = document.getElementById("popup");
+    const popupBackground = document.getElementById("popupBackground");
+    popup.style.display = "none";
+    popupBackground.style.display = "none";
   });
 </script>

@@ -61,40 +61,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- LIJST MET TARIEVEN -->
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-                        <h3>lespakket 1</h3>
-                        <p>€2004,-</p>
+                        <h3>Basispakket</h3>
+                        <p>€645,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                            <li>Start Nu, Betaal Achteraf!</li>
+                            <li>100% vrijblijvende proefrijles</li>
+                            <li>15 rijlessen incl. gratis herexamen</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-                        <h3>lespakket 2</h3>
-                        <p>€2424,-</p>
+                        <h3>Spoedcursus</h3>
+                        <p>845,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                            <li>Gratis Herexamen t.w.v. €285</li>
+                            <li>100% vrijblijvende proefrijles</li>
+                            <li>Spoedcursus in 8 dagen je rijbewijs!</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
                         <h3>lespakket 3</h3>
-                        <p>€2872,-</p>
+                        <p>€1075,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                            <li>Start Nu, Betaal Achteraf!</li>
+                            <li>100% vrijblijvende proefrijles</li>
+                            <li>25 rijlessen incl. gratis herexamen</li>
                         </ul>
                     </div>
                 </div>

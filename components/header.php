@@ -19,6 +19,10 @@ if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php"
     // The user is on the homepage
     ?>
     <style>
+        .navbar {
+            background-color: transparent;
+        }
+
         /* HEADER NAVIGATION */
         .links {
             list-style: none;
@@ -47,6 +51,10 @@ if ($_SERVER['REQUEST_URI'] == dirname($_SERVER['PHP_SELF']) . "/" . "index.php"
 } else {
     ?>
     <style>
+        .navbar {
+            background-color: var(--neutral-color);
+        }
+
         /* HEADER NAVIGATION */
         .links {
             list-style: none;

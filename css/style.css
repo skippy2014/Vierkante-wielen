@@ -934,13 +934,21 @@
    top: -16px;
  }
 
+ .les-popup button:hover {
+   color: var(--font-color);
+   opacity: 75%;
+ }
+
  .les-popup button {
    background-color: unset;
    width: fit-content;
    height: fit-content;
    margin: 0;
    padding: 0;
+   transition: all 0.2s;
  }
+
+ /* PERSOONLIJKE INFORMATIE */
 
  .lespakket {
    margin: 0;

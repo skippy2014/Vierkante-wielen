@@ -55,39 +55,62 @@
             <div>
                 <?php
                 include '../include/db_conn.php';
+                $id_gebruiker = $_SESSION['gebruiker']['id_gebruiker'];
 
-                // Check if the form has been submitted
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-                    $sessionGebruikersID = $_SESSION["gebruiker"]["id_gebruiker"];
+                $lespakket = "SELECT id_lespakket FROM gebruiker_has_lespakket WHERE id_gebruiker = '$id_gebruiker'";
+                $lespakketResult = mysqli_query($connection, $lespakket);
+                $lessenAantal = "";
 
-                    $nieuwAantalLessen = (int) $_POST['lessenAantal'];
 
-                    $updateAantalLessen = $connection->query("UPDATE gebruiker_has_lespakket SET aantallessen = $nieuwAantalLessen WHERE id_gebruiker = $sessionGebruikersID");
+                if (!isset(mysqli_fetch_assoc($lespakketResult)['id_lespakket'])) {
+                    $query = "SELECT * FROM lespakket";
+                    $result = $connection->query($query);
 
-                    // Set the extra variable to store the updated value of "lessenAantal"
-                    if ($updateAantalLessen === TRUE) {
-                        $lessenAantal = $nieuwAantalLessen;
-                    } else {
-                        echo "Error updating aantallessen: " . $connection->error;
+
+                    echo '<form method="POST" action="../include/post_lespakket.php">';
+                    echo '<select name="lespakket_id">';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<option value="' . $row['id_lespakket'] . '">' . $row['naampakket'] . '</option>';
                     }
-                }
+                    echo '</select>';
+                    echo '<input type="submit" value="Kies lespakket">';
+                    echo '</form>';
+                } else {
+                    // Check if the form has been submitted
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+                        $sessionGebruikersID = $_SESSION["gebruiker"]["id_gebruiker"];
 
-                // If the form has not been submitted, or if there was an error updating the value, show the current value of "lessenAantal"
-                if (!isset($lessenAantal)) {
-                    $sessionGebruikersID = $_SESSION["gebruiker"]["id_gebruiker"];
+                        $nieuwAantalLessen = (int) $_POST['lessenAantal'];
 
-                    $aantalLessenResult = $connection->query("SELECT aantallessen FROM gebruiker_has_lespakket WHERE id_gebruiker = $sessionGebruikersID");
-                    $aantalLessenRow = $aantalLessenResult->fetch_assoc();
-                    $lessenAantal = $aantalLessenRow['aantallessen'];
+                        $updateAantalLessen = $connection->query("UPDATE gebruiker_has_lespakket SET aantallessen = $nieuwAantalLessen WHERE id_gebruiker = $sessionGebruikersID");
+
+                        // Set the extra variable to store the updated value of "lessenAantal"
+                        if ($updateAantalLessen === TRUE) {
+                            $lessenAantal = $nieuwAantalLessen;
+                        } else {
+                            echo "Error updating aantallessen: " . $connection->error;
+                        }
+                    }
+
+                    // If the form has not been submitted, or if there was an error updating the value, show the current value of "lessenAantal"
+                    if (!isset($lessenAantal)) {
+                        $sessionGebruikersID = $_SESSION["gebruiker"]["id_gebruiker"];
+
+                        $aantalLessenResult = $connection->query("SELECT aantallessen FROM gebruiker_has_lespakket WHERE id_gebruiker = $sessionGebruikersID");
+                        $aantalLessenRow = $aantalLessenResult->fetch_assoc();
+                        $lessenAantal = $aantalLessenRow['aantallessen'];
+                    }
+                    ?>
+                    <form method="POST">
+                        <label for="lessenAantal">Update je aantal lessen hier en druk op submit</label><br>
+                        <!-- Update the value of the input field only if the form has been submitted -->
+                        <input type="number" name="lessenAantal" required value="<?php echo $lessenAantal; ?>">
+                        <button name="submit">Submit</button>
+                    </form>
+                    <?php
                 }
                 ?>
 
-                <form method="POST">
-                    <label for="lessenAantal">Update je aantal lessen hier en druk op submit</label><br>
-                    <!-- Update the value of the input field only if the form has been submitted -->
-                    <input type="number" name="lessenAantal" required value="<?php echo $lessenAantal; ?>">
-                    <button name="submit">Submit</button>
-                </form>
 
 
             </div>

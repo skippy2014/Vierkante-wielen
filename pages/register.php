@@ -33,10 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->bind_param('ssss', $voornaam, $achternaam, $email, $hashedPassword);
 
         if ($statement->execute() === true) {
-            echo "Account aangemaakt!";
+            // Redirect to login page after successful registration
+            header("Location: loginpage.php");
+            exit;
         } else {
             echo "Error: " . $sql . "<br>" . $connection->error;
         }
+
     }
 }
 ?>

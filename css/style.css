@@ -33,14 +33,6 @@
    border: gray 0.3vh solid;
  }
 
- label {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: row-reverse;
-   gap: 50px;
- }
-
  input[type="checkbox"] {
    width: 20px;
    height: 20px;
@@ -1041,4 +1033,12 @@
  .informatie li *:not(span strong) {
    display: inline-flex;
    margin: 0 100px;
+ }
+
+ #Accountsettings label {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: row-reverse;
+   gap: 50px;
  }

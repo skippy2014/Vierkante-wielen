@@ -23,9 +23,9 @@ if (isset($_POST['login_button'])) {
             $_SESSION["gebruiker"] = array(
                 "id_gebruiker" => $row["id_gebruiker"],
                 "voornaam" => $row["voornaam"],
+                "achternaam" => $row["achternaam"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
-                "achternaam" => $row["achternaam"],
                 "telefoonnummer" => $row["telefoon"],
                 "rol" => $row["rol"]
             );
@@ -38,7 +38,7 @@ if (isset($_POST['login_button'])) {
             if ($checkResult->num_rows > 0) {
                 header('Location: ../pages/account_settings.php');
             } else {
-                header('Location: ../pages/select_lespakket.php');
+                header('Location: ../pages/account_settings.php#Subscription');
             }
         } else if ($password === $row['wachtwoord']) {
             $_SESSION["gebruiker"] = array(
@@ -59,7 +59,7 @@ if (isset($_POST['login_button'])) {
             if ($checkResult->num_rows > 0) {
                 header('Location: ../pages/account_settings.php');
             } else {
-                header('Location: ../pages/select_lespakket.php');
+                header('Location: ../pages/account_settings.php#Subscription');
             }
         }
     }

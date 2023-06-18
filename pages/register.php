@@ -3,7 +3,7 @@ include_once "../components/header.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in
-    header('location: ../account_settings.php#Upgrade');
+    header('location: ../account_settings.php');
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,6 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Hash the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     // Check if the email is already in the database.
     $checkEmailQuery = "SELECT * FROM gebruiker WHERE email = ?";
     $statement = $connection->prepare($checkEmailQuery);
@@ -22,12 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkEmailResult = $statement->get_result();
 
     if ($checkEmailResult->num_rows > 0) {
-        echo "Email word al gebruikt.";
+        echo "Email wordt al gebruikt.";
     } else {
         // Insert the new user account into the database.
         $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, wachtwoord) VALUES (?, ?, ?, ?)";
         $statement = $connection->prepare($sql);
-        $statement->bind_param('ssss', $voornaam, $achternaam, $email, $password);
+        $statement->bind_param('ssss', $voornaam, $achternaam, $email, $hashedPassword);
 
         if ($statement->execute() === true) {
             echo "Account aangemaakt!";

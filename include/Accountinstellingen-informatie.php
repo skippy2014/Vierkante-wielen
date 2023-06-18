@@ -10,3 +10,16 @@ if (isset($_SESSION["gebruiker"])) {
     echo "</ul>";
 }
 ?>
+<label>
+    <input type="checkbox" name="passwordOptions">
+    Show password
+</label>
+
+<script>
+    const checkbox = document.querySelector('input[name="passwordOptions"]');
+    const input = document.querySelector('.informatie li:nth-child(6) *:not(span, span strong)');
+
+    checkbox.addEventListener('change', function () {
+        input.style.webkitTextSecurity = checkbox.checked ? 'none' : 'disc';
+    });
+</script>

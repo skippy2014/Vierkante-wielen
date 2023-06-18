@@ -52,7 +52,7 @@
 
     <script>
       // Wait until document is fully loaded
-      window.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", function () {
         const body = document.body;
         const html = document.documentElement;
         // Remove overflow property to restore scrolling
@@ -70,6 +70,31 @@
         }
 
         elemToClick.click();
+
+        // Initialize an event listener for each button
+        const buttonIds = [
+          "LesToevoegen_btn",
+          "Overzicht_btn",
+          "Accountsettings_btn",
+          "Meldingen_btn",
+          "Subscription_btn",
+          "Leerlinglijst_btn",
+          "Werknemerslijst_btn",
+          "ZiekMelden_btn",
+          "Register_btn",
+        ];
+
+        buttonIds.forEach((btnId) => {
+          const button = document.getElementById(btnId);
+
+          if (button) { // If the element exists, attach the event listener to it
+            button.addEventListener("click", function () {
+              window.location.hash = btnId.substring(0, btnId.lastIndexOf("_"));
+            });
+          }
+
+        });
+
       });
 
       function openTab(evt, tabName) {
@@ -90,27 +115,6 @@
 
         window.location.hash = tabName;
       }
-
-      // Initialize an event listener for each button
-      const buttonIds = [
-        "LesToevoegen_btn",
-        "Overzicht_btn",
-        "Accountsettings_btn",
-        "Meldingen_btn",
-        "Subscription_btn",
-        "Leerlinglijst_btn",
-        "Werknemerslijst_btn",
-        "ZiekMelden_btn",
-        "Register_btn",
-      ];
-
-      buttonIds.forEach((btnId) => {
-        document.getElementById(btnId).addEventListener("click", function () {
-          window.location.hash = btnId.substring(0, btnId.lastIndexOf("_"));
-        });
-      });
-
-
       // Update tab content when URL hash changes
       window.addEventListener("hashchange", function () {
         const hash = window.location.hash.substring(1);

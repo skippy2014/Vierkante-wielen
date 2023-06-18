@@ -1,119 +1,64 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <style>
-        .parent-box {
-            background-color: #ccc;
-            width: 300px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            height: 300px;
-        }
+    <head>
+        <script>
+            function showPopup(bericht, datum_tijd) {
+                var popup = document.createElement("div");
+                popup.className = "popup-melding";
 
-        .meldingen-container {
-            max-height: 200px;
-            overflow-y: auto;
-        }
+                var popupContent = document.createElement("div");
+                popupContent.className = "popup-melding-content";
 
-        .melding-box {
-            background-color: #f1f1f1;
-            width: 200px;
-            margin: 0 auto;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
+                var berichtElement = document.createElement("p");
+                berichtElement.textContent = bericht;
 
-        .meer-info-link {
-            color: blue;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+                var datumTijdElement = document.createElement("p");
+                datumTijdElement.textContent = datum_tijd;
 
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+                var closeButton = document.createElement("button");
+                closeButton.className = "popup-melding-close";
+                closeButton.innerHTML = "Sluiten";
+                closeButton.onclick = function () {
+                    document.body.removeChild(popup);
+                };
 
-        .popup-content {
-            background-color: #fff;
-            width: 300px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
+                popupContent.appendChild(berichtElement);
+                popupContent.appendChild(datumTijdElement);
+                popupContent.appendChild(closeButton);
 
-        .popup-close {
-            margin-top: 10px;
-        }
-    </style>
-    <script>
-        function showPopup(bericht, datum_tijd) {
-            var popup = document.createElement("div");
-            popup.className = "popup";
+                popup.appendChild(popupContent);
 
-            var popupContent = document.createElement("div");
-            popupContent.className = "popup-content";
-
-            var berichtElement = document.createElement("p");
-            berichtElement.textContent = bericht;
-
-            var datumTijdElement = document.createElement("p");
-            datumTijdElement.textContent = datum_tijd;
-
-            var closeButton = document.createElement("button");
-            closeButton.className = "popup-close";
-            closeButton.innerHTML = "Sluiten";
-            closeButton.onclick = function () {
-                document.body.removeChild(popup);
-            };
-
-            popupContent.appendChild(berichtElement);
-            popupContent.appendChild(datumTijdElement);
-            popupContent.appendChild(closeButton);
-
-            popup.appendChild(popupContent);
-
-            document.body.appendChild(popup);
-        }
-    </script>
-</head>
-
-<body>
-    <?php
-    $gebruikerId = $_SESSION["gebruiker"]["id_gebruiker"];
-
-    $sql = "SELECT * FROM melding WHERE id_gebruiker = $gebruikerId";
-    $result = $connection->query($sql);
-    ?>
-
-    <div class="parent-box">
-        <h2>Meldingen</h2>
-        <div class="meldingen-container">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="melding-box">';
-                    echo "<p>" . $row["bericht"] . "</p>";
-                    echo '<p class="meer-info-link" onclick="showPopup(\'' . $row["bericht"] . '\', \'' . $row["datum_tijd"] . '\')">Meer info</p>';
-                    echo '</div>';
-                }
-            } else {
-                echo "Geen meldingen gevonden.";
+                document.body.appendChild(popup);
             }
-            ?>
+        </script>
+    </head>
+
+    <body>
+        <?php
+        $gebruikerId = $_SESSION["gebruiker"]["id_gebruiker"];
+
+        $sql = "SELECT * FROM melding WHERE id_gebruiker = $gebruikerId";
+        $result = $connection->query($sql);
+        ?>
+
+        <div class="parent-box">
+            <h2>Meldingen</h2>
+            <div class="meldingen-container">
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="melding-box">';
+                        echo "<p>" . $row["bericht"] . "</p>";
+                        echo '<p class="meer-info-link" onclick="showPopup(\'' . $row["bericht"] . '\', \'' . $row["datum_tijd"] . '\')">Meer info</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "Geen meldingen gevonden.";
+                }
+                ?>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>

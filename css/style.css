@@ -126,7 +126,7 @@
    left: 0;
    right: 0;
    transition: background-color 0.3s ease;
-   z-index: 1000;
+   z-index: 1;
  }
 
  .logo {
@@ -948,7 +948,64 @@
    transition: all 0.2s;
  }
 
- /* PERSOONLIJKE INFORMATIE */
+ /* MELDINGEN */
+
+ .parent-box {
+   background-color: #ccc;
+   width: 300px;
+   padding: 20px;
+   border-radius: 10px;
+   text-align: center;
+   height: 300px;
+ }
+
+ .meldingen-container {
+   max-height: 200px;
+   overflow-y: auto;
+ }
+
+ .melding-box {
+   background-color: #f1f1f1;
+   width: 200px;
+   margin: 0 auto;
+   border-radius: 10px;
+   padding: 10px;
+   margin-bottom: 10px;
+   text-align: left;
+ }
+
+ .meer-info-link {
+   color: blue;
+   text-decoration: underline;
+   cursor: pointer;
+ }
+
+ .popup-melding {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 2;
+ }
+
+ .popup-melding-content {
+   background-color: #fff;
+   width: 300px;
+   padding: 20px;
+   border-radius: 10px;
+   text-align: center;
+ }
+
+ .popup-melding-close {
+   margin-top: 10px;
+ }
+
+ /* ABONNEMENTEN PAGINA */
 
  .lespakket {
    margin: 0;
@@ -956,4 +1013,15 @@
 
  .lespakket input[type=number] {
    width: max-content;
+ }
+
+ /* PERSOONLIJKE INFORMATIE */
+
+ .informatie li:nth-child(5) *:not(span, span strong) {
+   -webkit-text-security: disc;
+ }
+
+ .informatie li *:not(span strong) {
+   display: inline-flex;
+   margin: 0 100px;
  }

@@ -3,7 +3,7 @@ include_once "../components/header.php";
 
 if (isset($_SESSION['gebruiker'])) {
     // User is logged in
-    header('location: ../account_settings.php');
+    header('location: ../account_settings.php#Upgrade');
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkEmailResult = $statement->get_result();
 
     if ($checkEmailResult->num_rows > 0) {
-        echo "Email wordt al gebruikt.";
+        echo "Email adres is al in gebruik";
     } else {
         // Insert the new user account into the database.
         $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, wachtwoord) VALUES (?, ?, ?, ?)";
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
                         <h3>Spoedcursus</h3>
-                        <p>845,-</p>
+                        <p>€845,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
                         <ul>
@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-                        <h3>lespakket 3</h3>
+                        <h3>Uitgebreid pakket</h3>
                         <p>€1075,-</p>
                     </div>
                     <div class="right_side_tarieven_card">

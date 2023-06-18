@@ -1019,6 +1019,10 @@
 
  .informatie li:nth-child(5) *:not(span, span strong) {
    -webkit-text-security: disc;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 10vw;
  }
 
  .informatie li *:not(span strong) {

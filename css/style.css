@@ -77,10 +77,14 @@
    padding: 1vh 3vh;
    font-size: 1.8vh;
    font-weight: bold;
-   margin: 0.8vh;
    width: max-content;
+   height: 5vh;
    align-self: center;
    cursor: pointer;
+ }
+
+ button.tablinks {
+   height: unset;
  }
 
  h2 {
@@ -685,7 +689,7 @@
    margin: 20px;
  }
 
- /* FORM ADD LESSON */
+ /* FORM LES TOEVOEGEN */
 
  .form-container {
    display: flex;
@@ -723,6 +727,11 @@
 
  div.flex div {
    margin: 10px;
+ }
+
+ .form-container form {
+   display: flex;
+   flex-direction: column;
  }
 
  /* 
@@ -1041,4 +1050,15 @@
    justify-content: center;
    flex-direction: row-reverse;
    gap: 50px;
+ }
+
+ /* WERKNEMERSLIJST */
+
+ .rol-bew-form {
+   display: flex;
+   gap: 10px;
+ }
+
+ .searchbar {
+   margin-right: 1vh;
  }

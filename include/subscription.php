@@ -82,7 +82,7 @@
                 }
                 ?>
 
-                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <form method="POST">
                     <label for="lessenAantal">Update je aantal lessen hier en druk op submit</label><br>
                     <!-- Update the value of the input field only if the form has been submitted -->
                     <input type="number" name="lessenAantal" required value="<?php echo $lessenAantal; ?>">

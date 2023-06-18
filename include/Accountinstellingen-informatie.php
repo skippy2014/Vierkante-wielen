@@ -21,5 +21,15 @@ if (isset($_SESSION["gebruiker"])) {
 
     checkbox.addEventListener('change', function () {
         input.style.webkitTextSecurity = checkbox.checked ? 'none' : 'disc';
+        if (checkbox.checked) {
+            input.style.maxWidth = 'unset';
+            input.style.overflowWrap = 'anywhere';
+            input.style.textWrap = 'wrap';
+        } else {
+            input.style.maxWidth = '10vw';
+            input.style.overflowWrap = 'unset';
+            input.style.textWrap = 'unset';
+        }
     });
+
 </script>

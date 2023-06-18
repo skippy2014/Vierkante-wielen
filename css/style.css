@@ -941,3 +941,11 @@
    margin: 0;
    padding: 0;
  }
+
+ .lespakket {
+   margin: 0;
+ }
+
+ .lespakket input[type=number] {
+   width: max-content;
+ }

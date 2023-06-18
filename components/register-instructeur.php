@@ -11,7 +11,7 @@
     <option value="eigenaar">Eigenaar</option>
   </select><br>
 
-  <button type="submit" class="btn">Register</button>
+  <button class="btn">Register</button>
 </form>
 
 <script>

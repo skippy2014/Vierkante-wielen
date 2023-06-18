@@ -28,7 +28,7 @@
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
                         <h3>Spoedcursus</h3>
-                        <p>845,-</p>
+                        <p>€845,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
                         <ul>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-                        <h3>lespakket 3</h3>
+                        <h3>Uitgebreid pakket</h3>
                         <p>€1075,-</p>
                     </div>
                     <div class="right_side_tarieven_card">

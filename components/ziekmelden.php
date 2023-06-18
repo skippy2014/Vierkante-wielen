@@ -46,9 +46,6 @@ if (isset($_POST['submit'])) {
       die("Query failed: " . mysqli_error($connection));
     }
 
-    // Close the mysqli connection
-    $connection->close();
-
     header('Location: account_settings.php');
     exit();
   }
@@ -59,8 +56,6 @@ if (isset($_POST['submit'])) {
 // Free the result set
 mysqli_free_result($resultDates);
 
-// Close the mysqli connection
-$connection->close();
 ?>
 
 <body>

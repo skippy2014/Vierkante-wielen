@@ -35,9 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error: " . $sql . "<br>" . $connection->error;
         }
     }
-
-    // Close the database connection.
-    $connection->close();
 }
 ?>
 

@@ -1017,7 +1017,7 @@
 
  /* PERSOONLIJKE INFORMATIE */
 
- .informatie li:nth-child(5) *:not(span, span strong) {
+ .informatie li:nth-child(6) *:not(span, span strong) {
    -webkit-text-security: disc;
    white-space: nowrap;
    overflow: hidden;

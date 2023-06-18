@@ -886,7 +886,7 @@
    left: 0;
    width: 100%;
    height: 100%;
-   z-index: 1;
+   z-index: -1;
  }
 
  .popup-content {
@@ -918,11 +918,24 @@
 
  .les-popup {
    display: none;
-   margin-top: 50px;
-   color: var(--font-color);
-   background-color: var(--neutral-color);
+   margin-top: 25px;
    padding: 20px;
    border: 1px solid black;
-   width: 500px;
+   width: -webkit-fill-available;
    height: auto;
+   justify-content: space-between;
+ }
+
+ .les-popup button::before {
+   content: '❌';
+   font-size: 24px;
+ }
+
+ .les-popup button {
+   background-color: unset;
+   color: gray;
+   width: fit-content;
+   height: fit-content;
+   margin: 0;
+   padding: 0;
  }

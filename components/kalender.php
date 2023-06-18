@@ -7,25 +7,25 @@ $dbname = "vierkantewielendemo";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Verbinding met de database mislukt: " . $conn->connect_error);
+  die("Verbinding met de database mislukt: " . $conn->connect_error);
 }
 
 $lessen = [];
 
 if (isset($_SESSION["gebruiker"]["id_gebruiker"])) {
-    $id_gebruiker = $_SESSION["gebruiker"]["id_gebruiker"];
+  $id_gebruiker = $_SESSION["gebruiker"]["id_gebruiker"];
 
-    $sql = "SELECT datum_tijd, lesdoel, adres FROM les WHERE id_gebruiker = ? OR id_instructeur = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $id_gebruiker, $id_gebruiker);
-    $stmt->execute();
-    $result = $stmt->get_result();
+  $sql = "SELECT datum_tijd, lesdoel, adres FROM les WHERE id_gebruiker = ? OR id_instructeur = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ii", $id_gebruiker, $id_gebruiker);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $lessen[] = $row;
-        }
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $lessen[] = $row;
     }
+  }
 }
 
 $conn->close();
@@ -59,11 +59,13 @@ $lessenJSON = json_encode($lessen);
 
 <div id="popupBackground" class="popup-background"></div>
 <div id="popup" class="les-popup">
-  <p id="lesdag"></p>
-  <p id="lestijd"></p>
-  <p id="adres"></p>
-  <p id="lesdoel"></p>
-  <button id="closeButton">Close</button>
+  <div>
+    <p id="lesdag"></p>
+    <p id="lestijd"></p>
+    <p id="adres"></p>
+    <p id="lesdoel"></p>
+  </div>
+  <div><button id="closeButton"></button></div>
 </div>
 
 <script>
@@ -183,12 +185,12 @@ $lessenJSON = json_encode($lessen);
       const lestijdTekst = `${uren}:${minuten}`;
       lestijd.textContent = `Les tijd: ${lestijdTekst}`;
 
-      popup.style.display = "block";
+      popup.style.display = "flex";
       popupBackground.style.display = "block";
     }
   }
 
-  document.addEventListener("click", function(event) {
+  document.addEventListener("click", function (event) {
     const dagWrapper = event.target.closest(".day-wrapper");
     if (dagWrapper) {
       const dag = parseInt(dagWrapper.textContent);
@@ -204,7 +206,7 @@ $lessenJSON = json_encode($lessen);
   });
 
   const closeButton = document.getElementById("closeButton");
-  closeButton.addEventListener("click", function() {
+  closeButton.addEventListener("click", function () {
     const popup = document.getElementById("popup");
     const popupBackground = document.getElementById("popupBackground");
     popup.style.display = "none";

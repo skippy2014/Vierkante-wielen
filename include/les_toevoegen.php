@@ -51,16 +51,16 @@ if ($_SESSION["gebruiker"]["rol"] == "instructeur") {
     }
 }
 
-    $leerlingQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'leerling'";
-    $leerlingResult = mysqli_query($connection, $leerlingQuery);
+$leerlingQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'leerling'";
+$leerlingResult = mysqli_query($connection, $leerlingQuery);
 
-    $instructeurQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'instructeur'";
-    $instructeurResult = mysqli_query($connection, $instructeurQuery);
+$instructeurQuery = "SELECT id_gebruiker, CONCAT(voornaam, ' ', achternaam) AS naam FROM gebruiker WHERE rol = 'instructeur' || rol = 'eigenaar'";
+$instructeurResult = mysqli_query($connection, $instructeurQuery);
 
-    $lesautoQuery = "SELECT id_lesauto, CONCAT(type, ' (', kenteken, ')') AS auto FROM lesauto";
-    $lesautoResult = mysqli_query($connection, $lesautoQuery);
+$lesautoQuery = "SELECT id_lesauto, CONCAT(type, ' (', kenteken, ')') AS auto FROM lesauto";
+$lesautoResult = mysqli_query($connection, $lesautoQuery);
 
-    $ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
+$ingelogdeInstructeurId = $_SESSION["gebruiker"]["id_gebruiker"];
 ?>
 
 <!DOCTYPE html>

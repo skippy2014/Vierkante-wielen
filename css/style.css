@@ -33,6 +33,11 @@
    border: gray 0.3vh solid;
  }
 
+ form p.error {
+   color: red;
+   margin-top: -30px;
+ }
+
  input[type="checkbox"] {
    width: 20px;
    height: 20px;
@@ -78,13 +83,18 @@
    font-size: 1.8vh;
    font-weight: bold;
    width: max-content;
-   height: 5vh;
+   height: fit-content;
    align-self: center;
    cursor: pointer;
  }
 
  button.tablinks {
    height: unset;
+ }
+
+ .layout button:not(.tablinks) {
+   width: max-content;
+   height: 5vh;
  }
 
  h2 {
@@ -692,7 +702,6 @@
  /* FORM LES TOEVOEGEN */
 
  .form-container {
-   display: flex;
    max-width: 400px;
    padding: 10px;
  }

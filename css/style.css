@@ -989,61 +989,62 @@
  /* MELDINGEN */
 
  .parent-box {
-  position: relative;
-  background-color: #ccc;
-  width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  height: 600px;
-  position: relative;
-}
+   position: relative;
+   background-color: #ccc;
+   width: 400px;
+   padding: 20px;
+   border-radius: 10px;
+   text-align: center;
+   height: 65vh;
+   position: relative;
+ }
 
-.meldingen-container {
-  max-height: 600px;
-  overflow-y: auto;
-}
+ .meldingen-container {
+   max-height: 600px;
+   overflow-y: auto;
+   height: 90%;
+ }
 
-.melding-box {
-  background-color: #f1f1f1;
-  width: 90%;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-}
+ .melding-box {
+   background-color: #f1f1f1;
+   width: 90%;
+   margin: 0 auto;
+   border-radius: 10px;
+   padding: 10px;
+   margin-bottom: 10px;
+   text-align: left;
+ }
 
-.meer-info-link {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
+ .meer-info-link {
+   color: blue;
+   text-decoration: underline;
+   cursor: pointer;
+ }
 
-.popup-melding {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin: 0 50px;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid 2px black;
-  z-index: 2;
-}
+ .popup-melding {
+   position: absolute;
+   top: 0;
+   left: 100%;
+   margin: 0 50px;
+   background-color: transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: solid 2px black;
+   z-index: 2;
+ }
 
-.popup-melding-content {
-  background-color: #fff;
-  width: 300px;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
+ .popup-melding-content {
+   background-color: #fff;
+   width: 300px;
+   padding: 20px;
+   border-radius: 10px;
+   text-align: center;
+ }
 
-.popup-melding-close {
-  margin-top: 10px;
-}
+ .popup-melding-close {
+   margin-top: 10px;
+ }
 
  /* ABONNEMENTEN PAGINA */
 

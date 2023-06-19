@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <script>
-            function showPopup(bericht, datum_tijd) {
-                var popup = document.createElement("div");
-                popup.className = "popup-melding";
+<head>
+<script>
+    var activePopup = null;
 
-                var popupContent = document.createElement("div");
-                popupContent.className = "popup-melding-content";
+    function showPopup(bericht, datum_tijd) {
+        if (activePopup !== null) {
+            var parentBox = document.querySelector(".parent-box");
+            parentBox.removeChild(activePopup);
+        }
 
-                var berichtElement = document.createElement("p");
-                berichtElement.textContent = bericht;
+        var popup = document.createElement("div");
+        popup.className = "popup-melding";
 
-                var datumTijdElement = document.createElement("p");
-                datumTijdElement.textContent = datum_tijd;
+        var popupContent = document.createElement("div");
+        popupContent.className = "popup-melding-content";
 
-                var closeButton = document.createElement("button");
-                closeButton.className = "popup-melding-close";
-                closeButton.innerHTML = "Sluiten";
-                closeButton.onclick = function () {
-                    document.body.removeChild(popup);
-                };
+        var berichtElement = document.createElement("p");
+        berichtElement.textContent = bericht;
 
-                popupContent.appendChild(berichtElement);
-                popupContent.appendChild(datumTijdElement);
-                popupContent.appendChild(closeButton);
+        var datumTijdElement = document.createElement("p");
+        datumTijdElement.textContent = datum_tijd;
 
-                popup.appendChild(popupContent);
+        var closeButton = document.createElement("button");
+        closeButton.className = "popup-melding-close";
+        closeButton.innerHTML = "Sluiten";
+        closeButton.onclick = function () {
+            var parentBox = document.querySelector(".parent-box");
+            parentBox.removeChild(popup);
+            activePopup = null;
+        };
 
-                document.body.appendChild(popup);
-            }
-        </script>
-    </head>
+        popupContent.appendChild(berichtElement);
+        popupContent.appendChild(datumTijdElement);
+        popupContent.appendChild(closeButton);
 
-    <body>
-        <?php
-        $gebruikerId = $_SESSION["gebruiker"]["id_gebruiker"];
+        popup.appendChild(popupContent);
 
-        $sql = "SELECT * FROM melding WHERE id_gebruiker = $gebruikerId";
-        $result = $connection->query($sql);
-        ?>
+        var parentBox = document.querySelector(".parent-box");
+        parentBox.appendChild(popup);
 
-        <div class="parent-box">
-            <h2>Meldingen</h2>
-            <div class="meldingen-container">
-                <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<div class="melding-box">';
-                        echo "<p>" . $row["bericht"] . "</p>";
-                        echo '<p class="meer-info-link" onclick="showPopup(\'' . $row["bericht"] . '\', \'' . $row["datum_tijd"] . '\')">Meer info</p>';
-                        echo '</div>';
-                    }
-                } else {
-                    echo "Geen meldingen gevonden.";
+        activePopup = popup;
+    }
+</script>
+</head>
+
+<body>
+    <?php
+    $gebruikerId = $_SESSION["gebruiker"]["id_gebruiker"];
+
+    $sql = "SELECT * FROM melding WHERE id_gebruiker = $gebruikerId";
+    $result = $connection->query($sql);
+    ?>
+
+    <div class="parent-box">
+        <h2>Meldingen</h2>
+        <div class="meldingen-container">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="melding-box">';
+                    echo "<p>" . $row["bericht"] . "</p>";
+                    echo '<p class="meer-info-link" onclick="showPopup(\'' . $row["bericht"] . '\', \'' . $row["datum_tijd"] . '\')">Meer info</p>';
+                    echo '</div>';
                 }
-                ?>
-            </div>
+            } else {
+                echo "Geen meldingen gevonden.";
+            }
+            ?>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>

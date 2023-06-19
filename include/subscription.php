@@ -73,7 +73,7 @@
                         echo '<option value="' . $row['id_lespakket'] . '">' . $row['naampakket'] . '</option>';
                     }
                     echo '</select>';
-                    echo '<input type="submit" value="Kies lespakket">';
+                    echo '<button>Kies lespakket</button>';
                     echo '</form>';
                 } else {
                     // Check if the form has been submitted
@@ -82,11 +82,13 @@
 
                         $nieuwAantalLessen = (int) $_POST['lessenAantal'];
 
-                        $updateAantalLessen = $connection->query("UPDATE gebruiker_has_lespakket SET aantallessen = $nieuwAantalLessen WHERE id_gebruiker = $sessionGebruikersID");
+                        $updateAantalLessen = $connection->query("UPDATE gebruiker_has_lespakket SET aantallessen = aantallessen + $nieuwAantalLessen WHERE id_gebruiker = $sessionGebruikersID");
 
                         // Set the extra variable to store the updated value of "lessenAantal"
                         if ($updateAantalLessen === TRUE) {
-                            $lessenAantal = $nieuwAantalLessen;
+                            $aantalLessenResult = $connection->query("SELECT aantallessen FROM gebruiker_has_lespakket WHERE id_gebruiker = $sessionGebruikersID");
+                            $aantalLessenRow = $aantalLessenResult->fetch_assoc();
+                            $lessenAantal = $aantalLessenRow['aantallessen'];
                         } else {
                             echo "Error updating aantallessen: " . $connection->error;
                         }
@@ -103,15 +105,47 @@
                     ?>
                     <form method="POST">
                         <label for="lessenAantal">Update je aantal lessen hier en druk op submit</label><br>
-                        <!-- Update the value of the input field only if the form has been submitted -->
-                        <input type="number" name="lessenAantal" required value="<?php echo $lessenAantal; ?>">
+                        <input type="number" name="lessenAantal" required onchange="updateValue(this)">
                         <button name="submit">Submit</button>
                     </form>
+
                     <?php
-                }
-                ?>
+                    $sessionGebruikersID = $_SESSION["gebruiker"]["id_gebruiker"];
+
+                    // Get the lespakket value from the database for the current user
+                    $lespakketResult = $connection->query("SELECT lespakket.naampakket FROM lespakket INNER JOIN gebruiker_has_lespakket ON lespakket.id_lespakket = gebruiker_has_lespakket.id_lespakket WHERE gebruiker_has_lespakket.id_gebruiker = $sessionGebruikersID");
+
+                    if ($lespakketResult !== false && $lespakketResult->num_rows > 0) {
+                        $lespakketRow = mysqli_fetch_assoc($lespakketResult);
+                        $lespakket = $lespakketRow['naampakket'];
+                    } else {
+                        $lespakket = "Kan het lespakket niet vinden";
+                    }
+
+                    // Get the aantal lessen value from the database for the current user
+                    $aantalLessenResult = $connection->query("SELECT aantalLessen FROM gebruiker_has_lespakket WHERE id_gebruiker = $sessionGebruikersID");
+
+                    if ($aantalLessenResult !== false && $aantalLessenResult->num_rows > 0) {
+                        $aantalLessenRow = mysqli_fetch_assoc($aantalLessenResult);
+                        $lessenAantal = $aantalLessenRow['aantalLessen'];
+                    } else {
+                        $lessenAantal = "Kan het aantal lessen niet vinden";
+                    }
+
+                    // Echo the retrieved lespakket and aantal lessen values
+                    echo "<br><p>" . "Lespakket: " . $lespakket . "</p><br>";
+                    echo "<p>" . "Mijn aantal lessen: " . $lessenAantal . "</p>";
+                    ?>
 
 
+                    <script>
+                        function updateValue(element) {
+                            document.getElementById('inputValue').innerHTML = element.value;
+                            document.getElementById('finalValue').innerHTML = parseInt(document.getElementById('aantalLessen').innerHTML) + parseInt(element.value);
+                        }
+                    </script>
+
+                <?php } ?>
 
             </div>
         </div>

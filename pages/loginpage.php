@@ -18,7 +18,6 @@ if (isset($_POST['login_button'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        // Verify the hashed password
         if (password_verify($password, $row['wachtwoord']) || $password === $row['wachtwoord']) {
             $_SESSION["gebruiker"] = array(
                 "id_gebruiker" => $row["id_gebruiker"],
@@ -37,12 +36,20 @@ if (isset($_POST['login_button'])) {
 
             if ($checkResult->num_rows > 0) {
                 header('Location: ../pages/account_settings.php');
-            } else {
+            } else if ($row["rol"] == "leerling") {
                 header('Location: ../pages/account_settings.php#Subscription');
+            } else {
+                header('Location: ../pages/account_settings.php');
+
             }
+        } else {
+            $message = "Incorrect email or password.";
         }
+    } else {
+        $message = "Incorrect email or password.";
     }
 }
+
 ?>
 
 <head>
@@ -58,6 +65,12 @@ if (isset($_POST['login_button'])) {
                 <h2 class="TOPh1_login_page">
                     Login
                 </h2>
+                <?php
+                if (isset($message)) {
+                    echo "<p class='error'>" . $message . "</p>";
+                }
+
+                ?>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <br>

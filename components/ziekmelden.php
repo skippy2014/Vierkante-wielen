@@ -19,9 +19,10 @@ while ($row = mysqli_fetch_assoc($resultDates)) {
 mysqli_free_result($resultDates);
 
 if (isset($_POST['submit'])) {
-  $reden_afmelding = $_POST['reden_afmelding'];
+
 
   if (isset($_POST['selected_date'])) {
+    $reden_afmelding = $_POST['reden_afmelding'];
     $selected_date = $_POST['selected_date'];
   }
 

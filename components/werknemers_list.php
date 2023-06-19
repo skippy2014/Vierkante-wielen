@@ -22,7 +22,7 @@ $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<form method='post'>";
-    echo "<input type='text' name='search' placeholder='Voer ID in' />";
+    echo "<input type='text' name='search' placeholder='Voer Voornaam in' class='searchbar'/>";
     echo "<button type='submit'>Zoeken</button>";
     echo "</form>";
 
@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["rol"] . "</td>";
 
         echo "<td>";
-        echo "<form method='post'>";
+        echo "<form method='post' class='rol-bew-form'>";
         echo "<input type='hidden' name='userID' value='" . $row["id_gebruiker"] . "' />";
         echo "<select name='role'>";
         echo "<option value='instructeur'>Instructeur</option>";
@@ -60,6 +60,4 @@ if ($result->num_rows > 0) {
 
     echo "No results found.";
 }
-
-$connection->close();
 ?>

@@ -18,13 +18,14 @@ if (isset($_POST['login_button'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        if ($password === $row['wachtwoord']) {
+        // Verify the hashed password
+        if (password_verify($password, $row['wachtwoord']) || $password === $row['wachtwoord']) {
             $_SESSION["gebruiker"] = array(
                 "id_gebruiker" => $row["id_gebruiker"],
                 "voornaam" => $row["voornaam"],
+                "achternaam" => $row["achternaam"],
                 "email" => $row["email"],
                 "wachtwoord" => $row["wachtwoord"],
-                "achternaam" => $row["achternaam"],
                 "telefoonnummer" => $row["telefoon"],
                 "rol" => $row["rol"]
             );
@@ -37,7 +38,7 @@ if (isset($_POST['login_button'])) {
             if ($checkResult->num_rows > 0) {
                 header('Location: ../pages/account_settings.php');
             } else {
-                header('Location: ../pages/select_lespakket.php');
+                header('Location: ../pages/account_settings.php#Subscription');
             }
         }
     }
@@ -46,6 +47,7 @@ if (isset($_POST['login_button'])) {
 
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <html>
@@ -62,20 +64,6 @@ if (isset($_POST['login_button'])) {
                 <button type="submit" class="btn" name="login_button">Log in</button>
                 <p>Nog geen account? Maak er <a href="register.php">hier</a> een aan</p>
                 <br><br>
-            </form>
-
-            <?php
-            if (isset($_SESSION['gebruiker']) && ($_SESSION['gebruiker']['rol'] === 'instructeur' || $_SESSION['gebruiker']['rol'] === 'eigenaar')) {
-                echo '<p><a href="homepage_instructeurs.php">Instructeur</a></p>';
-            }
-            ?>
-            <?php
-            if (isset($_SESSION['gebruiker']) && $_SESSION['gebruiker']['rol'] === 'eigenaar') {
-                echo '<p><a href="homepage_admin.php">Eigenaar</a></p>';
-            }
-            ?>
-
-
             </form>
 
         </div>

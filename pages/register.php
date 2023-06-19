@@ -14,6 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Hash the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     // Check if the email is already in the database.
     $checkEmailQuery = "SELECT * FROM gebruiker WHERE email = ?";
     $statement = $connection->prepare($checkEmailQuery);
@@ -22,22 +25,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkEmailResult = $statement->get_result();
 
     if ($checkEmailResult->num_rows > 0) {
-        echo "Email word al gebruikt.";
+        echo "Email adres is al in gebruik";
     } else {
         // Insert the new user account into the database.
         $sql = "INSERT INTO gebruiker (voornaam, achternaam, email, wachtwoord) VALUES (?, ?, ?, ?)";
         $statement = $connection->prepare($sql);
-        $statement->bind_param('ssss', $voornaam, $achternaam, $email, $password);
+        $statement->bind_param('ssss', $voornaam, $achternaam, $email, $hashedPassword);
 
         if ($statement->execute() === true) {
-            echo "Account aangemaakt!";
+            // Redirect to login page after successful registration
+            header("Location: loginpage.php");
+            exit;
         } else {
             echo "Error: " . $sql . "<br>" . $connection->error;
         }
-    }
 
-    // Close the database connection.
-    $connection->close();
+    }
 }
 ?>
 
@@ -78,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
                         <h3>Spoedcursus</h3>
-                        <p>845,-</p>
+                        <p>€845,-</p>
                     </div>
                     <div class="right_side_tarieven_card">
                         <ul>
@@ -90,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="tarieven_card">
                     <div class="left_side_tarieven_card">
-                        <h3>lespakket 3</h3>
+                        <h3>Uitgebreid pakket</h3>
                         <p>€1075,-</p>
                     </div>
                     <div class="right_side_tarieven_card">

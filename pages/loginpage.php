@@ -36,8 +36,11 @@ if (isset($_POST['login_button'])) {
 
             if ($checkResult->num_rows > 0) {
                 header('Location: ../pages/account_settings.php');
-            } else {
+            } else if ($row["rol"] == "leerling") {
                 header('Location: ../pages/account_settings.php#Subscription');
+            } else {
+                header('Location: ../pages/account_settings.php');
+
             }
         } else {
             $message = "Incorrect email or password.";

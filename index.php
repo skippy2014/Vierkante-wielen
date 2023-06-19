@@ -81,9 +81,9 @@
       <div class="pakket0">
         <h2> Tarieven</h2>
       </div>
-      <div class="pakket1"> Instap pakket 1 <br> € 2004,00 </div>
-      <div class="pakket2"> Instap pakket 2 <br> € 2644,00 </div>
-      <div class="pakket3"> Instap pakket 3 <br> € 3064,00 </div>
+      <div class="pakket1"> Basispakket <br> €645,- </div>
+      <div class="pakket2"> Spoedcursus <br> €845,- </div>
+      <div class="pakket3"> Uitgebreid pakket <br> €1075,- </div>
       <div class="pakketD1">
         <ul>
           <li>30 lesuren (praktijk)</li>

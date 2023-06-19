@@ -322,6 +322,7 @@
    display: grid;
    grid-template-rows: repeat(3, 0.5fr);
    text-align: center;
+   padding-top: 50px;
  }
 
  .Over-ons img {
@@ -375,7 +376,7 @@
  }
 
  .pakket3 {
-   grid-column: 3/3;
+   grid-column: 3/4;
    grid-row: 2/4;
  }
 
@@ -390,7 +391,7 @@
  }
 
  .pakketD3 {
-   grid-column: 3/3;
+   grid-column: 3/4;
    grid-row: 3/5;
  }
 
@@ -407,8 +408,21 @@
  .pakket3 {
    background-color: rgb(148, 6, 6);
    color: white;
-   margin-left: 100px;
-   margin-right: 100px;
+   margin-left: 40px;
+   margin-right: 40px;
+   border: none;
+   border-radius: var(--border-rad-large);
+   padding-top: 4vh;
+   text-align: center;
+ }
+
+ .pakket1,
+ .pakket2,
+ .pakket3 {
+   background-color: rgb(148, 6, 6);
+   color: white;
+   margin-left: 30px;
+   margin-right: 30px;
    border: none;
    border-radius: var(--border-rad-large);
    padding-top: 4vh;
@@ -420,8 +434,8 @@
  .pakketD3 {
    background-color: rgb(235, 232, 232);
    color: black;
-   margin-left: 100px;
-   margin-right: 100px;
+   margin-left: 30px;
+   margin-right: 30px;
    padding-top: 5vh;
    border: none;
    border-bottom-left-radius: var(--border-rad-large);
